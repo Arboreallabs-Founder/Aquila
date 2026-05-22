@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles.css" />
   <style>
     :root { --accent: #7B45E6; --accent-soft: #EFE7FF; }
@@ -35,12 +36,13 @@
     .t-step h4 { font-family: var(--font-head); font-size: 1.2rem; color: var(--space); margin-bottom: 6px; }
     .t-step p { color: var(--slate); line-height: 1.7; font-size: 0.92rem; }
     .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-    .founder-mini { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-    .fcard { background: var(--white); border-radius: var(--radius-lg); padding: 24px; text-align: center; box-shadow: var(--shadow-sm); border: 1px solid rgba(56,105,130,0.06); }
-    .favatar { width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 14px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.85); font-family: var(--font-head); font-size: 1.5rem; }
+    .founder-mini { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    .fcard { background: var(--white); border-radius: var(--radius-lg); padding: 24px; text-align: left; box-shadow: var(--shadow-sm); border: 1px solid rgba(56,105,130,0.06); }
+    .favatar { width: 72px; height: 72px; border-radius: 50%; margin: 0 0 14px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.85); font-family: var(--font-head); font-size: 1.5rem; }
     .fcard .nm { font-family: var(--font-head); font-weight: 700; color: var(--space); }
     .fcard .rl { font-size: 0.76rem; font-weight: 600; color: var(--accent); margin-top: 4px; }
-    @media (max-width: 900px) { .mission-grid { grid-template-columns: 1fr; gap: 32px; } .pillar-mini { grid-template-columns: 1fr; } .values-grid { grid-template-columns: repeat(2, 1fr); } .founder-mini { grid-template-columns: repeat(2, 1fr); } }
+    .fcard .bio { color: var(--slate); font-size: 0.84rem; line-height: 1.65; margin-top: 12px; }
+    @media (max-width: 900px) { .mission-grid { grid-template-columns: 1fr; gap: 32px; } .pillar-mini { grid-template-columns: 1fr; } .values-grid { grid-template-columns: repeat(2, 1fr); } }
   </style>
 </head>
 <body>
@@ -151,7 +153,7 @@
     <div class="container">
       <div class="metrics-grid">
         <div class="metric-card fade-in"><div class="metric-number" data-target="100000" data-suffix="+">0</div><div class="metric-label">Learners</div></div>
-        <div class="metric-card fade-in delay-1"><div class="metric-number" data-target="25000" data-suffix="+">0</div><div class="metric-label">Professionals</div></div>
+        <div class="metric-card fade-in delay-1"><div class="metric-number" data-target="15" data-suffix="+">0</div><div class="metric-label">Skill Areas</div></div>
         <div class="metric-card fade-in delay-2"><div class="metric-number" data-target="75000" data-suffix="+">0</div><div class="metric-label">Livelihood Beneficiaries</div></div>
         <div class="metric-card fade-in delay-3"><div class="metric-number" data-target="3000" data-suffix="+">0</div><div class="metric-label">Placements</div></div>
         <div class="metric-card fade-in delay-4"><div class="metric-number" data-target="60" data-suffix="+">0</div><div class="metric-label">Practitioners</div></div>
@@ -213,13 +215,16 @@
       <div class="section-header fade-in">
         <p class="section-label">Our People</p>
         <h2 class="section-heading">Led by practitioners</h2>
-        <p class="section-subheading" style="margin-top:12px;">Founders, experts, and trainers who understand what organizations, students, and communities need.</p>
+        <p class="section-subheading" style="margin-top:12px;">The same practitioner-led team behind Aquila's enterprise, institution, and social impact work.</p>
       </div>
       <div class="founder-mini">
-        <div class="fcard fade-in"><div class="favatar" style="background:linear-gradient(135deg,#243449,#386982);">F</div><div class="nm">Founder Name</div><div class="rl">Co-Founder &amp; CEO</div></div>
-        <div class="fcard fade-in delay-1"><div class="favatar" style="background:linear-gradient(135deg,#2d1b4e,#9B5CB8);">L</div><div class="nm">Leadership Expert</div><div class="rl">Head of Corporate Learning</div></div>
-        <div class="fcard fade-in delay-2"><div class="favatar" style="background:linear-gradient(135deg,#386982,#7B45E6);">C</div><div class="nm">Cybersecurity Practitioner</div><div class="rl">Head of Technical Programs</div></div>
-        <div class="fcard fade-in delay-3"><div class="favatar" style="background:linear-gradient(135deg,#1a3a4a,#2A9D72);">I</div><div class="nm">Livelihood Program Lead</div><div class="rl">Head of Social Impact</div></div>
+        <div class="fcard fade-in"><div class="favatar" style="background:linear-gradient(135deg,#243449,#7B45E6);">R</div><div class="nm">Rewa Singh Deo</div><div class="rl">Founder</div><p class="bio">25+ years shaping leadership pipelines and enterprise-wide talent transformation globally. Mentors women entrepreneurs.</p></div>
+        <div class="fcard fade-in delay-1"><div class="favatar" style="background:linear-gradient(135deg,#2d1b4e,#9B5CB8);">J</div><div class="nm">Jayati Pardhy</div><div class="rl">Founder</div><p class="bio">Global HR leader with deep expertise in strategic hiring, employer branding, and building high-impact teams.</p></div>
+        <div class="fcard fade-in delay-2"><div class="favatar" style="background:linear-gradient(135deg,#243449,#386982);">A</div><div class="nm">Dr. Abhay Bhave</div><div class="rl">IAS Retd. / Advisor</div><p class="bio">Strategy and change expert with 45+ years across government and industry, advising BHEL, GAIL, and IOC.</p></div>
+        <div class="fcard fade-in delay-3"><div class="favatar" style="background:linear-gradient(135deg,#2d1b4e,#9B5CB8);">A</div><div class="nm">Anurag Kumar</div><div class="rl">Advisor</div><p class="bio">Ex-PepsiCo leader with 30+ years of global FMCG leadership across Asia, the Middle East, and Africa.</p></div>
+        <div class="fcard fade-in delay-4"><div class="favatar" style="background:linear-gradient(135deg,#386982,#7B45E6);">S</div><div class="nm">Sonali Jha</div><div class="rl">Advisor</div><p class="bio">Expert in GenAI, AI agents, product design, go-to-market strategy, UX, analytics, and design thinking.</p></div>
+        <div class="fcard fade-in"><div class="favatar" style="background:linear-gradient(135deg,#386982,#2A9D72);">D</div><div class="nm">Dr. Dilip Kumar</div><div class="rl">Livestock Development Expert</div><p class="bio">36+ years in government livestock systems across dairy, poultry, goatery, piggery, and village-level livelihoods.</p></div>
+        <div class="fcard fade-in delay-1"><div class="favatar" style="background:linear-gradient(135deg,#243449,#2A9D72);">O</div><div class="nm">Dr. S. N. Ojha</div><div class="rl">Fisheries Systems Expert</div><p class="bio">Former ICAR-CIFE expert with 40+ years in fisheries systems, publications, and national policy contributions.</p></div>
       </div>
     </div>
   </section>
@@ -272,13 +277,13 @@
         </div>
         <div>
           <h3 class="footer-col-title">Contact</h3>
-          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>hello@aquilaindia.com</div>
-          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>+91 XXXXX XXXXX</div>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>jayati@aquilalearning.in</div>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>+91 83746 93274</div>
           <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>India</div>
         </div>
       </div>
       <div class="footer-bottom">
-        <p class="footer-copyright">&copy; 2026 Aquila. All rights reserved.</p>
+        <p class="footer-copyright">&copy; 2026 Aquila - an ARJV initiative. All rights reserved.</p>
         <nav class="footer-legal" aria-label="Legal links"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></nav>
       </div>
     </div>

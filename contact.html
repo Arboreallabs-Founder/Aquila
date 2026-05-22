@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles.css" />
   <style>
     :root { --accent: #386982; --accent-soft: #E4EFF4; }
@@ -50,6 +51,12 @@
     .next-panel ol { list-style: none; counter-reset: n; display: grid; gap: 12px; }
     .next-panel li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start; font-size: 0.88rem; color: rgba(255,255,255,0.82); line-height: 1.5; }
     .next-panel li::before { content: counter(n); flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.78rem; color: #fff; }
+    .routing-panel { background: var(--ivory); border: 1px solid rgba(56,105,130,0.1); border-radius: var(--radius-lg); padding: 24px; margin-top: 18px; }
+    .routing-panel h4 { font-family: var(--font-head); font-size: 1.12rem; color: var(--space); margin-bottom: 14px; }
+    .routing-list { display: grid; gap: 12px; }
+    .routing-item { background: var(--white); border-radius: var(--radius-md); padding: 16px; border-left: 3px solid var(--accent); }
+    .routing-item strong { display: block; color: var(--space); margin-bottom: 4px; }
+    .routing-item span { display: block; color: var(--slate); font-size: 0.84rem; line-height: 1.5; }
     @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; gap: 32px; } .field-row { grid-template-columns: 1fr; } }
   </style>
 </head>
@@ -161,11 +168,15 @@
         <div class="fade-in delay-1">
           <div class="info-card">
             <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-            <div><h4>Email</h4><p>hello@aquilaindia.com</p></div>
+            <div><h4>Jayati Pardhy</h4><p>jayati@aquilalearning.in</p></div>
           </div>
           <div class="info-card">
             <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 14.92z"/></svg></div>
-            <div><h4>Phone</h4><p>+91 XXXXX XXXXX</p></div>
+            <div><h4>Phone</h4><p>+91 83746 93274</p></div>
+          </div>
+          <div class="info-card">
+            <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div><h4>Rewa Singh Deo</h4><p>rewa@aquilalearning.in<br>+91 96061 30142</p></div>
           </div>
           <div class="info-card">
             <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
@@ -179,6 +190,13 @@
               <li>A practitioner reaches out to understand your goals and context.</li>
               <li>We propose a tailored capability plan with clear outcomes.</li>
             </ol>
+          </div>
+          <div class="routing-panel">
+            <h4>Partnership Routing</h4>
+            <div class="routing-list">
+              <div class="routing-item"><strong>Jayati Pardhy</strong><span>State skilling programs, college and university integration, employability, and placement-linked programs for corporates.</span></div>
+              <div class="routing-item"><strong>Rewa Singh Deo</strong><span>CSR partnerships, livelihood initiatives, women-led entrepreneurship, and rural impact programs.</span></div>
+            </div>
           </div>
         </div>
 
@@ -219,13 +237,13 @@
         </div>
         <div>
           <h3 class="footer-col-title">Contact</h3>
-          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>hello@aquilaindia.com</div>
-          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>+91 XXXXX XXXXX</div>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>jayati@aquilalearning.in</div>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>+91 83746 93274</div>
           <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>India</div>
         </div>
       </div>
       <div class="footer-bottom">
-        <p class="footer-copyright">&copy; 2026 Aquila. All rights reserved.</p>
+        <p class="footer-copyright">&copy; 2026 Aquila - an ARJV initiative. All rights reserved.</p>
         <nav class="footer-legal" aria-label="Legal links"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></nav>
       </div>
     </div>

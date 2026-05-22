@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles.css" />
   <style>
     :root { --accent: #2A9D72; --accent-soft: #E2F3EC; }
@@ -70,6 +71,15 @@
     .prog-feature-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 7px; }
     .prog-feature-text { font-size: 0.88rem; color: var(--slate); line-height: 1.55; }
     .prog-feature-text strong { display: block; color: var(--space); margin-bottom: 2px; }
+    .impact-image-card { background: var(--white); border-radius: var(--radius-lg); padding: 14px; box-shadow: var(--shadow-md); border: 1px solid rgba(42,157,114,0.12); }
+    .impact-image-card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--radius-md); display: block; }
+    .impact-image-caption { font-size: 0.78rem; color: var(--slate); line-height: 1.5; padding: 12px 4px 2px; }
+    .rural-proof { background: var(--white); }
+    .rural-proof-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 36px; align-items: center; }
+    .project-list { display: grid; gap: 12px; margin-top: 20px; }
+    .project-item { background: var(--ivory); border: 1px solid rgba(42,157,114,0.12); border-radius: var(--radius-md); padding: 16px 18px; }
+    .project-item strong { display: block; color: var(--space); margin-bottom: 4px; }
+    .project-item span { display: block; color: var(--slate); font-size: 0.84rem; line-height: 1.55; }
 
     /* HTD model steps */
     .htd-steps { display: flex; flex-direction: column; gap: 0; }
@@ -86,7 +96,7 @@
     .topic-icon svg { width: 16px; height: 16px; }
     .topic-name { font-size: 0.82rem; font-weight: 600; color: var(--space); line-height: 1.3; }
 
-    @media (max-width: 1024px) { .impact-pillars { grid-template-columns: 1fr; } .prog-row { grid-template-columns: 1fr; gap: 36px; } }
+    @media (max-width: 1024px) { .impact-pillars { grid-template-columns: 1fr; } .prog-row { grid-template-columns: 1fr; gap: 36px; } .rural-proof-grid { grid-template-columns: 1fr; } }
     @media (max-width: 768px) { .prog-stat-grid { grid-template-columns: 1fr 1fr; } .topic-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
@@ -145,16 +155,16 @@
       </div>
       <p class="ph-eyebrow">For Social Impact</p>
       <h1 class="ph-title">Creating Pathways to <em>Economic Independence</em></h1>
-      <p class="ph-sub">From community livelihoods to digital access and structured employment — Aquila's social impact programs build durable capability at the ground level, where it matters most.</p>
+      <p class="ph-sub">From community livelihoods to digital access and structured employment — Aquila turns grassroots potential into income pathways through market-linked skills, microenterprise, and placement-linked programs.</p>
       <div class="ph-actions">
         <a href="contact.html" class="btn btn-primary">Partner on Impact</a>
         <a href="#livelihood" class="btn btn-outline-white">Explore Programs</a>
       </div>
       <div class="hero-stats">
         <div class="hero-stat"><div class="val">75,000+</div><div class="lbl">Livelihood Beneficiaries</div></div>
+        <div class="hero-stat"><div class="val">60%</div><div class="lbl">Women Participation</div></div>
         <div class="hero-stat"><div class="val">1,00,000+</div><div class="lbl">Learners Impacted</div></div>
         <div class="hero-stat"><div class="val">3,000+</div><div class="lbl">Placements Created</div></div>
-        <div class="hero-stat"><div class="val">3</div><div class="lbl">Impact Programs</div></div>
       </div>
     </div>
   </header>
@@ -197,7 +207,7 @@
         <div>
           <p class="prog-label-green">Program 01 — Livelihood</p>
           <h2 class="prog-heading">Turning Local Skills Into<br>Lasting Income</h2>
-          <p class="prog-body">Aquila's livelihood programs work within communities — particularly with women-led self-help groups — to build sustainable economic activity rooted in local skills, craft, and entrepreneurship. The goal is income that outlasts the program, not just attendance certificates.</p>
+          <p class="prog-body">Aquila's livelihood programs work within communities — particularly with women-led self-help groups — to build sustainable economic activity rooted in local skills, craft, fisheries, livestock, and entrepreneurship. The goal is income that outlasts the program, not just attendance certificates.</p>
           <div class="prog-features">
             <div class="prog-feature">
               <div class="prog-feature-dot"></div>
@@ -209,7 +219,11 @@
             </div>
             <div class="prog-feature">
               <div class="prog-feature-dot"></div>
-              <div class="prog-feature-text"><strong>The Butterfly Project</strong>A flagship initiative walking alongside women-led ventures from digital literacy to entrepreneurship readiness</div>
+              <div class="prog-feature-text"><strong>The Butterfly Project</strong>A flagship Section 8, 12A-80G certified initiative supporting women and youth across Jharkhand, Bihar, and UP</div>
+            </div>
+            <div class="prog-feature">
+              <div class="prog-feature-dot"></div>
+              <div class="prog-feature-text"><strong>Land &amp; Water Livelihoods</strong>Livestock, dairy, poultry, goatery, piggery, fisheries, and aquaculture pathways led by sector experts</div>
             </div>
             <div class="prog-feature">
               <div class="prog-feature-dot"></div>
@@ -218,13 +232,30 @@
           </div>
           <a href="contact.html" class="btn btn-primary">Partner on Livelihood</a>
         </div>
-        <div class="prog-visual green fade-in delay-1">
-          <p style="font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(126,212,175,0.7);margin-bottom:16px;position:relative;z-index:1;">Program Impact</p>
-          <div class="prog-stat-grid">
-            <div class="prog-stat-box"><div class="prog-stat-val">75,000+</div><div class="prog-stat-lbl">Beneficiaries</div></div>
-            <div class="prog-stat-box"><div class="prog-stat-val">500+</div><div class="prog-stat-lbl">SHGs Reached</div></div>
-            <div class="prog-stat-box"><div class="prog-stat-val">12+</div><div class="prog-stat-lbl">Districts</div></div>
-            <div class="prog-stat-box"><div class="prog-stat-val">18 yrs</div><div class="prog-stat-lbl">Delivery Experience</div></div>
+        <div class="impact-image-card fade-in delay-1">
+          <img src="assets/back/home-social.jpg" alt="Women participating in a community learning circle">
+          <p class="impact-image-caption">The Butterfly Project supports hand embroidery, agri and co-products, semi-processed food, natural beauty products, essential items, and traditional painting pathways.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rural-proof">
+    <div class="container">
+      <div class="rural-proof-grid">
+        <div class="impact-image-card fade-in">
+          <img src="assets/back/home-social.jpg" alt="Community livelihood learners in a group session">
+          <p class="impact-image-caption">Rural projects across fisheries, bio-village infrastructure, fodder development, and farmer financial inclusion.</p>
+        </div>
+        <div class="fade-in delay-1">
+          <p class="section-label">On-Ground Proof</p>
+          <h2 class="section-heading">Rural Livelihoods Across Land &amp; Water</h2>
+          <p class="section-subheading" style="margin-top:12px;">Aquila's rural work is led by domain experts including Dr. Dilip Kumar and Dr. S. N. Ojha, connecting practical training to market-linked livelihood pathways.</p>
+          <div class="project-list">
+            <div class="project-item"><strong>Fisherwomen cooperative</strong><span>Organized 50 fisherwomen into a cooperative with value-added products such as prawn pickle and fish papad.</span></div>
+            <div class="project-item"><strong>Bio-village infrastructure</strong><span>Built rainwater harvesting systems, grow-out tanks, nursery tanks, and shrimp-farming ecosystems.</span></div>
+            <div class="project-item"><strong>Fodder and livestock productivity</strong><span>Distributed 1,200+ fodder kits and ran awareness on sustainable feed and livestock nutrition.</span></div>
+            <div class="project-item"><strong>Farmer financial inclusion</strong><span>Enabled access to Kisan Credit Cards, livestock financing support, and formal banking processes.</span></div>
           </div>
         </div>
       </div>
@@ -384,13 +415,13 @@
         </div>
         <div>
           <h3 class="footer-col-title">Contact</h3>
-          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>hello@aquilaindia.com</div>
-          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>+91 XXXXX XXXXX</div>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>jayati@aquilalearning.in</div>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>+91 83746 93274</div>
           <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>India</div>
         </div>
       </div>
       <div class="footer-bottom">
-        <p class="footer-copyright">&copy; 2026 Aquila. All rights reserved.</p>
+        <p class="footer-copyright">&copy; 2026 Aquila - an ARJV initiative. All rights reserved.</p>
         <nav class="footer-legal" aria-label="Legal links"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></nav>
       </div>
     </div>

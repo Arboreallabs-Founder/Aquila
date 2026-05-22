@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles.css" />
   <style>
     :root { --accent: #7B45E6; --accent-soft: #EFE7FF; }
@@ -39,7 +40,8 @@
     .cs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .cs-card { display: flex; flex-direction: column; background: var(--white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid rgba(56,105,130,0.06); transition: transform 0.3s ease, box-shadow 0.3s ease; }
     .cs-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
-    .cs-top { height: 96px; display: flex; align-items: center; justify-content: center; color: #fff; }
+    .cs-top { height: 150px; display: flex; align-items: center; justify-content: center; color: #fff; overflow: hidden; }
+    .cs-top img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .cs-card[data-cat="corporate"] .cs-top { background: linear-gradient(135deg, #243449, #386982); }
     .cs-card[data-cat="institution"] .cs-top { background: linear-gradient(135deg, #2d1b4e, #9B5CB8); }
     .cs-card[data-cat="social"] .cs-top { background: linear-gradient(135deg, #1a3a4a, #2A9D72); }
@@ -129,35 +131,35 @@
       <div class="cs-grid" id="csGrid">
 
         <article class="cs-card fade-in" data-cat="corporate">
-          <div class="cs-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+          <div class="cs-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
           <div class="cs-body">
             <div class="cs-cat">Corporate Capability</div>
-            <div class="cs-client">Corporate Capability Partner</div>
-            <p class="cs-problem">Needed stronger first-line leadership and technical readiness across distributed teams.</p>
-            <div class="cs-impact"><div class="lab">Impact</div><div class="txt">Improved execution capability across critical workforce layers.</div></div>
-            <a href="#" class="cs-link">Read Case Study <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <div class="cs-client">Integrated Capability for Future-Ready Organizations</div>
+            <p class="cs-problem">Organizations are facing AI disruption, talent gaps, and transformation failure rooted in people capability.</p>
+            <div class="cs-impact"><div class="lab">Capability Focus</div><div class="txt">Technical and behavioural capability building across cybersecurity, GenAI, leadership, and workforce readiness.</div></div>
+            <a href="technical-training.html" class="cs-link">Explore Corporate Programs <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
           </div>
         </article>
 
         <article class="cs-card fade-in delay-1" data-cat="institution">
-          <div class="cs-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+          <div class="cs-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
           <div class="cs-body">
             <div class="cs-cat">Employability</div>
-            <div class="cs-client">University Employability Partner</div>
-            <p class="cs-problem">Students needed stronger placement readiness and industry-facing confidence.</p>
-            <div class="cs-impact"><div class="lab">Impact</div><div class="txt">Higher placement preparedness and stronger candidate conversion.</div></div>
-            <a href="#" class="cs-link">Read Case Study <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <div class="cs-client">Mahindra University MBA Placement Sprint</div>
+            <p class="cs-problem">Second-year MBA students needed focused preparation, realistic simulations, and personalised feedback.</p>
+            <div class="cs-impact"><div class="lab">Program Design</div><div class="txt">8-week crash course covering resume, communication, aptitude, GDs, domain interviews, behavioural interviews, mocks, and final simulations.</div></div>
+            <a href="colleges.html" class="cs-link">Explore Placement Program <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
           </div>
         </article>
 
         <article class="cs-card fade-in delay-2" data-cat="social">
-          <div class="cs-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div class="cs-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"/></svg></div>
           <div class="cs-body">
             <div class="cs-cat">Livelihood</div>
-            <div class="cs-client">Livelihood Ecosystem Partner</div>
-            <p class="cs-problem">Women-led community ventures needed capability, confidence, and income pathways.</p>
-            <div class="cs-impact"><div class="lab">Impact</div><div class="txt">Expanded livelihood participation and local enterprise readiness.</div></div>
-            <a href="#" class="cs-link">Read Case Study <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <div class="cs-client">The Butterfly Project</div>
+            <p class="cs-problem">Women and youth needed market-fit skills that could translate into enterprise and income.</p>
+            <div class="cs-impact"><div class="lab">Impact</div><div class="txt">75,000+ learners across Jharkhand, Bihar, and UP, with 60% women participation and women-led enterprise pathways.</div></div>
+            <a href="social-impact.html" class="cs-link">Explore Social Impact <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
           </div>
         </article>
 
@@ -165,32 +167,32 @@
           <div class="cs-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
           <div class="cs-body">
             <div class="cs-cat">Cybersecurity</div>
-            <div class="cs-client">Enterprise Security Partner</div>
-            <p class="cs-problem">Required a security-first workforce able to respond to a rising threat landscape.</p>
-            <div class="cs-impact"><div class="lab">Impact</div><div class="txt">Stronger security posture and faster, more confident incident response.</div></div>
-            <a href="#" class="cs-link">Read Case Study <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <div class="cs-client">Enterprise Cyber Readiness Pathways</div>
+            <p class="cs-problem">Training needed to reduce enterprise risk rather than just transfer knowledge.</p>
+            <div class="cs-impact"><div class="lab">Pathways</div><div class="txt">Hands-on technical skills, women-returnee re-entry confidence, and cyber risk leadership for boards and CXOs.</div></div>
+            <a href="technical-training.html" class="cs-link">Explore Cyber Readiness <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
           </div>
         </article>
 
         <article class="cs-card fade-in delay-1" data-cat="institution">
-          <div class="cs-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <div class="cs-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"/></svg></div>
           <div class="cs-body">
-            <div class="cs-cat">Innovation</div>
-            <div class="cs-client">Campus Innovation Partner</div>
-            <p class="cs-problem">Wanted students to move beyond theory into real-world problem solving.</p>
-            <div class="cs-impact"><div class="lab">Impact</div><div class="txt">Higher engagement and a pipeline of project-ready, industry-aware students.</div></div>
-            <a href="#" class="cs-link">Read Case Study <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <div class="cs-cat">School Transformation</div>
+            <div class="cs-client">Building Future-Ready Institutions</div>
+            <p class="cs-problem">Schools needed an integrated system across students, teachers, and industry exposure.</p>
+            <div class="cs-impact"><div class="lab">Model</div><div class="txt">15+ skill areas, 15,000+ learners impacted, and 20 industry practitioners across school programs.</div></div>
+            <a href="schools.html" class="cs-link">Explore School Programs <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
           </div>
         </article>
 
         <article class="cs-card fade-in delay-2" data-cat="social">
-          <div class="cs-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+          <div class="cs-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 21c3-6 6-9 9-9s6 3 9 9"/><path d="M5 12c2-5 4.5-8 7-8s5 3 7 8"/></svg></div>
           <div class="cs-body">
-            <div class="cs-cat">Hire Train Deploy</div>
-            <div class="cs-client">Logistics Workforce Partner</div>
-            <p class="cs-problem">Needed a reliable pipeline of job-ready talent for a fast-scaling logistics network.</p>
-            <div class="cs-impact"><div class="lab">Impact</div><div class="txt">Dependable hire-train-deploy pipeline with durable employment outcomes.</div></div>
-            <a href="#" class="cs-link">Read Case Study <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <div class="cs-cat">Rural Livelihood Systems</div>
+            <div class="cs-client">Land &amp; Water Livelihood Projects</div>
+            <p class="cs-problem">Rural communities needed practical routes from local assets to household income.</p>
+            <div class="cs-impact"><div class="lab">Proof Points</div><div class="txt">Fisherwomen cooperative, bio-village infrastructure, 1,200+ fodder kits, and farmer KCC support.</div></div>
+            <a href="social-impact.html" class="cs-link">Explore Rural Impact <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
           </div>
         </article>
 
@@ -246,13 +248,13 @@
         </div>
         <div>
           <h3 class="footer-col-title">Contact</h3>
-          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>hello@aquilaindia.com</div>
-          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>+91 XXXXX XXXXX</div>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>jayati@aquilalearning.in</div>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>+91 83746 93274</div>
           <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>India</div>
         </div>
       </div>
       <div class="footer-bottom">
-        <p class="footer-copyright">&copy; 2026 Aquila. All rights reserved.</p>
+        <p class="footer-copyright">&copy; 2026 Aquila - an ARJV initiative. All rights reserved.</p>
         <nav class="footer-legal" aria-label="Legal links"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></nav>
       </div>
     </div>

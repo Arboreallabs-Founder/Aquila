@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles.css" />
   <style>
     :root { --accent: #9B5CB8; --accent-soft: #EFE7FF; }
@@ -56,7 +57,7 @@
     /* What's included (methodology) */
     .methodology-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; }
     .meth-step { text-align: center; padding: 28px 16px; position: relative; }
-    .meth-step + .meth-step::before { content: '→'; position: absolute; left: -8px; top: 50%; transform: translateY(-50%); color: var(--accent); font-size: 1.2rem; }
+    .meth-step + .meth-step::before { content: '?'; position: absolute; left: -8px; top: 50%; transform: translateY(-50%); color: var(--accent); font-size: 1.2rem; }
     .meth-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; }
     .meth-icon svg { width: 26px; height: 26px; }
     .meth-title { font-size: 0.82rem; font-weight: 700; color: var(--space); margin-bottom: 4px; }
@@ -78,7 +79,7 @@
     .cs-body { font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 20px; }
     .cs-outcomes { list-style: none; display: flex; flex-direction: column; gap: 10px; }
     .cs-outcomes li { display: flex; gap: 10px; align-items: flex-start; font-size: 0.88rem; color: rgba(255,255,255,0.8); line-height: 1.5; }
-    .cs-outcomes li::before { content: '✓'; color: #c9b6ff; font-weight: 700; flex-shrink: 0; }
+    .cs-outcomes li::before { content: '?'; color: #c9b6ff; font-weight: 700; flex-shrink: 0; }
     .cs-quote { background: rgba(255,255,255,0.06); border-radius: var(--radius-md); padding: 28px; border: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 1; }
     .cs-quote blockquote { font-size: 1rem; color: rgba(255,255,255,0.85); line-height: 1.7; font-style: italic; margin-bottom: 16px; }
     .cs-quote cite { font-size: 0.82rem; color: rgba(255,255,255,0.5); font-style: normal; }
@@ -86,6 +87,13 @@
     /* Partners logos */
     .partners-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
     .partner-badge { background: var(--white); border: 1px solid rgba(155,92,184,0.12); border-radius: 10px; padding: 10px 18px; font-size: 0.82rem; font-weight: 600; color: var(--slate); white-space: nowrap; }
+    .format-proof-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: stretch; }
+    .format-proof-card { background: var(--white); border: 1px solid rgba(155,92,184,0.1); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); }
+    .format-proof-icon { width: 56px; height: 56px; border-radius: 16px; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; margin: 26px 26px 0; }
+    .format-proof-icon svg { width: 28px; height: 28px; }
+    .format-proof-body { padding: 26px; }
+    .format-proof-body h3 { font-family: var(--font-head); color: var(--space); font-size: 1.3rem; margin-bottom: 10px; }
+    .format-proof-body p { color: var(--slate); line-height: 1.65; font-size: 0.9rem; }
 
     @media (max-width: 1024px) {
       .challenge-cols { grid-template-columns: 1fr; gap: 40px; }
@@ -94,6 +102,7 @@
       .meth-step + .meth-step::before { display: none; }
       .resources-grid { grid-template-columns: repeat(3, 1fr); }
       .case-study-panel { grid-template-columns: 1fr; padding: 36px 28px; }
+      .format-proof-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       .modules-8 { grid-template-columns: 1fr; }
@@ -226,6 +235,32 @@
   </section>
 
   <!-- 8 MODULES -->
+  <section style="background: var(--white);">
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="section-label">Placement Formats</p>
+        <h2 class="section-heading">Two Placement Journeys,<br>Built Around Student Year</h2>
+        <p class="section-subheading">Separate pathways for first-year and second-year MBA students, with different intensity, timing, and readiness goals.</p>
+      </div>
+      <div class="format-proof-grid fade-in delay-1">
+        <article class="format-proof-card">
+          <div class="format-proof-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+          <div class="format-proof-body">
+            <h3>8-Week Final Sprint Bootcamp</h3>
+            <p>For second-year MBA students approaching campus recruitment. Focused on resume optimisation, communication, aptitude, group discussions, domain interviews, behavioural interviews, mock interviews, and final simulations.</p>
+          </div>
+        </article>
+        <article class="format-proof-card">
+          <div class="format-proof-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+          <div class="format-proof-body">
+            <h3>24-Week Placement Readiness System</h3>
+            <p>For first-year MBA students. Uses checkpoints, scoring visibility, and a tiering system to identify placement-ready students, students who need polish, and students needing targeted intervention.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section id="modules" style="background: var(--ivory);">
     <div class="container">
       <div class="section-header fade-in">
@@ -449,7 +484,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p class="footer-copyright">© 2026 Aquila — an ARJV initiative. All rights reserved.</p>
+        <p class="footer-copyright">&copy; 2026 Aquila - an ARJV initiative. All rights reserved.</p>
         <div class="footer-legal">
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Use</a>
