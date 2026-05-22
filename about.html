@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Aquila</title>
+  <meta name="description" content="Aquila is a modern capability infrastructure platform for India — building future-ready capability across corporates, institutions, and social sectors." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root { --accent: #7B45E6; --accent-soft: #EFE7FF; }
+
+    /* Unique header — editorial, gradient wash + diagonal accent */
+    .page-header { background: linear-gradient(135deg, #F3EDFF 0%, #EBF3F7 55%, #F8F5EC 100%); }
+    .page-header::before {
+      content: ''; position: absolute; inset: 0; z-index: 0; opacity: 0.5;
+      background:
+        radial-gradient(circle at 85% 20%, rgba(123,69,230,0.14), transparent 45%),
+        radial-gradient(circle at 10% 90%, rgba(56,105,130,0.12), transparent 45%);
+    }
+    .ph-title { max-width: 18ch; }
+
+    .mission { font-family: var(--font-head); font-size: clamp(1.6rem, 3.2vw, 2.5rem); line-height: 1.35; color: var(--space); font-weight: 600; max-width: 22ch; }
+    .mission em { font-style: italic; color: var(--accent); }
+    .mission-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: center; }
+    .pillar-mini { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .alt { background: var(--white); }
+
+    .timeline { display: grid; gap: 0; max-width: 760px; }
+    .t-step { display: grid; grid-template-columns: 64px 1fr; gap: 20px; padding-bottom: 36px; position: relative; }
+    .t-step:not(:last-child)::before { content: ''; position: absolute; left: 31px; top: 56px; bottom: -4px; width: 2px; background: var(--accent-soft); }
+    .t-num { width: 64px; height: 64px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: var(--font-head); font-size: 1.3rem; font-weight: 700; }
+    .t-step h4 { font-family: var(--font-head); font-size: 1.2rem; color: var(--space); margin-bottom: 6px; }
+    .t-step p { color: var(--slate); line-height: 1.7; font-size: 0.92rem; }
+    .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .founder-mini { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .fcard { background: var(--white); border-radius: var(--radius-lg); padding: 24px; text-align: center; box-shadow: var(--shadow-sm); border: 1px solid rgba(56,105,130,0.06); }
+    .favatar { width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 14px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.85); font-family: var(--font-head); font-size: 1.5rem; }
+    .fcard .nm { font-family: var(--font-head); font-weight: 700; color: var(--space); }
+    .fcard .rl { font-size: 0.76rem; font-weight: 600; color: var(--accent); margin-top: 4px; }
+    @media (max-width: 900px) { .mission-grid { grid-template-columns: 1fr; gap: 32px; } .pillar-mini { grid-template-columns: 1fr; } .values-grid { grid-template-columns: repeat(2, 1fr); } .founder-mini { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Aquila home">Aq<span>ui</span>la</a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="corporates.html">Corporates</a></li>
+        <li><a href="institutions.html">Institutions</a></li>
+        <li><a href="social-impact.html">Social Impact</a></li>
+        <li><a href="case-studies.html">Case Studies</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="btn btn-primary nav-cta">Contact Us</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="corporates.html">Corporates</a></li>
+      <li><a href="institutions.html">Institutions</a></li>
+      <li><a href="social-impact.html">Social Impact</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;">Contact Us</a>
+  </div>
+
+  <header class="page-header">
+    <div class="container">
+      <p class="crumb"><a href="index.html">Home</a><span>/</span>About</p>
+      <div class="ph-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 2 8.5 12 14l10-5.5L12 3z"/><path d="M2 8.5V16l10 5.5L22 16V8.5"/><circle cx="12" cy="11" r="1.6" fill="currentColor"/></svg>
+      </div>
+      <p class="ph-eyebrow">About Aquila</p>
+      <h1 class="ph-title">A modern capability infrastructure platform for India.</h1>
+      <p class="ph-sub">We build future-ready capability systems across corporates, institutions, and social sectors — where India needs transformation most.</p>
+    </div>
+  </header>
+
+  <!-- MISSION -->
+  <section>
+    <div class="container">
+      <div class="mission-grid">
+        <div class="fade-in">
+          <p class="section-label">Our Mission</p>
+          <p class="mission" style="margin-top:14px;">We exist to turn potential into <em>performance</em> — for people, institutions, and communities.</p>
+        </div>
+        <div class="fade-in delay-1">
+          <p style="color:var(--slate);line-height:1.8;margin-bottom:16px;">India's next growth cycle will be defined by capability — technical depth, leadership strength, employability, and economic participation. Aquila is built to deliver that capability at scale, across the ecosystems where it matters most.</p>
+          <p style="color:var(--slate);line-height:1.8;">We are practitioners first. Our programs are designed around real-world demands and measured by real outcomes, not attendance — bridging the gap between learning and lived performance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE MODEL -->
+  <section class="alt">
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="section-label">The Aquila Model</p>
+        <h2 class="section-heading">Three pillars, one capability engine</h2>
+        <p class="section-subheading" style="margin-top:12px;">From enterprise capability to employability and economic participation.</p>
+      </div>
+      <div class="pillar-mini">
+        <a class="u-card fade-in" href="corporates.html" style="--accent:#386982;--accent-soft:#E4EFF4;">
+          <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+          <h3>Corporates</h3>
+          <p>Technical excellence and leadership capability for modern enterprise teams.</p>
+        </a>
+        <a class="u-card fade-in delay-1" href="institutions.html" style="--accent:#9B5CB8;--accent-soft:#F3E9FA;">
+          <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+          <h3>Institutions</h3>
+          <p>Industry-ready students and future-ready schools, built for modern careers.</p>
+        </a>
+        <a class="u-card fade-in delay-2" href="social-impact.html" style="--accent:#2A9D72;--accent-soft:#E2F3EC;">
+          <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h3>Social Impact</h3>
+          <p>Women-led growth and sustainable livelihoods toward economic independence.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS -->
+  <div class="metrics" aria-label="Aquila impact metrics">
+    <div class="container">
+      <div class="metrics-grid">
+        <div class="metric-card fade-in"><div class="metric-number" data-target="100000" data-suffix="+">0</div><div class="metric-label">Learners</div></div>
+        <div class="metric-card fade-in delay-1"><div class="metric-number" data-target="25000" data-suffix="+">0</div><div class="metric-label">Professionals</div></div>
+        <div class="metric-card fade-in delay-2"><div class="metric-number" data-target="75000" data-suffix="+">0</div><div class="metric-label">Livelihood Beneficiaries</div></div>
+        <div class="metric-card fade-in delay-3"><div class="metric-number" data-target="3000" data-suffix="+">0</div><div class="metric-label">Placements</div></div>
+        <div class="metric-card fade-in delay-4"><div class="metric-number" data-target="60" data-suffix="+">0</div><div class="metric-label">Practitioners</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- APPROACH -->
+  <section>
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="section-label">Our Approach</p>
+        <h2 class="section-heading">How we build capability</h2>
+      </div>
+      <div class="timeline">
+        <div class="t-step fade-in"><div class="t-num">1</div><div><h4>Understand the real demand</h4><p>We start with the actual demands of roles, campuses, and communities — not generic curricula.</p></div></div>
+        <div class="t-step fade-in"><div class="t-num">2</div><div><h4>Design with practitioners</h4><p>Programs are built and delivered by people who have done the work, so capability transfers to the real world.</p></div></div>
+        <div class="t-step fade-in"><div class="t-num">3</div><div><h4>Deliver hands-on</h4><p>Immersive, practice-led learning that builds confidence and competence at the same time.</p></div></div>
+        <div class="t-step fade-in"><div class="t-num">4</div><div><h4>Measure what matters</h4><p>We track outcomes — placements, performance, participation, income — and iterate from evidence.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="alt">
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="section-label">What We Believe</p>
+        <h2 class="section-heading">Our values</h2>
+      </div>
+      <div class="values-grid">
+        <article class="u-card fade-in">
+          <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></div>
+          <h3>Outcomes over activity</h3>
+          <p>We measure success by what changes, not by what's delivered.</p>
+        </article>
+        <article class="u-card fade-in delay-1">
+          <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 6v6c0 5 8 8 8 8s8-3 8-8V6l-8-4z"/></svg></div>
+          <h3>Practitioner-led</h3>
+          <p>Real expertise, from people who have done the work.</p>
+        </article>
+        <article class="u-card fade-in delay-2">
+          <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V7l7-4 7 4v14"/></svg></div>
+          <h3>Built for India</h3>
+          <p>Designed for the realities and scale of India's ecosystems.</p>
+        </article>
+        <article class="u-card fade-in delay-3">
+          <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+          <h3>People at the center</h3>
+          <p>Capability is human — we build confidence alongside competence.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEADERSHIP TEASER -->
+  <section>
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="section-label">Our People</p>
+        <h2 class="section-heading">Led by practitioners</h2>
+        <p class="section-subheading" style="margin-top:12px;">Founders, experts, and trainers who understand what organizations, students, and communities need.</p>
+      </div>
+      <div class="founder-mini">
+        <div class="fcard fade-in"><div class="favatar" style="background:linear-gradient(135deg,#243449,#386982);">F</div><div class="nm">Founder Name</div><div class="rl">Co-Founder &amp; CEO</div></div>
+        <div class="fcard fade-in delay-1"><div class="favatar" style="background:linear-gradient(135deg,#2d1b4e,#9B5CB8);">L</div><div class="nm">Leadership Expert</div><div class="rl">Head of Corporate Learning</div></div>
+        <div class="fcard fade-in delay-2"><div class="favatar" style="background:linear-gradient(135deg,#386982,#7B45E6);">C</div><div class="nm">Cybersecurity Practitioner</div><div class="rl">Head of Technical Programs</div></div>
+        <div class="fcard fade-in delay-3"><div class="favatar" style="background:linear-gradient(135deg,#1a3a4a,#2A9D72);">I</div><div class="nm">Livelihood Program Lead</div><div class="rl">Head of Social Impact</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="container">
+      <div class="cta-band-inner fade-in">
+        <p class="section-label">Work With Aquila</p>
+        <h2>Let's build future-ready capability together.</h2>
+        <p>Whether you are an enterprise, institution, impact organization, or ecosystem partner — we'd love to talk.</p>
+        <div class="cta-band-actions">
+          <a href="contact.html" class="btn btn-primary">Contact Us</a>
+          <a href="index.html#pillars" class="btn btn-outline-white">Explore Programs</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand-logo">Aq<span>ui</span>la</div>
+          <p class="footer-tagline">Powering India's Workforce for Tomorrow</p>
+          <div class="footer-social" aria-label="Social media links">
+            <a href="#" class="social-icon" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+            <a href="#" class="social-icon" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="#" class="social-icon" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Programs</h3>
+          <ul class="footer-links">
+            <li><a href="corporates.html">First Chair</a></li>
+            <li><a href="corporates.html">Technical Training</a></li>
+            <li><a href="institutions.html">Ace Your Placements</a></li>
+            <li><a href="institutions.html">Hackathons by Indisight</a></li>
+            <li><a href="social-impact.html">Livelihood Systems</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Ecosystems</h3>
+          <ul class="footer-links">
+            <li><a href="corporates.html">Corporates</a></li>
+            <li><a href="institutions.html">Institutions</a></li>
+            <li><a href="social-impact.html">Social Impact</a></li>
+            <li><a href="case-studies.html">Case Studies</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Contact</h3>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>hello@aquilaindia.com</div>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>+91 XXXXX XXXXX</div>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>India</div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2026 Aquila. All rights reserved.</p>
+        <nav class="footer-legal" aria-label="Legal links"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Aquila</title>
+  <meta name="description" content="Talk to Aquila about building future-ready capability for your enterprise, institution, or impact program." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root { --accent: #386982; --accent-soft: #E4EFF4; }
+
+    /* Unique header — teal wash with soft diagonal */
+    .page-header { background: linear-gradient(135deg, #EBF3F7 0%, #F3EDFF 60%, #F8F5EC 100%); padding-bottom: clamp(40px, 6vw, 64px); }
+    .page-header::before {
+      content: ''; position: absolute; z-index: 0; top: -100px; right: -60px; width: 420px; height: 420px;
+      background: radial-gradient(circle, rgba(56,105,130,0.16) 0%, transparent 70%); border-radius: 50%;
+    }
+    .ph-icon { color: var(--accent); }
+
+    .contact-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: start; }
+    .form-card { background: var(--white); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow-md); border: 1px solid rgba(56,105,130,0.06); }
+    .field { margin-bottom: 18px; }
+    .field label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--space); margin-bottom: 7px; }
+    .field .req { color: #c2466e; }
+    .field input, .field select, .field textarea {
+      width: 100%; font-family: inherit; font-size: 0.92rem; color: var(--space);
+      padding: 12px 14px; border: 1.5px solid rgba(56,105,130,0.2); border-radius: 12px;
+      background: #fbfaf6; transition: border-color 0.2s, box-shadow 0.2s; min-height: 46px;
+    }
+    .field textarea { min-height: 120px; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+    }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-status {
+      margin-top: 18px; padding: 14px 16px; border-radius: 12px;
+      background: var(--accent-soft); color: var(--space); font-size: 0.88rem; line-height: 1.5;
+      border-left: 3px solid var(--accent);
+    }
+    .info-card { background: var(--white); border-radius: var(--radius-md); padding: 22px; box-shadow: var(--shadow-sm); border: 1px solid rgba(56,105,130,0.08); display: flex; gap: 16px; align-items: flex-start; margin-bottom: 16px; }
+    .info-card .icon-badge { width: 44px; height: 44px; border-radius: 12px; }
+    .info-card .icon-badge svg { width: 22px; height: 22px; }
+    .info-card h4 { font-family: var(--font-head); font-size: 1rem; color: var(--space); margin-bottom: 3px; }
+    .info-card p { font-size: 0.88rem; color: var(--slate); line-height: 1.5; }
+    .next-panel { background: linear-gradient(135deg, #243449, #386982); color: #fff; border-radius: var(--radius-lg); padding: 28px; margin-top: 8px; }
+    .next-panel h4 { font-family: var(--font-head); font-size: 1.15rem; margin-bottom: 14px; }
+    .next-panel ol { list-style: none; counter-reset: n; display: grid; gap: 12px; }
+    .next-panel li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start; font-size: 0.88rem; color: rgba(255,255,255,0.82); line-height: 1.5; }
+    .next-panel li::before { content: counter(n); flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.78rem; color: #fff; }
+    @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; gap: 32px; } .field-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Aquila home">Aq<span>ui</span>la</a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="corporates.html">Corporates</a></li>
+        <li><a href="institutions.html">Institutions</a></li>
+        <li><a href="social-impact.html">Social Impact</a></li>
+        <li><a href="case-studies.html">Case Studies</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <a href="#contactForm" class="btn btn-primary nav-cta">Send a Message</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="corporates.html">Corporates</a></li>
+      <li><a href="institutions.html">Institutions</a></li>
+      <li><a href="social-impact.html">Social Impact</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="#contactForm" class="btn btn-primary" style="width:100%;justify-content:center;">Send a Message</a>
+  </div>
+
+  <header class="page-header">
+    <div class="container">
+      <p class="crumb"><a href="index.html">Home</a><span>/</span>Contact</p>
+      <div class="ph-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <p class="ph-eyebrow">Get in Touch</p>
+      <h1 class="ph-title">Let's build capability together.</h1>
+      <p class="ph-sub">Tell us about your people and your goals. Whether you're an enterprise, institution, or impact partner — we'll point you to the right program.</p>
+    </div>
+  </header>
+
+  <section style="padding-top:64px;">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- FORM -->
+        <div class="form-card fade-in">
+          <h2 class="section-heading" style="font-size:1.6rem;margin-bottom:8px;">Send us a message</h2>
+          <p style="color:var(--slate);font-size:0.92rem;margin-bottom:24px;">We typically respond within two business days.</p>
+          <form id="contactForm" novalidate>
+            <div class="field-row">
+              <div class="field">
+                <label for="name">Full name <span class="req">*</span></label>
+                <input type="text" id="name" name="name" autocomplete="name" required />
+              </div>
+              <div class="field">
+                <label for="email">Email <span class="req">*</span></label>
+                <input type="email" id="email" name="email" autocomplete="email" required />
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="org">Organization</label>
+                <input type="text" id="org" name="org" autocomplete="organization" />
+              </div>
+              <div class="field">
+                <label for="inquiry">I'm reaching out about <span class="req">*</span></label>
+                <select id="inquiry" name="inquiry" required>
+                  <option value="" selected disabled>Select an option</option>
+                  <option value="corporates">Corporate capability</option>
+                  <option value="institutions">Institutions &amp; placements</option>
+                  <option value="social">Social impact &amp; livelihoods</option>
+                  <option value="partnership">Ecosystem partnership</option>
+                  <option value="other">Something else</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="message">Message <span class="req">*</span></label>
+              <textarea id="message" name="message" placeholder="A few lines about what you're looking to achieve…" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send Message</button>
+            <div class="form-status" id="formStatus" role="status" aria-live="polite" tabindex="-1" hidden></div>
+          </form>
+        </div>
+
+        <!-- DETAILS -->
+        <div class="fade-in delay-1">
+          <div class="info-card">
+            <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div><h4>Email</h4><p>hello@aquilaindia.com</p></div>
+          </div>
+          <div class="info-card">
+            <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 14.92z"/></svg></div>
+            <div><h4>Phone</h4><p>+91 XXXXX XXXXX</p></div>
+          </div>
+          <div class="info-card">
+            <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><h4>Location</h4><p>India</p></div>
+          </div>
+
+          <div class="next-panel">
+            <h4>What happens next</h4>
+            <ol>
+              <li>We review your message and route it to the right program lead.</li>
+              <li>A practitioner reaches out to understand your goals and context.</li>
+              <li>We propose a tailored capability plan with clear outcomes.</li>
+            </ol>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand-logo">Aq<span>ui</span>la</div>
+          <p class="footer-tagline">Powering India's Workforce for Tomorrow</p>
+          <div class="footer-social" aria-label="Social media links">
+            <a href="#" class="social-icon" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+            <a href="#" class="social-icon" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="#" class="social-icon" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Programs</h3>
+          <ul class="footer-links">
+            <li><a href="corporates.html">First Chair</a></li>
+            <li><a href="corporates.html">Technical Training</a></li>
+            <li><a href="institutions.html">Ace Your Placements</a></li>
+            <li><a href="institutions.html">Hackathons by Indisight</a></li>
+            <li><a href="social-impact.html">Livelihood Systems</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Ecosystems</h3>
+          <ul class="footer-links">
+            <li><a href="corporates.html">Corporates</a></li>
+            <li><a href="institutions.html">Institutions</a></li>
+            <li><a href="social-impact.html">Social Impact</a></li>
+            <li><a href="case-studies.html">Case Studies</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Contact</h3>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>hello@aquilaindia.com</div>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>+91 XXXXX XXXXX</div>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>India</div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2026 Aquila. All rights reserved.</p>
+        <nav class="footer-legal" aria-label="Legal links"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Corporates — Aquila</title>
+  <meta name="description" content="Aquila builds technical excellence and leadership capability for modern corporate workforces — from cybersecurity and GenAI to first-line leadership." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root { --accent: #386982; --accent-soft: #E4EFF4; }
+
+    /* Unique header — dark teal "blueprint" */
+    .page-header { background: linear-gradient(135deg, #1c2a3a 0%, #386982 100%); padding-top: clamp(64px, 9vw, 120px); }
+    .page-header::before {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 44px 44px;
+      -webkit-mask: radial-gradient(circle at 78% 28%, #000 0%, transparent 68%);
+              mask: radial-gradient(circle at 78% 28%, #000 0%, transparent 68%);
+    }
+    .page-header::after {
+      content: ''; position: absolute; width: 420px; height: 420px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(123,69,230,0.25) 0%, transparent 70%);
+      top: -120px; right: -80px; z-index: 0;
+    }
+    .ph-icon { background: rgba(255,255,255,0.12); color: #fff; backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.18); }
+    .page-header .ph-eyebrow { color: #9fc4d6; }
+    .page-header .ph-title { color: #fff; }
+    .page-header .ph-title em { color: #c9b6ff; }
+    .page-header .ph-sub { color: rgba(255,255,255,0.72); }
+    .crumb, .crumb a { color: rgba(255,255,255,0.55); }
+    .crumb span { color: rgba(255,255,255,0.3); }
+
+    .intro-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: center; }
+    .stat-stack { display: grid; gap: 16px; }
+    .stat-row { display: flex; align-items: center; gap: 16px; background: var(--white); border: 1px solid rgba(56,105,130,0.1); border-radius: var(--radius-md); padding: 18px 22px; box-shadow: var(--shadow-sm); }
+    .stat-row .num { font-family: var(--font-head); font-size: 1.8rem; font-weight: 700; color: var(--accent); min-width: 96px; }
+    .stat-row .lbl { font-size: 0.9rem; color: var(--slate); }
+    .program-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .step-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; counter-reset: step; }
+    .step { position: relative; padding-top: 8px; }
+    .step .n { font-family: var(--font-head); font-size: 2.4rem; font-weight: 700; color: var(--accent-soft); line-height: 1; }
+    .step h4 { font-family: var(--font-head); font-size: 1.15rem; margin: 8px 0 8px; color: var(--space); }
+    .step p { font-size: 0.9rem; color: var(--slate); line-height: 1.6; }
+    .alt { background: var(--white); }
+    @media (max-width: 900px) { .intro-grid { grid-template-columns: 1fr; gap: 36px; } .program-list { grid-template-columns: 1fr; } .step-grid { grid-template-columns: 1fr; gap: 32px; } }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Aquila home">Aq<span>ui</span>la</a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="corporates.html" class="active">Corporates</a></li>
+        <li><a href="institutions.html">Institutions</a></li>
+        <li><a href="social-impact.html">Social Impact</a></li>
+        <li><a href="case-studies.html">Case Studies</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="btn btn-primary nav-cta">Talk to Us</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="corporates.html">Corporates</a></li>
+      <li><a href="institutions.html">Institutions</a></li>
+      <li><a href="social-impact.html">Social Impact</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;">Talk to Us</a>
+  </div>
+
+  <!-- HEADER -->
+  <header class="page-header">
+    <div class="container">
+      <p class="crumb"><a href="index.html">Home</a><span>/</span>Corporates</p>
+      <div class="ph-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      </div>
+      <p class="ph-eyebrow">For Corporates</p>
+      <h1 class="ph-title">Technical Excellence <em>+</em> Leadership Capability</h1>
+      <p class="ph-sub">Equipping modern workforces with the technical depth and leadership strength today's business environments demand — strengthening execution, resilience, and performance.</p>
+      <div class="ph-actions">
+        <a href="contact.html" class="btn btn-primary">Request a Conversation</a>
+        <a href="#programs" class="btn btn-outline-white">View Programs</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- INTRO -->
+  <section>
+    <div class="container">
+      <div class="intro-grid">
+        <div class="fade-in">
+          <p class="section-label">Why Aquila for Enterprises</p>
+          <h2 class="section-heading" style="margin:12px 0 18px;">Capability that compounds into business performance</h2>
+          <p style="color:var(--slate);line-height:1.75;margin-bottom:16px;">From cybersecurity and GenAI to first-line leadership, Aquila builds people capability that moves the needle on the things enterprises care about — fewer incidents, faster ramp-up, stronger frontline managers, and teams ready for the next technology cycle.</p>
+          <p style="color:var(--slate);line-height:1.75;">Programs are practitioner-led, mapped to real role demands, and designed to transfer to the job — not just the classroom.</p>
+        </div>
+        <div class="stat-stack fade-in delay-1">
+          <div class="stat-row"><span class="num">25,000+</span><span class="lbl">Professionals trained across enterprise teams</span></div>
+          <div class="stat-row"><span class="num">60+</span><span class="lbl">Practitioners and domain experts in the network</span></div>
+          <div class="stat-row"><span class="num">4</span><span class="lbl">Capability tracks: leadership, cyber, GenAI, technical</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS -->
+  <section id="programs" class="alt">
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="section-label">Programs</p>
+        <h2 class="section-heading">Built for the Corporate Frontline</h2>
+        <p class="section-subheading" style="margin-top:12px;">Flagship interventions across leadership and technical capability.</p>
+      </div>
+      <div class="program-list">
+        <article class="u-card fade-in">
+          <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div>
+          <h3>First Chair</h3>
+          <p>The making of high-performance first-line leaders who move organizations forward — built for managers stepping into leadership.</p>
+          <div style="margin-top:16px;"><span class="tag">Leadership</span></div>
+        </article>
+        <article class="u-card fade-in delay-1">
+          <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3>Cybersecurity Bootcamps</h3>
+          <p>Immersive, hands-on bootcamps designed to protect the systems organizations depend on every day. Practitioner-led and outcome-focused.</p>
+          <div style="margin-top:16px;"><span class="tag">Security</span></div>
+        </article>
+        <article class="u-card fade-in delay-2">
+          <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 15 9 22 9.3 17 14 18.2 21 12 17.5 5.8 21 7 14 2 9.3 9 9 12 2"/></svg></div>
+          <h3>GenAI for Teams</h3>
+          <p>Turning AI disruption into competitive advantage — practical GenAI capability for teams that need to ship, not just experiment.</p>
+          <div style="margin-top:16px;"><span class="tag">GenAI</span></div>
+        </article>
+        <article class="u-card fade-in delay-3">
+          <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M8 12h8M8 16h5"/></svg></div>
+          <h3>Technical Training</h3>
+          <p>Role-mapped technical upskilling across the modern stack, designed to close real capability gaps inside delivery teams.</p>
+          <div style="margin-top:16px;"><span class="tag">Technical</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS -->
+  <div class="metrics" aria-label="Corporate impact metrics">
+    <div class="container">
+      <div class="metrics-grid">
+        <div class="metric-card fade-in"><div class="metric-number" data-target="25000" data-suffix="+">0</div><div class="metric-label">Professionals</div></div>
+        <div class="metric-card fade-in delay-1"><div class="metric-number" data-target="60" data-suffix="+">0</div><div class="metric-label">Practitioners</div></div>
+        <div class="metric-card fade-in delay-2"><div class="metric-number" data-target="3000" data-suffix="+">0</div><div class="metric-label">Placements</div></div>
+        <div class="metric-card fade-in delay-3"><div class="metric-number" data-target="100000" data-suffix="+">0</div><div class="metric-label">Learners</div></div>
+        <div class="metric-card fade-in delay-4"><div class="metric-number" data-target="4" data-suffix="">0</div><div class="metric-label">Capability Tracks</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW WE ENGAGE -->
+  <section>
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="section-label">How We Engage</p>
+        <h2 class="section-heading">A simple path from gap to capability</h2>
+      </div>
+      <div class="step-grid">
+        <div class="step fade-in"><div class="n">01</div><h4>Diagnose</h4><p>We map current capability against role demands and business priorities to find the gaps that matter most.</p></div>
+        <div class="step fade-in delay-1"><div class="n">02</div><h4>Design &amp; Deliver</h4><p>Practitioner-led programs are tailored to your context and delivered with hands-on, transfer-to-job rigor.</p></div>
+        <div class="step fade-in delay-2"><div class="n">03</div><h4>Measure</h4><p>We track capability uplift and business-relevant outcomes so the investment is visible and defensible.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="container">
+      <div class="cta-band-inner fade-in">
+        <p class="section-label">Work With Aquila</p>
+        <h2>Strengthen your workforce for what's next.</h2>
+        <p>Let's design a capability program around your teams, your stack, and your business priorities.</p>
+        <div class="cta-band-actions">
+          <a href="contact.html" class="btn btn-primary">Contact Us</a>
+          <a href="case-studies.html" class="btn btn-outline-white">See Case Studies</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand-logo">Aq<span>ui</span>la</div>
+          <p class="footer-tagline">Powering India's Workforce for Tomorrow</p>
+          <div class="footer-social" aria-label="Social media links">
+            <a href="#" class="social-icon" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+            <a href="#" class="social-icon" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="#" class="social-icon" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Programs</h3>
+          <ul class="footer-links">
+            <li><a href="corporates.html">First Chair</a></li>
+            <li><a href="corporates.html">Technical Training</a></li>
+            <li><a href="institutions.html">Ace Your Placements</a></li>
+            <li><a href="institutions.html">Hackathons by Indisight</a></li>
+            <li><a href="social-impact.html">Livelihood Systems</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Ecosystems</h3>
+          <ul class="footer-links">
+            <li><a href="corporates.html">Corporates</a></li>
+            <li><a href="institutions.html">Institutions</a></li>
+            <li><a href="social-impact.html">Social Impact</a></li>
+            <li><a href="case-studies.html">Case Studies</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Contact</h3>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>hello@aquilaindia.com</div>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>+91 XXXXX XXXXX</div>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>India</div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2026 Aquila. All rights reserved.</p>
+        <nav class="footer-legal" aria-label="Legal links"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

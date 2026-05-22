@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Studies — Aquila</title>
+  <meta name="description" content="Transformation in action — stories of capability-building across enterprises, campuses, and communities." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root { --accent: #7B45E6; --accent-soft: #EFE7FF; }
+
+    /* Unique header — dark space-blue, matches case-study aesthetic */
+    .page-header { background: radial-gradient(120% 120% at 80% 0%, #2f4763 0%, #243449 45%, #1a2737 100%); }
+    .page-header::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image:
+        radial-gradient(circle at 18% 70%, rgba(123,69,230,0.22), transparent 35%),
+        radial-gradient(circle at 90% 20%, rgba(56,105,130,0.3), transparent 40%);
+    }
+    .ph-icon { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.18); }
+    .page-header .ph-eyebrow { color: #c9b6ff; }
+    .page-header .ph-title { color: #fff; }
+    .page-header .ph-sub { color: rgba(255,255,255,0.72); }
+    .crumb, .crumb a { color: rgba(255,255,255,0.55); }
+    .crumb span { color: rgba(255,255,255,0.3); }
+
+    .filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
+    .filter-btn {
+      padding: 9px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 600;
+      color: var(--slate); background: var(--white); border: 1px solid rgba(56,105,130,0.18);
+      transition: all 0.2s ease;
+    }
+    .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .filter-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    .cs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .cs-card { display: flex; flex-direction: column; background: var(--white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid rgba(56,105,130,0.06); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .cs-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .cs-top { height: 96px; display: flex; align-items: center; justify-content: center; color: #fff; }
+    .cs-card[data-cat="corporate"] .cs-top { background: linear-gradient(135deg, #243449, #386982); }
+    .cs-card[data-cat="institution"] .cs-top { background: linear-gradient(135deg, #2d1b4e, #9B5CB8); }
+    .cs-card[data-cat="social"] .cs-top { background: linear-gradient(135deg, #1a3a4a, #2A9D72); }
+    .cs-top svg { width: 34px; height: 34px; opacity: 0.92; }
+    .cs-body { padding: 26px; display: flex; flex-direction: column; flex: 1; }
+    .cs-cat { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .cs-client { font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; color: var(--space); margin-bottom: 12px; }
+    .cs-problem { font-size: 0.88rem; color: var(--slate); line-height: 1.6; margin-bottom: 16px; }
+    .cs-impact { background: var(--accent-soft); border-radius: 12px; padding: 12px 14px; margin-bottom: 18px; }
+    .cs-impact .lab { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+    .cs-impact .txt { font-size: 0.85rem; color: var(--space); line-height: 1.5; }
+    .cs-link { margin-top: auto; font-size: 0.82rem; font-weight: 600; color: var(--accent); display: inline-flex; align-items: center; gap: 6px; transition: gap 0.2s; }
+    .cs-link:hover { gap: 10px; }
+    .cs-card.hide { display: none; }
+    @media (max-width: 1024px) { .cs-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px) { .cs-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Aquila home">Aq<span>ui</span>la</a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="corporates.html">Corporates</a></li>
+        <li><a href="institutions.html">Institutions</a></li>
+        <li><a href="social-impact.html">Social Impact</a></li>
+        <li><a href="case-studies.html" class="active">Case Studies</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="btn btn-primary nav-cta">Contact Us</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="corporates.html">Corporates</a></li>
+      <li><a href="institutions.html">Institutions</a></li>
+      <li><a href="social-impact.html">Social Impact</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;">Contact Us</a>
+  </div>
+
+  <header class="page-header">
+    <div class="container">
+      <p class="crumb"><a href="index.html">Home</a><span>/</span>Case Studies</p>
+      <div class="ph-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+      </div>
+      <p class="ph-eyebrow">Client Impact</p>
+      <h1 class="ph-title">Transformation in Action</h1>
+      <p class="ph-sub">Stories of capability-building across enterprises, campuses, and communities.</p>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      <div class="filters fade-in" role="tablist" aria-label="Filter case studies">
+        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button class="filter-btn" data-filter="corporate" role="tab" aria-selected="false">Corporates</button>
+        <button class="filter-btn" data-filter="institution" role="tab" aria-selected="false">Institutions</button>
+        <button class="filter-btn" data-filter="social" role="tab" aria-selected="false">Social Impact</button>
+      </div>
+
+      <div class="cs-grid" id="csGrid">
+
+        <article class="cs-card fade-in" data-cat="corporate">
+          <div class="cs-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+          <div class="cs-body">
+            <div class="cs-cat">Corporate Capability</div>
+            <div class="cs-client">Corporate Capability Partner</div>
+            <p class="cs-problem">Needed stronger first-line leadership and technical readiness across distributed teams.</p>
+            <div class="cs-impact"><div class="lab">Impact</div><div class="txt">Improved execution capability across critical workforce layers.</div></div>
+            <a href="#" class="cs-link">Read Case Study <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </article>
+
+        <article class="cs-card fade-in delay-1" data-cat="institution">
+          <div class="cs-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+          <div class="cs-body">
+            <div class="cs-cat">Employability</div>
+            <div class="cs-client">University Employability Partner</div>
+            <p class="cs-problem">Students needed stronger placement readiness and industry-facing confidence.</p>
+            <div class="cs-impact"><div class="lab">Impact</div><div class="txt">Higher placement preparedness and stronger candidate conversion.</div></div>
+            <a href="#" class="cs-link">Read Case Study <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </article>
+
+        <article class="cs-card fade-in delay-2" data-cat="social">
+          <div class="cs-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div class="cs-body">
+            <div class="cs-cat">Livelihood</div>
+            <div class="cs-client">Livelihood Ecosystem Partner</div>
+            <p class="cs-problem">Women-led community ventures needed capability, confidence, and income pathways.</p>
+            <div class="cs-impact"><div class="lab">Impact</div><div class="txt">Expanded livelihood participation and local enterprise readiness.</div></div>
+            <a href="#" class="cs-link">Read Case Study <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </article>
+
+        <article class="cs-card fade-in" data-cat="corporate">
+          <div class="cs-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="cs-body">
+            <div class="cs-cat">Cybersecurity</div>
+            <div class="cs-client">Enterprise Security Partner</div>
+            <p class="cs-problem">Required a security-first workforce able to respond to a rising threat landscape.</p>
+            <div class="cs-impact"><div class="lab">Impact</div><div class="txt">Stronger security posture and faster, more confident incident response.</div></div>
+            <a href="#" class="cs-link">Read Case Study <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </article>
+
+        <article class="cs-card fade-in delay-1" data-cat="institution">
+          <div class="cs-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <div class="cs-body">
+            <div class="cs-cat">Innovation</div>
+            <div class="cs-client">Campus Innovation Partner</div>
+            <p class="cs-problem">Wanted students to move beyond theory into real-world problem solving.</p>
+            <div class="cs-impact"><div class="lab">Impact</div><div class="txt">Higher engagement and a pipeline of project-ready, industry-aware students.</div></div>
+            <a href="#" class="cs-link">Read Case Study <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </article>
+
+        <article class="cs-card fade-in delay-2" data-cat="social">
+          <div class="cs-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+          <div class="cs-body">
+            <div class="cs-cat">Hire Train Deploy</div>
+            <div class="cs-client">Logistics Workforce Partner</div>
+            <p class="cs-problem">Needed a reliable pipeline of job-ready talent for a fast-scaling logistics network.</p>
+            <div class="cs-impact"><div class="lab">Impact</div><div class="txt">Dependable hire-train-deploy pipeline with durable employment outcomes.</div></div>
+            <a href="#" class="cs-link">Read Case Study <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="container">
+      <div class="cta-band-inner fade-in">
+        <p class="section-label">Your Story Next</p>
+        <h2>Let's build your transformation story.</h2>
+        <p>Tell us about your people, your goals, and the outcomes you're chasing — we'll design the path.</p>
+        <div class="cta-band-actions">
+          <a href="contact.html" class="btn btn-primary">Contact Us</a>
+          <a href="index.html#pillars" class="btn btn-outline-white">Explore Programs</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand-logo">Aq<span>ui</span>la</div>
+          <p class="footer-tagline">Powering India's Workforce for Tomorrow</p>
+          <div class="footer-social" aria-label="Social media links">
+            <a href="#" class="social-icon" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+            <a href="#" class="social-icon" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="#" class="social-icon" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Programs</h3>
+          <ul class="footer-links">
+            <li><a href="corporates.html">First Chair</a></li>
+            <li><a href="corporates.html">Technical Training</a></li>
+            <li><a href="institutions.html">Ace Your Placements</a></li>
+            <li><a href="institutions.html">Hackathons by Indisight</a></li>
+            <li><a href="social-impact.html">Livelihood Systems</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Ecosystems</h3>
+          <ul class="footer-links">
+            <li><a href="corporates.html">Corporates</a></li>
+            <li><a href="institutions.html">Institutions</a></li>
+            <li><a href="social-impact.html">Social Impact</a></li>
+            <li><a href="case-studies.html">Case Studies</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Contact</h3>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>hello@aquilaindia.com</div>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>+91 XXXXX XXXXX</div>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>India</div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2026 Aquila. All rights reserved.</p>
+        <nav class="footer-legal" aria-label="Legal links"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    // Case-study category filter
+    (function () {
+      var btns = document.querySelectorAll('.filter-btn');
+      var cards = document.querySelectorAll('#csGrid .cs-card');
+      btns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          btns.forEach(function (b) { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+          btn.classList.add('active'); btn.setAttribute('aria-selected', 'true');
+          var f = btn.dataset.filter;
+          cards.forEach(function (c) {
+            c.classList.toggle('hide', f !== 'all' && c.dataset.cat !== f);
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
