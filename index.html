@@ -622,6 +622,83 @@
     }
 
     /* ════════════════════════════
+       LOGOS MARQUEE
+    ════════════════════════════ */
+    .logos-section { background: var(--white); padding: 80px 0; }
+    .logos-section .section-header { margin-bottom: 48px; }
+
+    .logo-row { margin-bottom: 28px; }
+    .logo-row:last-child { margin-bottom: 0; }
+
+    .logo-row-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .logo-row-rule { flex: 1; height: 1px; background: rgba(56,105,130,0.15); }
+    .logo-row-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--slate);
+      flex-shrink: 0;
+    }
+
+    .marquee-window {
+      position: relative;
+      overflow: hidden;
+      padding: 8px 0;
+    }
+    .marquee-window::before,
+    .marquee-window::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 140px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .marquee-window::before { left: 0;  background: linear-gradient(to right, var(--white) 20%, transparent); }
+    .marquee-window::after  { right: 0; background: linear-gradient(to left,  var(--white) 20%, transparent); }
+    .marquee-window:hover .marquee-track { animation-play-state: paused; }
+
+    @keyframes scroll-left  { from { transform: translateX(0);    } to { transform: translateX(-50%); } }
+    @keyframes scroll-right { from { transform: translateX(-50%); } to { transform: translateX(0);    } }
+
+    .marquee-track {
+      display: flex;
+      align-items: center;
+      width: max-content;
+      will-change: transform;
+    }
+    .marquee-track.scroll-l { animation: scroll-left  35s linear infinite; }
+    .marquee-track.scroll-r { animation: scroll-right 22s linear infinite; }
+    .marquee-track.scroll-l.slow { animation-duration: 30s; }
+
+    .logo-item {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 160px;
+      height: 72px;
+      padding: 0 24px;
+      flex-shrink: 0;
+    }
+    .logo-item img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: grayscale(100%) opacity(0.5);
+      transition: filter 0.35s ease;
+      display: block;
+    }
+    .logo-item:hover img { filter: grayscale(0%) opacity(1); }
+
+    /* ════════════════════════════
        TEAM SECTION
     ════════════════════════════ */
     .team { background: var(--ivory); }
@@ -1363,64 +1440,146 @@
 
 
 <!-- ═══════════════════════════════════
-     PARTNERS
+     LOGOS MARQUEE
 ════════════════════════════════════ -->
-<section class="partners" aria-labelledby="partners-heading">
+<section class="logos-section" aria-labelledby="logos-heading">
   <div class="container">
-    <div class="section-header fade-in" style="text-align:center;">
-      <p class="section-label">Ecosystem</p>
-      <h2 class="section-heading" id="partners-heading">Built With an Ecosystem of Partners</h2>
+    <div class="section-header center fade-in">
+      <p class="section-label">Trusted Network</p>
+      <h2 class="section-heading" id="logos-heading">Clients, Hiring Networks &amp; Partners</h2>
       <p class="section-subheading" style="margin-top:12px;margin-left:auto;margin-right:auto;text-align:center;">
-        Aquila collaborates across universities, NGOs, corporates, practitioners, and government-linked ecosystems to build scalable capability infrastructure.
+        A growing ecosystem of organisations Aquila has trained, placed talent with, and partnered alongside.
       </p>
     </div>
+  </div>
 
-    <div class="partners-grid fade-in">
-
-      <div class="partner-card">
-        <div class="partner-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-        </div>
-        <p class="partner-label">Universities</p>
+  <!-- ── ROW 1: CLIENTS (14 logos · scrolls left) ── -->
+  <div class="logo-row">
+    <div class="logo-row-header container">
+      <span class="logo-row-rule" aria-hidden="true"></span>
+      <span class="logo-row-label">Clients</span>
+      <span class="logo-row-rule" aria-hidden="true"></span>
+    </div>
+    <div class="marquee-window" aria-hidden="true">
+      <div class="marquee-track scroll-l">
+        <!-- Set A -->
+        <span class="logo-item"><img src="Logo%27s/Clients/Bank%20Of%20Baroda.png"          alt="Bank of Baroda"></span>
+        <span class="logo-item"><img src="Logo%27s/Clients/EY%20Logo.png"                   alt="EY"></span>
+        <span class="logo-item"><img src="Logo%27s/Clients/Final-Karle-Infra.png"           alt="Karle Infrastructure"></span>
+        <span class="logo-item"><img src="Logo%27s/Clients/GPL_Logo.jpg"                    alt="GPL"></span>
+        <span class="logo-item"><img src="Logo%27s/Clients/Jai%20Hind%20Logo.jpg"           alt="Jai Hind"></span>
+        <span class="logo-item"><img src="Logo%27s/Clients/Libratherm%20Logo.png"           alt="Libratherm"></span>
+        <span class="logo-item"><img src="Logo%27s/Clients/logo-ibs.png"                    alt="IBS"></span>
+        <span class="logo-item"><img src="Logo%27s/Clients/Monster-Jobs-Logo-Vector.png"    alt="Monster Jobs"></span>
+        <span class="logo-item"><img src="Logo%27s/Clients/NTPC%20Logo.png"                 alt="NTPC"></span>
+        <span class="logo-item"><img src="Logo%27s/Clients/Perfetti_Van_Melle_logo.png"     alt="Perfetti Van Melle"></span>
+        <span class="logo-item"><img src="Logo%27s/Clients/RIIM%20Pune.png"                 alt="RIIM Pune"></span>
+        <span class="logo-item"><img src="Logo%27s/Clients/Trti%20logo.png"                 alt="TRTI"></span>
+        <span class="logo-item"><img src="Logo%27s/Clients/Tyson_Foods_logo.png"            alt="Tyson Foods"></span>
+        <span class="logo-item"><img src="Logo%27s/Clients/Voya_Financial_logo.png"         alt="Voya Financial"></span>
+        <!-- Set B (clone — makes loop seamless) -->
+        <span class="logo-item"><img src="Logo%27s/Clients/Bank%20Of%20Baroda.png"          alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Clients/EY%20Logo.png"                   alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Clients/Final-Karle-Infra.png"           alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Clients/GPL_Logo.jpg"                    alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Clients/Jai%20Hind%20Logo.jpg"           alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Clients/Libratherm%20Logo.png"           alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Clients/logo-ibs.png"                    alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Clients/Monster-Jobs-Logo-Vector.png"    alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Clients/NTPC%20Logo.png"                 alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Clients/Perfetti_Van_Melle_logo.png"     alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Clients/RIIM%20Pune.png"                 alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Clients/Trti%20logo.png"                 alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Clients/Tyson_Foods_logo.png"            alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Clients/Voya_Financial_logo.png"         alt=""></span>
       </div>
-
-      <div class="partner-card">
-        <div class="partner-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <p class="partner-label">NGOs</p>
-      </div>
-
-      <div class="partner-card">
-        <div class="partner-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-        </div>
-        <p class="partner-label">Corporates</p>
-      </div>
-
-      <div class="partner-card">
-        <div class="partner-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-        </div>
-        <p class="partner-label">Government Ecosystem</p>
-      </div>
-
-      <div class="partner-card">
-        <div class="partner-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>
-        </div>
-        <p class="partner-label">Practitioners</p>
-      </div>
-
-      <div class="partner-card">
-        <div class="partner-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <p class="partner-label">Founders &amp; Experts</p>
-      </div>
-
     </div>
   </div>
+
+  <!-- ── ROW 2: HIRING PARTNERS (5 logos × 3 reps · scrolls right) ── -->
+  <div class="logo-row">
+    <div class="logo-row-header container">
+      <span class="logo-row-rule" aria-hidden="true"></span>
+      <span class="logo-row-label">Hiring Partners</span>
+      <span class="logo-row-rule" aria-hidden="true"></span>
+    </div>
+    <div class="marquee-window" aria-hidden="true">
+      <div class="marquee-track scroll-r">
+        <!-- Set A (3 repetitions of 5 logos so width > viewport) -->
+        <span class="logo-item"><img src="Logo%27s/Hiring%20Partners/blue-dart-logo.png"        alt="Blue Dart"></span>
+        <span class="logo-item"><img src="Logo%27s/Hiring%20Partners/comett-logo.png"           alt="Comett"></span>
+        <span class="logo-item"><img src="Logo%27s/Hiring%20Partners/Delhivery_Logo.png"        alt="Delhivery"></span>
+        <span class="logo-item"><img src="Logo%27s/Hiring%20Partners/Nippon%20Express%20Logo.png" alt="Nippon Express"></span>
+        <span class="logo-item"><img src="Logo%27s/Hiring%20Partners/Swiggy_logo.webp"          alt="Swiggy"></span>
+        <span class="logo-item"><img src="Logo%27s/Hiring%20Partners/blue-dart-logo.png"        alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Hiring%20Partners/comett-logo.png"           alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Hiring%20Partners/Delhivery_Logo.png"        alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Hiring%20Partners/Nippon%20Express%20Logo.png" alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Hiring%20Partners/Swiggy_logo.webp"          alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Hiring%20Partners/blue-dart-logo.png"        alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Hiring%20Partners/comett-logo.png"           alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Hiring%20Partners/Delhivery_Logo.png"        alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Hiring%20Partners/Nippon%20Express%20Logo.png" alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Hiring%20Partners/Swiggy_logo.webp"          alt=""></span>
+        <!-- Set B -->
+        <span class="logo-item"><img src="Logo%27s/Hiring%20Partners/blue-dart-logo.png"        alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Hiring%20Partners/comett-logo.png"           alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Hiring%20Partners/Delhivery_Logo.png"        alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Hiring%20Partners/Nippon%20Express%20Logo.png" alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Hiring%20Partners/Swiggy_logo.webp"          alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Hiring%20Partners/blue-dart-logo.png"        alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Hiring%20Partners/comett-logo.png"           alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Hiring%20Partners/Delhivery_Logo.png"        alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Hiring%20Partners/Nippon%20Express%20Logo.png" alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Hiring%20Partners/Swiggy_logo.webp"          alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Hiring%20Partners/blue-dart-logo.png"        alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Hiring%20Partners/comett-logo.png"           alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Hiring%20Partners/Delhivery_Logo.png"        alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Hiring%20Partners/Nippon%20Express%20Logo.png" alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Hiring%20Partners/Swiggy_logo.webp"          alt=""></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ROW 3: ECOSYSTEM PARTNERS (3 logos × 4 reps · scrolls left slow) ── -->
+  <div class="logo-row">
+    <div class="logo-row-header container">
+      <span class="logo-row-rule" aria-hidden="true"></span>
+      <span class="logo-row-label">Ecosystem Partners</span>
+      <span class="logo-row-rule" aria-hidden="true"></span>
+    </div>
+    <div class="marquee-window" aria-hidden="true">
+      <div class="marquee-track scroll-l slow">
+        <!-- Set A (4 repetitions of 3 logos so width > viewport) -->
+        <span class="logo-item"><img src="Logo%27s/Ecosystem%20Partners/Career%20Graph.png" alt="Career Graph"></span>
+        <span class="logo-item"><img src="Logo%27s/Ecosystem%20Partners/Grow%20Wings.png"   alt="Grow Wings"></span>
+        <span class="logo-item"><img src="Logo%27s/Ecosystem%20Partners/Megathil.png"       alt="Megathil"></span>
+        <span class="logo-item"><img src="Logo%27s/Ecosystem%20Partners/Career%20Graph.png" alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Ecosystem%20Partners/Grow%20Wings.png"   alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Ecosystem%20Partners/Megathil.png"       alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Ecosystem%20Partners/Career%20Graph.png" alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Ecosystem%20Partners/Grow%20Wings.png"   alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Ecosystem%20Partners/Megathil.png"       alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Ecosystem%20Partners/Career%20Graph.png" alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Ecosystem%20Partners/Grow%20Wings.png"   alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Ecosystem%20Partners/Megathil.png"       alt=""></span>
+        <!-- Set B -->
+        <span class="logo-item"><img src="Logo%27s/Ecosystem%20Partners/Career%20Graph.png" alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Ecosystem%20Partners/Grow%20Wings.png"   alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Ecosystem%20Partners/Megathil.png"       alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Ecosystem%20Partners/Career%20Graph.png" alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Ecosystem%20Partners/Grow%20Wings.png"   alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Ecosystem%20Partners/Megathil.png"       alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Ecosystem%20Partners/Career%20Graph.png" alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Ecosystem%20Partners/Grow%20Wings.png"   alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Ecosystem%20Partners/Megathil.png"       alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Ecosystem%20Partners/Career%20Graph.png" alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Ecosystem%20Partners/Grow%20Wings.png"   alt=""></span>
+        <span class="logo-item"><img src="Logo%27s/Ecosystem%20Partners/Megathil.png"       alt=""></span>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 
