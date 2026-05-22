@@ -51,6 +51,23 @@ img { display: block; max-width: 100%; }
 a { text-decoration: none; color: inherit; }
 button { cursor: pointer; border: none; background: none; font-family: inherit; }
 
+/* Keyboard focus ring — only shows for keyboard users, not mouse clicks */
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+:focus:not(:focus-visible) { outline: none; }
+
+/* Scroll progress bar (element + JS live in index.html) */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 100%;
+  z-index: 101;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background: var(--gradient-cta);
+  pointer-events: none;
+}
+
 /* ── Utility ── */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 .section-label {
@@ -88,7 +105,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: all 0.25s ease;
   white-space: nowrap;
 }
-.btn svg { width: 16px; height: 16px; }
+.btn svg { width: 16px; height: 16px; transition: transform 0.25s ease; }
+.btn-primary:hover svg,
+.btn-outline:hover svg,
+.btn-outline-white:hover svg { transform: translateX(3px); }
 .btn-primary {
   background: var(--accent);
   color: var(--white);
@@ -358,6 +378,9 @@ section[id], [id].metrics { scroll-margin-top: calc(var(--nav-h) + 20px); }
 .metric-card:last-child { border-right: none; }
 .metric-card:hover { background: var(--teal-light); }
 .metric-number { font-family: var(--font-head); font-size: 1.9rem; font-weight: 700; color: var(--space); line-height: 1; margin-bottom: 6px; }
+/* metric cards land with a subtle scale-up as they enter */
+.metrics .fade-in { transform: translateY(28px) scale(0.96); }
+.metrics .fade-in.visible { transform: translateY(0) scale(1); }
 .metric-label { font-size: 0.8rem; font-weight: 500; color: var(--slate); }
 
 /* ════════════════════════════ SHARED CTA BAND ════════════════════════════ */
@@ -420,5 +443,6 @@ section[id], [id].metrics { scroll-margin-top: calc(var(--nav-h) + 20px); }
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .fade-in { opacity: 1; transform: none; }
+  .fade-in,
+  .metrics .fade-in { opacity: 1; transform: none; }
 }

@@ -234,13 +234,13 @@
       z-index: 0;
       pointer-events: none;
       color: var(--teal);
-      opacity: 0.12;
+      opacity: 0.28;
     }
     .hero-map svg { width: 100%; height: auto; display: block; }
     .hero-map path {
       fill: none;
       stroke: currentColor;
-      stroke-width: 16;
+      stroke-width: 20;
       stroke-linejoin: round;
       transition: stroke-dashoffset 4.8s ease-out;
     }
@@ -1328,6 +1328,8 @@
 </head>
 <body>
 
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
 <!-- -----------------------------------
      NAVIGATION
 ------------------------------------ -->
@@ -2320,11 +2322,17 @@
 
 
 <script>
-  // -- Nav scroll effect --
+  // -- Nav scroll effect + reading progress bar --
   const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
+  const progressBar = document.getElementById('scrollProgress');
+  const onScroll = () => {
     navbar.classList.toggle('scrolled', window.scrollY > 20);
-  }, { passive: true });
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = max > 0 ? window.scrollY / max : 0;
+    progressBar.style.transform = 'scaleX(' + pct + ')';
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
   // -- Mobile hamburger --
   const hamburgerBtn = document.getElementById('hamburgerBtn');
@@ -2344,10 +2352,20 @@
     });
   });
 
-  // -- Fade-in on scroll --
+  // -- Fade-in on scroll (auto-staggered by sibling index) --
   const fadeEls = document.querySelectorAll('.fade-in');
+  fadeEls.forEach(el => {
+    const sibs = Array.from(el.parentElement.children).filter(c => c.classList.contains('fade-in'));
+    const idx = sibs.indexOf(el);
+    if (idx > 0) el.style.transitionDelay = Math.min(idx, 6) * 90 + 'ms';
+  });
   const fadeObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        fadeObserver.unobserve(e.target);
+      }
+    });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   fadeEls.forEach(el => fadeObserver.observe(el));
 
