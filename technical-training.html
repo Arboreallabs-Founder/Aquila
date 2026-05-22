@@ -1,0 +1,469 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Technical Training — Aquila</title>
+  <meta name="description" content="Aquila's Technical Capability Building programs — Cybersecurity, DevSecOps, and Generative AI training that drives measurable business impact across your workforce." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root { --accent: #386982; --accent-soft: #E4EFF4; }
+
+    /* Dark tech header */
+    .page-header { background: linear-gradient(135deg, #0d1b2a 0%, #1c2a3a 50%, #243449 100%); padding-top: clamp(64px, 9vw, 120px); }
+    .page-header::before {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background-image:
+        radial-gradient(rgba(56,105,130,0.3) 1px, transparent 1px);
+      background-size: 32px 32px;
+      -webkit-mask: radial-gradient(ellipse at 70% 40%, #000 0%, transparent 65%);
+              mask: radial-gradient(ellipse at 70% 40%, #000 0%, transparent 65%);
+    }
+    .page-header::after {
+      content: ''; position: absolute; width: 480px; height: 480px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(56,105,130,0.3) 0%, transparent 70%);
+      top: -120px; right: -60px; z-index: 0;
+    }
+    .ph-icon { background: rgba(255,255,255,0.1); color: #7dc8e0; backdrop-filter: blur(8px); border: 1px solid rgba(56,105,130,0.4); }
+    .page-header .ph-eyebrow { color: #7dc8e0; }
+    .page-header .ph-title { color: #fff; }
+    .page-header .ph-title em { color: #9fc4d6; }
+    .page-header .ph-sub { color: rgba(255,255,255,0.72); }
+    .crumb, .crumb a { color: rgba(255,255,255,0.55); }
+    .crumb span { color: rgba(255,255,255,0.3); }
+
+    /* Domains */
+    .domain-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .domain-card { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); transition: transform 0.3s ease; }
+    .domain-card:hover { transform: translateY(-6px); }
+    .domain-header { padding: 28px 28px 24px; }
+    .domain-card.cyber .domain-header { background: linear-gradient(135deg, #0d1b2a 0%, #1c3a4a 100%); }
+    .domain-card.devsec .domain-header { background: linear-gradient(135deg, #1a1040 0%, #2d1b69 100%); }
+    .domain-card.genai .domain-header { background: linear-gradient(135deg, #1a2a10 0%, #2a4d2a 100%); }
+    .domain-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .cyber .domain-icon { background: rgba(56,105,130,0.3); color: #7dc8e0; border: 1px solid rgba(56,105,130,0.4); }
+    .devsec .domain-icon { background: rgba(155,92,184,0.25); color: #c9b6ff; border: 1px solid rgba(155,92,184,0.3); }
+    .genai .domain-icon { background: rgba(42,157,114,0.25); color: #7ce0b8; border: 1px solid rgba(42,157,114,0.3); }
+    .domain-icon svg { width: 26px; height: 26px; }
+    .domain-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 6px; }
+    .domain-name { font-family: var(--font-head); font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .domain-sub { font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.6; }
+    .domain-body { padding: 24px 28px; background: var(--white); border: 1px solid rgba(56,105,130,0.08); border-top: none; }
+    .domain-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .domain-list li { font-size: 0.85rem; color: var(--slate); display: flex; gap: 8px; align-items: center; line-height: 1.4; }
+    .domain-list li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+    /* Pathways (audience tracks) */
+    .pathways-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .pathway-card { background: var(--white); border-radius: var(--radius-lg); padding: 28px 24px; border: 1px solid rgba(56,105,130,0.08); box-shadow: var(--shadow-sm); }
+    .pathway-audience { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: var(--accent-soft); color: var(--accent); padding: 4px 10px; border-radius: 50px; margin-bottom: 14px; }
+    .pathway-card h3 { font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; color: var(--space); margin-bottom: 10px; }
+    .pathway-card ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .pathway-card ul li { font-size: 0.85rem; color: var(--slate); display: flex; gap: 8px; align-items: flex-start; line-height: 1.4; }
+    .pathway-card ul li::before { content: '›'; color: var(--accent); font-size: 1rem; line-height: 1; flex-shrink: 0; }
+
+    /* Delivery process */
+    .process-track { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+    .process-track::before { content: ''; position: absolute; top: 36px; left: 10%; right: 10%; height: 2px; background: linear-gradient(90deg, var(--accent) 0%, #9B5CB8 100%); z-index: 0; }
+    .process-step { text-align: center; position: relative; z-index: 1; padding: 0 12px; }
+    .proc-circle { width: 72px; height: 72px; border-radius: 50%; border: 3px solid var(--accent); background: var(--white); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; color: var(--accent); box-shadow: var(--shadow-sm); }
+    .proc-circle svg { width: 30px; height: 30px; }
+    .proc-num { font-family: var(--font-head); font-size: 0.72rem; font-weight: 700; color: var(--accent); margin-bottom: 6px; letter-spacing: 0.08em; }
+    .proc-title { font-family: var(--font-head); font-size: 1.05rem; font-weight: 700; color: var(--space); margin-bottom: 8px; }
+    .proc-desc { font-size: 0.83rem; color: var(--slate); line-height: 1.5; }
+
+    /* Impact stats */
+    .impact-band { background: linear-gradient(135deg, #0d1b2a 0%, #243449 100%); padding: 72px 0; }
+    .impact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+    .impact-item { text-align: center; padding: 32px 24px; border-right: 1px solid rgba(255,255,255,0.08); }
+    .impact-item:last-child { border-right: none; }
+    .impact-num { font-family: var(--font-head); font-size: 2.4rem; font-weight: 700; color: #7dc8e0; line-height: 1; margin-bottom: 8px; }
+    .impact-label { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.5; }
+
+    /* Delivery format */
+    .format-chips { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+    .format-chip { display: flex; align-items: center; gap: 8px; background: var(--white); border: 1px solid rgba(56,105,130,0.12); border-radius: 50px; padding: 10px 18px; font-size: 0.85rem; font-weight: 500; color: var(--space); box-shadow: var(--shadow-sm); }
+    .format-chip svg { width: 16px; height: 16px; color: var(--accent); flex-shrink: 0; }
+
+    @media (max-width: 1024px) {
+      .domain-cards { grid-template-columns: 1fr; }
+      .pathways-grid { grid-template-columns: 1fr; }
+      .process-track { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+      .process-track::before { display: none; }
+      .impact-grid { grid-template-columns: repeat(2, 1fr); }
+      .impact-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    }
+    @media (max-width: 768px) {
+      .process-track { grid-template-columns: 1fr; }
+      .impact-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Aquila home">Aq<span>ui</span>la</a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li class="nav-has-dropdown">
+          <a tabindex="0" class="active">Corporates <svg class="chev" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2,4 6,8 10,4"/></svg></a>
+          <ul class="nav-dropdown">
+            <li><a href="first-chair.html">First Chair</a></li>
+            <li><a href="technical-training.html" class="active">Technical Training</a></li>
+          </ul>
+        </li>
+        <li class="nav-has-dropdown">
+          <a tabindex="0">Institutions <svg class="chev" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2,4 6,8 10,4"/></svg></a>
+          <ul class="nav-dropdown">
+            <li><a href="colleges.html">Colleges — Ace Your Placements</a></li>
+            <li><a href="schools.html">Schools — Hackathons by IndiSight</a></li>
+          </ul>
+        </li>
+        <li><a href="social-impact.html">Social Impact</a></li>
+        <li><a href="case-studies.html">Case Studies</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="btn btn-primary nav-cta">Talk to Us</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a tabindex="0">Corporates</a></li>
+      <li class="mm-sub"><a href="first-chair.html">First Chair</a></li>
+      <li class="mm-sub"><a href="technical-training.html">Technical Training</a></li>
+      <li><a tabindex="0">Institutions</a></li>
+      <li class="mm-sub"><a href="colleges.html">Colleges — Ace Your Placements</a></li>
+      <li class="mm-sub"><a href="schools.html">Schools — Hackathons by IndiSight</a></li>
+      <li><a href="social-impact.html">Social Impact</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;">Talk to Us</a>
+  </div>
+
+  <!-- HEADER -->
+  <header class="page-header">
+    <div class="container">
+      <p class="crumb"><a href="index.html">Home</a><span>/</span>Corporates<span>/</span>Technical Training</p>
+      <div class="ph-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <p class="ph-eyebrow">Technical Capability Building</p>
+      <h1 class="ph-title">From Cyber Resilience to <em>AI Innovation</em></h1>
+      <p class="ph-sub">Three strategic domains — Cybersecurity, DevSecOps, and Generative AI — that help organisations protect critical assets, deliver securely, and harness the power of AI. From awareness to measurable capability.</p>
+      <div class="ph-actions">
+        <a href="contact.html" class="btn btn-primary">Request a Conversation</a>
+        <a href="#domains" class="btn btn-outline-white">Explore Domains</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- WHY TECHNICAL TRAINING -->
+  <section>
+    <div class="container">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;" class="fade-in">
+        <div>
+          <p class="section-label">The Challenge</p>
+          <h2 class="section-heading" style="margin-bottom:20px;">We Believe Technical Training Should Reduce Risk — Not Just Transfer Knowledge</h2>
+          <p class="section-subheading" style="margin-bottom:28px;">Most corporate technical training is generic, one-size-fits-all, and disconnected from actual business risk. We built a different model.</p>
+          <div class="format-chips">
+            <span class="format-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Tailored by audience &amp; risk</span>
+            <span class="format-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Pre- &amp; post-assessments</span>
+            <span class="format-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Hands-on, real-world labs</span>
+            <span class="format-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Measurable outcomes &amp; ROI</span>
+            <span class="format-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>Scalable across segments</span>
+            <span class="format-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Business-aligned risk focus</span>
+          </div>
+        </div>
+        <div>
+          <div class="u-card" style="margin-bottom:16px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-bottom:8px;">Reduced cyber risk exposure</h3>
+            <p>Capability programmes that directly reduce the human attack surface — the biggest source of enterprise breach.</p>
+          </div>
+          <div class="u-card" style="margin-bottom:16px; border-left: 4px solid #9B5CB8;">
+            <h3 style="margin-bottom:8px;">Faster workforce readiness</h3>
+            <p>Bootcamp-format delivery compresses learning timelines — critical capability built in days, not months.</p>
+          </div>
+          <div class="u-card" style="border-left: 4px solid #2A9D72;">
+            <h3 style="margin-bottom:8px;">Sustainable capability building</h3>
+            <p>Not one-off training events. Structured pathways with capstone projects ensure skills transfer into real work.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THREE DOMAINS -->
+  <section id="domains" style="background: var(--ivory);">
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="section-label">Three Strategic Domains</p>
+        <h2 class="section-heading">Technical Capability<br>Across the Full Stack</h2>
+        <p class="section-subheading">From protecting against cyber threats to embedding security in delivery pipelines to harnessing AI — we build the technical strength organisations need today.</p>
+      </div>
+      <div class="domain-cards fade-in delay-1">
+
+        <!-- Cybersecurity -->
+        <div class="domain-card cyber">
+          <div class="domain-header">
+            <div class="domain-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <p class="domain-eyebrow">Domain 01</p>
+            <h3 class="domain-name">Cybersecurity</h3>
+            <p class="domain-sub">Protecting digital assets and organisational resilience. Build. Defend. Recover.</p>
+          </div>
+          <div class="domain-body">
+            <p style="font-size:0.82rem;font-weight:600;color:var(--space);margin-bottom:10px;">Core Curriculum</p>
+            <ul class="domain-list">
+              <li>Cyber Fundamentals &amp; Threat Landscape</li>
+              <li>Penetration Testing &amp; Ethical Hacking</li>
+              <li>Cloud Security &amp; Zero Trust Architecture</li>
+              <li>Threat Detection &amp; Incident Response</li>
+              <li>Security Tools (SAST, OWASP, Snyk)</li>
+              <li>Cyber Risk Management for Leaders</li>
+            </ul>
+            <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(56,105,130,0.1);">
+              <p style="font-size:0.78rem;font-weight:600;color:var(--slate);margin-bottom:8px;">Audience Pathways</p>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <span class="tag">Students &amp; New Hires</span>
+                <span class="tag">Women Returnees</span>
+                <span class="tag">Senior Leadership / CXO</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DevSecOps -->
+        <div class="domain-card devsec">
+          <div class="domain-header">
+            <div class="domain-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+            <p class="domain-eyebrow">Domain 02</p>
+            <h3 class="domain-name">DevSecOps</h3>
+            <p class="domain-sub">Embedding security into modern software delivery — secure by design, confident in delivery.</p>
+          </div>
+          <div class="domain-body">
+            <p style="font-size:0.82rem;font-weight:600;color:var(--space);margin-bottom:10px;">Core Curriculum</p>
+            <ul class="domain-list">
+              <li>Foundations: Git, Linux, Build Tools, NGINX</li>
+              <li>Cloud &amp; Infrastructure: AWS, Terraform, Ansible</li>
+              <li>Containers &amp; CI/CD: Docker, Kubernetes, Jenkins</li>
+              <li>Security: SonarQube, OWASP, Trivy, Prowler</li>
+              <li>Monitoring: CloudWatch, Prometheus, Grafana</li>
+              <li>Capstone: End-to-end secure pipeline project</li>
+            </ul>
+            <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(155,92,184,0.15);">
+              <p style="font-size:0.78rem;font-weight:600;color:var(--slate);margin-bottom:8px;">Delivery</p>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <span class="tag">1–5 Day Intensive Bootcamps</span>
+                <span class="tag">In-Person / Virtual / Hybrid</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GenAI -->
+        <div class="domain-card genai">
+          <div class="domain-header">
+            <div class="domain-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/><path d="M4.93 4.93l14.14 14.14"/></svg></div>
+            <p class="domain-eyebrow">Domain 03</p>
+            <h3 class="domain-name">Generative AI</h3>
+            <p class="domain-sub">Applying AI to automate, augment, and innovate — from AI literacy to building enterprise solutions.</p>
+          </div>
+          <div class="domain-body">
+            <p style="font-size:0.82rem;font-weight:600;color:var(--space);margin-bottom:10px;">Core Curriculum</p>
+            <ul class="domain-list">
+              <li>AI Fluency, LLMs &amp; Generative AI Fundamentals</li>
+              <li>Prompt Engineering &amp; Productivity Masterclass</li>
+              <li>Responsible AI, Ethics &amp; Compliance</li>
+              <li>AI Workflows, Automation &amp; No-Code Apps</li>
+              <li>Build Your AI Solution (Chatbots, RAG, Agents)</li>
+              <li>AI Strategy, Transformation &amp; ROI</li>
+            </ul>
+            <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(42,157,114,0.15);">
+              <p style="font-size:0.78rem;font-weight:600;color:var(--slate);margin-bottom:8px;">Industry Tracks</p>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <span class="tag">Finance</span>
+                <span class="tag">Healthcare</span>
+                <span class="tag">Retail &amp; FMCG</span>
+                <span class="tag">Education</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUDIENCE PATHWAYS -->
+  <section style="background: var(--white);">
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="section-label">Cybersecurity Pathways</p>
+        <h2 class="section-heading">Purpose-Built for<br>Every Workforce Segment</h2>
+        <p class="section-subheading">Not every role faces the same risk. Our learning pathways are tailored to the knowledge level and responsibility of each audience.</p>
+      </div>
+      <div class="pathways-grid fade-in delay-1">
+        <div class="pathway-card">
+          <span class="pathway-audience">Students &amp; New Hires</span>
+          <h3>Cybersecurity Foundations</h3>
+          <ul>
+            <li>Cyber Fundamentals</li>
+            <li>Penetration Testing</li>
+            <li>Cloud Security</li>
+            <li>Threat Detection</li>
+            <li>Security Tools</li>
+            <li>Incident Response</li>
+          </ul>
+        </div>
+        <div class="pathway-card">
+          <span class="pathway-audience">Women Returnees</span>
+          <h3>Confidence for Re-Entry</h3>
+          <ul>
+            <li>Cyber Fundamentals refresh</li>
+            <li>Role-specific skills update</li>
+            <li>Workplace inclusion &amp; support</li>
+            <li>Mentored re-entry pathway</li>
+          </ul>
+        </div>
+        <div class="pathway-card">
+          <span class="pathway-audience">Board Members &amp; CXO</span>
+          <h3>Cyber Risk Leadership</h3>
+          <ul>
+            <li>Cyber Risk Management</li>
+            <li>Crisis Management</li>
+            <li>Regulatory Compliance</li>
+            <li>Strategic Alignment with Business Goals</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DELIVERY PROCESS -->
+  <section style="background: var(--ivory);">
+    <div class="container">
+      <div class="section-header center fade-in">
+        <p class="section-label">How We Deliver</p>
+        <h2 class="section-heading">A Proven 4-Step<br>Delivery Framework</h2>
+        <p class="section-subheading">Every technical programme follows a rigorous process: assess, learn, apply, validate — ensuring skills transfer into real performance.</p>
+      </div>
+      <div class="process-track fade-in delay-1">
+        <div class="process-step">
+          <div class="proc-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+          <p class="proc-num">Step 01</p>
+          <h4 class="proc-title">Pre-Assessment</h4>
+          <p class="proc-desc">Evaluate baseline skills and identify individual learning goals before programme begins.</p>
+        </div>
+        <div class="process-step">
+          <div class="proc-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <p class="proc-num">Step 02</p>
+          <h4 class="proc-title">Intensive Bootcamp</h4>
+          <p class="proc-desc">Focused, expert-led training with interactive, hands-on labs — 1 to 5 days in-person, virtual, or hybrid.</p>
+        </div>
+        <div class="process-step">
+          <div class="proc-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <p class="proc-num">Step 03</p>
+          <h4 class="proc-title">Capstone Project</h4>
+          <p class="proc-desc">Apply new skills to solve a real-world business or security challenge — demonstrable technical output.</p>
+        </div>
+        <div class="process-step">
+          <div class="proc-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+          <p class="proc-num">Step 04</p>
+          <h4 class="proc-title">Post-Assessment &amp; Validation</h4>
+          <p class="proc-desc">Measure improvement and validate proficiency against pre-programme baseline — ROI you can show.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT STATS -->
+  <div class="impact-band">
+    <div class="container">
+      <div class="impact-grid fade-in">
+        <div class="impact-item">
+          <p class="impact-num" data-count="3000">3,000+</p>
+          <p class="impact-label">Cybersecurity participants trained — students, faculty, law enforcement, and Indian Navy personnel</p>
+        </div>
+        <div class="impact-item">
+          <p class="impact-num" data-count="25000">25,000+</p>
+          <p class="impact-label">Total learners impacted across all Aquila technical and behavioural programmes</p>
+        </div>
+        <div class="impact-item">
+          <p class="impact-num" data-count="18">18 Years</p>
+          <p class="impact-label">Designing and delivering high-impact learning interventions since 2006</p>
+        </div>
+        <div class="impact-item">
+          <p class="impact-num" data-count="5000">5,000+</p>
+          <p class="impact-label">Professionals upskilled in communication skills and adult learning programmes</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA BAND -->
+  <section class="cta-band">
+    <div class="container">
+      <div class="cta-band-inner">
+        <p class="section-label">Start the Conversation</p>
+        <h2>Technical Capability Is a Business Imperative</h2>
+        <p>86% of employers expect AI and technology to transform their business by 2030. Is your workforce ready? Let's build the technical capability that keeps your organisation ahead.</p>
+        <div class="cta-band-actions">
+          <a href="contact.html" class="btn btn-primary">Schedule a Discovery Call</a>
+          <a href="first-chair.html" class="btn btn-outline-white">Explore First Chair</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand-logo">Aq<span>ui</span>la</div>
+          <p class="footer-tagline">Building future-ready capability across<br>corporates, institutions, and communities.</p>
+          <div class="footer-social">
+            <a href="#" class="social-icon" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+            <a href="#" class="social-icon" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <p class="footer-col-title">Corporates</p>
+          <ul class="footer-links">
+            <li><a href="first-chair.html">First Chair Program</a></li>
+            <li><a href="technical-training.html">Technical Training</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-col-title">Institutions</p>
+          <ul class="footer-links">
+            <li><a href="colleges.html">Ace Your Placements</a></li>
+            <li><a href="schools.html">Hackathons by IndiSight</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-col-title">Contact</p>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>jayati@aquilalearning.in</div>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.44 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17z"/></svg>+91 83746 93274</div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2026 Aquila — an ARJV initiative. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

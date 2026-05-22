@@ -1,0 +1,463 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ace Your Placements — Aquila</title>
+  <meta name="description" content="Aquila's Ace Your Placements program — intensive placement bootcamps for MBA and college students, bridging the gap between degrees and career-ready performance." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root { --accent: #9B5CB8; --accent-soft: #EFE7FF; }
+
+    /* Lavender-to-purple header */
+    .page-header { background: linear-gradient(135deg, #1a0a30 0%, #2d1b69 55%, #4c2d8a 100%); padding-top: clamp(64px, 9vw, 120px); }
+    .page-header::before {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background-image:
+        linear-gradient(rgba(155,92,184,0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(155,92,184,0.12) 1px, transparent 1px);
+      background-size: 40px 40px;
+      -webkit-mask: radial-gradient(circle at 75% 30%, #000 0%, transparent 60%);
+              mask: radial-gradient(circle at 75% 30%, #000 0%, transparent 60%);
+    }
+    .page-header::after {
+      content: ''; position: absolute; width: 440px; height: 440px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(155,92,184,0.35) 0%, transparent 70%);
+      top: -100px; right: -80px; z-index: 0;
+    }
+    .ph-icon { background: rgba(255,255,255,0.12); color: #c9b6ff; backdrop-filter: blur(8px); border: 1px solid rgba(155,92,184,0.3); }
+    .page-header .ph-eyebrow { color: #c9b6ff; }
+    .page-header .ph-title { color: #fff; }
+    .page-header .ph-title em { color: #e0d4ff; }
+    .page-header .ph-sub { color: rgba(255,255,255,0.72); }
+    .crumb, .crumb a { color: rgba(255,255,255,0.55); }
+    .crumb span { color: rgba(255,255,255,0.3); }
+
+    /* Hero stats */
+    .hero-stats { display: flex; gap: 32px; flex-wrap: wrap; margin-top: 32px; }
+    .hero-stat { text-align: center; }
+    .hero-stat .val { font-family: var(--font-head); font-size: 2rem; font-weight: 700; color: #fff; line-height: 1; }
+    .hero-stat .lbl { font-size: 0.78rem; color: rgba(255,255,255,0.55); margin-top: 4px; }
+
+    /* Challenge two-col */
+    .challenge-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+
+    /* Modules 8-grid */
+    .modules-8 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .mod8-card { background: var(--white); border-radius: var(--radius-md); padding: 22px 20px; border: 1px solid rgba(155,92,184,0.1); box-shadow: var(--shadow-sm); position: relative; overflow: hidden; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+    .mod8-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .mod8-num { font-family: var(--font-head); font-size: 1.6rem; font-weight: 700; color: var(--accent-soft); line-height: 1; margin-bottom: 6px; }
+    .mod8-title { font-family: var(--font-head); font-size: 1rem; font-weight: 700; color: var(--space); margin-bottom: 8px; }
+    .mod8-desc { font-size: 0.82rem; color: var(--slate); line-height: 1.55; }
+
+    /* What's included (methodology) */
+    .methodology-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; }
+    .meth-step { text-align: center; padding: 28px 16px; position: relative; }
+    .meth-step + .meth-step::before { content: '→'; position: absolute; left: -8px; top: 50%; transform: translateY(-50%); color: var(--accent); font-size: 1.2rem; }
+    .meth-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; }
+    .meth-icon svg { width: 26px; height: 26px; }
+    .meth-title { font-size: 0.82rem; font-weight: 700; color: var(--space); margin-bottom: 4px; }
+    .meth-desc { font-size: 0.78rem; color: var(--slate); line-height: 1.4; }
+
+    /* Resources */
+    .resources-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+    .res-card { background: var(--white); border-radius: var(--radius-md); padding: 22px 18px; text-align: center; border: 1px solid rgba(155,92,184,0.1); box-shadow: var(--shadow-sm); }
+    .res-icon { width: 48px; height: 48px; border-radius: 14px; background: var(--accent-soft); color: var(--accent); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; }
+    .res-icon svg { width: 24px; height: 24px; }
+    .res-title { font-size: 0.82rem; font-weight: 700; color: var(--space); margin-bottom: 6px; }
+    .res-desc { font-size: 0.78rem; color: var(--slate); line-height: 1.4; }
+
+    /* Case study dark panel */
+    .case-study-panel { background: linear-gradient(135deg, #1a0a30 0%, #2d1b69 100%); border-radius: var(--radius-lg); padding: 48px 56px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center; position: relative; overflow: hidden; }
+    .case-study-panel::before { content: ''; position: absolute; width: 350px; height: 350px; border-radius: 50%; background: radial-gradient(circle, rgba(155,92,184,0.25) 0%, transparent 70%); top: -100px; right: -80px; }
+    .cs-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(201,182,255,0.7); margin-bottom: 10px; }
+    .cs-title { font-family: var(--font-head); font-size: 1.8rem; font-weight: 700; color: #fff; margin-bottom: 14px; line-height: 1.2; }
+    .cs-body { font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 20px; }
+    .cs-outcomes { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .cs-outcomes li { display: flex; gap: 10px; align-items: flex-start; font-size: 0.88rem; color: rgba(255,255,255,0.8); line-height: 1.5; }
+    .cs-outcomes li::before { content: '✓'; color: #c9b6ff; font-weight: 700; flex-shrink: 0; }
+    .cs-quote { background: rgba(255,255,255,0.06); border-radius: var(--radius-md); padding: 28px; border: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 1; }
+    .cs-quote blockquote { font-size: 1rem; color: rgba(255,255,255,0.85); line-height: 1.7; font-style: italic; margin-bottom: 16px; }
+    .cs-quote cite { font-size: 0.82rem; color: rgba(255,255,255,0.5); font-style: normal; }
+
+    /* Partners logos */
+    .partners-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .partner-badge { background: var(--white); border: 1px solid rgba(155,92,184,0.12); border-radius: 10px; padding: 10px 18px; font-size: 0.82rem; font-weight: 600; color: var(--slate); white-space: nowrap; }
+
+    @media (max-width: 1024px) {
+      .challenge-cols { grid-template-columns: 1fr; gap: 40px; }
+      .modules-8 { grid-template-columns: repeat(2, 1fr); }
+      .methodology-grid { grid-template-columns: repeat(3, 1fr); }
+      .meth-step + .meth-step::before { display: none; }
+      .resources-grid { grid-template-columns: repeat(3, 1fr); }
+      .case-study-panel { grid-template-columns: 1fr; padding: 36px 28px; }
+    }
+    @media (max-width: 768px) {
+      .modules-8 { grid-template-columns: 1fr; }
+      .methodology-grid { grid-template-columns: 1fr; }
+      .resources-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Aquila home">Aq<span>ui</span>la</a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li class="nav-has-dropdown">
+          <a tabindex="0">Corporates <svg class="chev" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2,4 6,8 10,4"/></svg></a>
+          <ul class="nav-dropdown">
+            <li><a href="first-chair.html">First Chair</a></li>
+            <li><a href="technical-training.html">Technical Training</a></li>
+          </ul>
+        </li>
+        <li class="nav-has-dropdown">
+          <a tabindex="0" class="active">Institutions <svg class="chev" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2,4 6,8 10,4"/></svg></a>
+          <ul class="nav-dropdown">
+            <li><a href="colleges.html" class="active">Colleges — Ace Your Placements</a></li>
+            <li><a href="schools.html">Schools — Hackathons by IndiSight</a></li>
+          </ul>
+        </li>
+        <li><a href="social-impact.html">Social Impact</a></li>
+        <li><a href="case-studies.html">Case Studies</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="btn btn-primary nav-cta">Partner With Us</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a tabindex="0">Corporates</a></li>
+      <li class="mm-sub"><a href="first-chair.html">First Chair</a></li>
+      <li class="mm-sub"><a href="technical-training.html">Technical Training</a></li>
+      <li><a tabindex="0">Institutions</a></li>
+      <li class="mm-sub"><a href="colleges.html">Colleges — Ace Your Placements</a></li>
+      <li class="mm-sub"><a href="schools.html">Schools — Hackathons by IndiSight</a></li>
+      <li><a href="social-impact.html">Social Impact</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;">Partner With Us</a>
+  </div>
+
+  <!-- HEADER -->
+  <header class="page-header">
+    <div class="container">
+      <p class="crumb"><a href="index.html">Home</a><span>/</span>Institutions<span>/</span>Ace Your Placements</p>
+      <div class="ph-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/><path d="M22 10v6"/></svg>
+      </div>
+      <p class="ph-eyebrow">For Colleges &amp; Universities</p>
+      <h1 class="ph-title">Ace Your <em>Placements</em></h1>
+      <p class="ph-sub">An intensive placement preparation bootcamp that bridges the gap between academic readiness and real-world recruitment performance — sharper skills, stronger confidence, more offers.</p>
+      <div class="ph-actions">
+        <a href="contact.html" class="btn btn-primary">Partner With Us</a>
+        <a href="#modules" class="btn btn-outline-white">View the Program</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="val">15,000+</div><div class="lbl">Learners Impacted</div></div>
+        <div class="hero-stat"><div class="val">8 Weeks</div><div class="lbl">Structured Bootcamp</div></div>
+        <div class="hero-stat"><div class="val">4.8/5</div><div class="lbl">Feedback Score</div></div>
+        <div class="hero-stat"><div class="val">3 Tracks</div><div class="lbl">HR · Finance · Marketing</div></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- THE GAP -->
+  <section>
+    <div class="container">
+      <div class="challenge-cols fade-in">
+        <div>
+          <p class="section-label">The Problem</p>
+          <h2 class="section-heading" style="margin-bottom:20px;">Bridging the Gap Between Degrees and Deliverables</h2>
+          <p class="section-subheading" style="margin-bottom:28px;">Students arrive at placement season with strong academic records but struggle where it counts — the aptitude test, group discussion, and final interview. Aquila fixes that with structured practice, simulation, and personalised feedback.</p>
+          <div class="u-card" style="margin-bottom:16px;">
+            <div class="icon-badge" style="margin-bottom:12px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/></svg></div>
+            <h3>Aligned with placement outcomes</h3>
+            <p>Every module maps directly to a stage in the campus recruitment process — from resume screening to final offer conversion.</p>
+          </div>
+          <div class="u-card" style="margin-bottom:16px;">
+            <div class="icon-badge" style="margin-bottom:12px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+            <h3>Designed for long-term behaviour change</h3>
+            <p>Not a one-day workshop. 8 weeks of progressive skill-building create lasting improvements in communication, confidence, and performance.</p>
+          </div>
+          <div class="u-card">
+            <div class="icon-badge" style="margin-bottom:12px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+            <h3>Tailored to your students, not templated</h3>
+            <p>Programs are customised to the institution, specialisation, and target companies — not a generic off-the-shelf product.</p>
+          </div>
+        </div>
+        <div>
+          <p class="section-label" style="margin-bottom:16px;">We Improve Performance Across Every Stage</p>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div style="background:var(--white);border-radius:var(--radius-md);padding:16px 20px;border:1px solid rgba(155,92,184,0.1);box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:14px;">
+              <span style="font-family:var(--font-head);font-size:1.5rem;font-weight:700;color:var(--accent);min-width:28px;">1</span>
+              <div><strong style="display:block;font-size:0.88rem;color:var(--space);">Resume Screening</strong><span style="font-size:0.82rem;color:var(--slate);">ATS-optimised resumes that get shortlisted</span></div>
+            </div>
+            <div style="background:var(--white);border-radius:var(--radius-md);padding:16px 20px;border:1px solid rgba(155,92,184,0.1);box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:14px;">
+              <span style="font-family:var(--font-head);font-size:1.5rem;font-weight:700;color:var(--accent);min-width:28px;">2</span>
+              <div><strong style="display:block;font-size:0.88rem;color:var(--space);">Aptitude Tests</strong><span style="font-size:0.82rem;color:var(--slate);">Speed, accuracy, and question-selection mastery</span></div>
+            </div>
+            <div style="background:var(--white);border-radius:var(--radius-md);padding:16px 20px;border:1px solid rgba(155,92,184,0.1);box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:14px;">
+              <span style="font-family:var(--font-head);font-size:1.5rem;font-weight:700;color:var(--accent);min-width:28px;">3</span>
+              <div><strong style="display:block;font-size:0.88rem;color:var(--space);">Group Discussions</strong><span style="font-size:0.82rem;color:var(--slate);">Confidence to initiate, build on, and summarise ideas</span></div>
+            </div>
+            <div style="background:var(--white);border-radius:var(--radius-md);padding:16px 20px;border:1px solid rgba(155,92,184,0.1);box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:14px;">
+              <span style="font-family:var(--font-head);font-size:1.5rem;font-weight:700;color:var(--accent);min-width:28px;">4</span>
+              <div><strong style="display:block;font-size:0.88rem;color:var(--space);">Functional Interviews</strong><span style="font-size:0.82rem;color:var(--slate);">Domain-specific preparation for HR, Finance, Marketing &amp; Analytics</span></div>
+            </div>
+            <div style="background:var(--white);border-radius:var(--radius-md);padding:16px 20px;border:1px solid rgba(155,92,184,0.1);box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:14px;">
+              <span style="font-family:var(--font-head);font-size:1.5rem;font-weight:700;color:var(--accent);min-width:28px;">5</span>
+              <div><strong style="display:block;font-size:0.88rem;color:var(--space);">Final Offer Conversion</strong><span style="font-size:0.82rem;color:var(--slate);">End-to-end panel simulations that replicate real conditions</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 MODULES -->
+  <section id="modules" style="background: var(--ivory);">
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="section-label">The Curriculum</p>
+        <h2 class="section-heading">8 Modules Covering<br>Every Recruitment Stage</h2>
+        <p class="section-subheading">One module per week — progressive skill building across the full recruitment journey, delivered across 8 structured sessions.</p>
+      </div>
+      <div class="modules-8 fade-in delay-1">
+        <div class="mod8-card">
+          <div class="mod8-num">01</div>
+          <h3 class="mod8-title">Resume &amp; LinkedIn Optimisation</h3>
+          <p class="mod8-desc">ATS-ready resumes, keyword-rich LinkedIn profiles, and accomplishment-based bullet points tailored for HR, Finance, Marketing, and Consulting roles.</p>
+        </div>
+        <div class="mod8-card">
+          <div class="mod8-num">02</div>
+          <h3 class="mod8-title">Communication &amp; Executive Presence</h3>
+          <p class="mod8-desc">Craft memorable self-introductions, structure answers with Present–Past–Future and SAO frameworks, and project credibility through body language and vocal delivery.</p>
+        </div>
+        <div class="mod8-card">
+          <div class="mod8-num">03</div>
+          <h3 class="mod8-title">Quantitative &amp; Verbal Aptitude</h3>
+          <p class="mod8-desc">High-frequency arithmetic, logical reasoning, data interpretation, shortcut methods, and timed practice drills that simulate actual campus placement tests.</p>
+        </div>
+        <div class="mod8-card">
+          <div class="mod8-num">04</div>
+          <h3 class="mod8-title">Group Discussions &amp; Case Studies</h3>
+          <p class="mod8-desc">POINT and Issue–Analysis–Recommendation frameworks, live simulated GDs, and facilitator feedback on content quality, leadership, and communication style.</p>
+        </div>
+        <div class="mod8-card">
+          <div class="mod8-num">05</div>
+          <h3 class="mod8-title">Domain Interview Preparation</h3>
+          <p class="mod8-desc">Role-specific preparation for HR, Finance, Marketing, Business Analytics, and Consulting — connecting concepts to real business applications.</p>
+        </div>
+        <div class="mod8-card">
+          <div class="mod8-num">06</div>
+          <h3 class="mod8-title">Behavioural Interview Preparation</h3>
+          <p class="mod8-desc">STAR framework storytelling around leadership, teamwork, conflict, and achievement — with a personal story bank built for your final placement season.</p>
+        </div>
+        <div class="mod8-card">
+          <div class="mod8-num">07</div>
+          <h3 class="mod8-title">Mock Interviews</h3>
+          <p class="mod8-desc">One-on-one mock interviews simulating HR, behavioural, and domain formats. Individualised feedback on content, structure, body language, and executive presence.</p>
+        </div>
+        <div class="mod8-card">
+          <div class="mod8-num">08</div>
+          <h3 class="mod8-title">Final Placement Simulation</h3>
+          <p class="mod8-desc">End-to-end panel interviews replicating real campus recruitment conditions — final assessments, salary discussion strategies, and readiness scores.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DELIVERY METHODOLOGY -->
+  <section style="background: var(--white);">
+    <div class="container">
+      <div class="section-header center fade-in">
+        <p class="section-label">How We Deliver</p>
+        <h2 class="section-heading">Learning Reinforced Through<br>Practice, Simulation, and Feedback</h2>
+      </div>
+      <div class="methodology-grid fade-in delay-1">
+        <div class="meth-step">
+          <div class="meth-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+          <div class="meth-title">Expert-Led Workshops</div>
+          <div class="meth-desc">High-impact placement frameworks and strategies from industry practitioners</div>
+        </div>
+        <div class="meth-step">
+          <div class="meth-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <div class="meth-title">Interactive Practice</div>
+          <div class="meth-desc">Exercises, simulations, and role plays for practical application of every concept</div>
+        </div>
+        <div class="meth-step">
+          <div class="meth-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+          <div class="meth-title">Simulations &amp; Role Plays</div>
+          <div class="meth-desc">Realistic recruitment scenarios to build confidence and readiness under pressure</div>
+        </div>
+        <div class="meth-step">
+          <div class="meth-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+          <div class="meth-title">Domain Breakouts</div>
+          <div class="meth-desc">Tailored sessions for HR, Finance, Marketing, and Analytics specialisations</div>
+        </div>
+        <div class="meth-step">
+          <div class="meth-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/></svg></div>
+          <div class="meth-title">Mock Interviews &amp; Feedback</div>
+          <div class="meth-desc">Structured mock interviews mirroring real conditions with individualised coaching</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTICIPANT RESOURCES -->
+  <section style="background: var(--ivory);">
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="section-label">Participant Resources</p>
+        <h2 class="section-heading">Everything Students Need<br>to Succeed on Placement Day</h2>
+        <p class="section-subheading">All resources are accessible through our Learning Management System (LMS) — before, during, and after the bootcamp.</p>
+      </div>
+      <div class="resources-grid fade-in delay-1">
+        <div class="res-card">
+          <div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <div class="res-title">ATS-Optimised Resume Templates</div>
+          <div class="res-desc">Industry-aligned templates for recruiter-ready resumes</div>
+        </div>
+        <div class="res-card">
+          <div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <div class="res-title">Interview Question Banks</div>
+          <div class="res-desc">Extensive question lists for HR, Behavioural, and Domain interviews</div>
+        </div>
+        <div class="res-card">
+          <div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+          <div class="res-title">Case Discussion Frameworks</div>
+          <div class="res-desc">Proven frameworks for case analysis and business problem-solving</div>
+        </div>
+        <div class="res-card">
+          <div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div class="res-title">Aptitude Practice Sets</div>
+          <div class="res-desc">Curated practice sets with solutions and shortcut strategies</div>
+        </div>
+        <div class="res-card">
+          <div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+          <div class="res-title">Story Bank &amp; Toolkit</div>
+          <div class="res-desc">Personal story bank and interview preparation toolkit built per student</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY: RIIM PUNE -->
+  <section>
+    <div class="container">
+      <div class="section-header fade-in"><p class="section-label">In Action</p><h2 class="section-heading">Transformation in Practice</h2></div>
+      <div class="case-study-panel fade-in delay-1">
+        <div style="position:relative;z-index:1;">
+          <p class="cs-eyebrow">Case Study · RIIM Pune</p>
+          <h3 class="cs-title">Ace Your Placements @ RIIM Pune</h3>
+          <p class="cs-body">Aquila designed and delivered an intensive <strong style="color:#c9b6ff;">220-hour skill-building program</strong> to enhance the employability of students across communication, domain knowledge, workplace readiness, and interview preparation.</p>
+          <p style="font-size:0.82rem;font-weight:600;color:rgba(255,255,255,0.5);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.1em;">Outcomes Achieved</p>
+          <ul class="cs-outcomes">
+            <li>Noticeable shift in confidence, articulation, and interview performance across the batch</li>
+            <li>Improved quality of resumes and group discussion readiness</li>
+            <li>Feedback scores of <strong style="color:#c9b6ff;">4.8+/5</strong> across all cohorts</li>
+          </ul>
+        </div>
+        <div class="cs-quote">
+          <p style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(201,182,255,0.6);margin-bottom:14px;">Participant Voice</p>
+          <blockquote>"This course helped me get rid of the fear of speaking and face interviews with ease. I was placed in the first company I sat for!"</blockquote>
+          <cite>— Aditi Sharma, PGDM (Finance), RIIM Pune</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNER INSTITUTIONS -->
+  <section style="background: var(--ivory);">
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="section-label">Our College Partners</p>
+        <h2 class="section-heading">Institutions That Trust Aquila</h2>
+        <p class="section-subheading">Working with leading colleges and universities across India to build future-ready graduates.</p>
+      </div>
+      <div class="partners-row fade-in delay-1">
+        <span class="partner-badge">Mahindra University</span>
+        <span class="partner-badge">RIIM Pune</span>
+        <span class="partner-badge">GITAM University</span>
+        <span class="partner-badge">IBS Mumbai</span>
+        <span class="partner-badge">Thakur Trusts</span>
+        <span class="partner-badge">Jai Hind College</span>
+        <span class="partner-badge">DAL Public School</span>
+        <span class="partner-badge">Seshachalam Institutions</span>
+        <span class="partner-badge">Lions International</span>
+        <span class="partner-badge">Ashoka School of Business</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band">
+    <div class="container">
+      <div class="cta-band-inner">
+        <p class="section-label">Partner With Us</p>
+        <h2>Give Your Students the Edge They Need on Placement Day</h2>
+        <p>3,000+ students trained. 10 cohorts run. 4.8/5 feedback scores. Let's bring Ace Your Placements to your campus — tailored to your specialisations and target companies.</p>
+        <div class="cta-band-actions">
+          <a href="contact.html" class="btn btn-primary">Start a Conversation</a>
+          <a href="schools.html" class="btn btn-outline-white">View School Programs</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand-logo">Aq<span>ui</span>la</div>
+          <p class="footer-tagline">Building future-ready capability across<br>corporates, institutions, and communities.</p>
+          <div class="footer-social">
+            <a href="#" class="social-icon" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+            <a href="#" class="social-icon" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <p class="footer-col-title">Corporates</p>
+          <ul class="footer-links">
+            <li><a href="first-chair.html">First Chair Program</a></li>
+            <li><a href="technical-training.html">Technical Training</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-col-title">Institutions</p>
+          <ul class="footer-links">
+            <li><a href="colleges.html">Ace Your Placements</a></li>
+            <li><a href="schools.html">Hackathons by IndiSight</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-col-title">Contact</p>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>jayati@aquilalearning.in</div>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.44 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17z"/></svg>+91 83746 93274</div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2026 Aquila — an ARJV initiative. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

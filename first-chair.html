@@ -1,0 +1,456 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>First Chair Program — Aquila</title>
+  <meta name="description" content="Aquila's First Chair Program is a 6-month leadership development journey for first-time managers — building confidence, executive presence, and business acumen." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root { --accent: #386982; --accent-soft: #E4EFF4; }
+
+    /* Deep violet-to-teal header */
+    .page-header { background: linear-gradient(135deg, #1c1240 0%, #2d1b69 45%, #386982 100%); padding-top: clamp(64px, 9vw, 120px); }
+    .page-header::before {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background:
+        radial-gradient(ellipse at 80% 20%, rgba(155,92,184,0.35) 0%, transparent 55%),
+        radial-gradient(ellipse at 20% 80%, rgba(56,105,130,0.3) 0%, transparent 50%);
+    }
+    .page-header::after {
+      content: ''; position: absolute; width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+      top: -150px; right: -100px; z-index: 0;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .ph-icon { background: rgba(255,255,255,0.12); color: #fff; backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.18); }
+    .page-header .ph-eyebrow { color: #b8d8e6; }
+    .page-header .ph-title { color: #fff; max-width: 18ch; }
+    .page-header .ph-title em { color: #c9b6ff; }
+    .page-header .ph-sub { color: rgba(255,255,255,0.72); }
+    .crumb, .crumb a { color: rgba(255,255,255,0.55); }
+    .crumb span { color: rgba(255,255,255,0.3); }
+
+    /* Programme stats bar */
+    .prog-stats { display: flex; gap: 32px; flex-wrap: wrap; margin-top: 32px; }
+    .prog-stat { display: flex; align-items: center; gap: 10px; }
+    .prog-stat-icon { width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+    .prog-stat-icon svg { width: 18px; height: 18px; }
+    .prog-stat-text strong { display: block; font-size: 0.95rem; font-weight: 700; color: #fff; }
+    .prog-stat-text span { font-size: 0.78rem; color: rgba(255,255,255,0.6); }
+
+    /* Challenge section */
+    .challenge-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: start; }
+    .challenge-stat { background: var(--white); border-radius: var(--radius-md); padding: 24px 28px; box-shadow: var(--shadow-sm); border: 1px solid rgba(56,105,130,0.08); margin-bottom: 16px; display: flex; gap: 20px; align-items: flex-start; }
+    .cs-num { font-family: var(--font-head); font-size: 2.4rem; font-weight: 700; color: var(--accent); line-height: 1; min-width: 72px; }
+    .cs-text strong { display: block; font-size: 0.9rem; font-weight: 600; color: var(--space); margin-bottom: 4px; }
+    .cs-text span { font-size: 0.82rem; color: var(--slate); }
+
+    /* Three pillars */
+    .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .pillar-card { border-radius: var(--radius-lg); padding: 32px 28px; position: relative; overflow: hidden; }
+    .pillar-card.self { background: linear-gradient(135deg, #1c2a3a 0%, #243449 100%); }
+    .pillar-card.others { background: linear-gradient(135deg, #2d1b69 0%, #4c2d8a 100%); }
+    .pillar-card.business { background: linear-gradient(135deg, #1c3a2a 0%, #386982 100%); }
+    .pillar-card::before { content: ''; position: absolute; width: 200px; height: 200px; border-radius: 50%; background: rgba(255,255,255,0.04); top: -60px; right: -60px; }
+    .pillar-num { font-family: var(--font-head); font-size: 3.5rem; font-weight: 700; opacity: 0.1; color: #fff; line-height: 1; margin-bottom: 8px; }
+    .pillar-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 10px; }
+    .pillar-title { font-family: var(--font-head); font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .pillar-sub { font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.6; margin-bottom: 20px; }
+    .pillar-items { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .pillar-items li { font-size: 0.83rem; color: rgba(255,255,255,0.75); display: flex; gap: 8px; align-items: flex-start; line-height: 1.4; }
+    .pillar-items li::before { content: '›'; color: rgba(255,255,255,0.4); font-size: 1rem; line-height: 1; flex-shrink: 0; margin-top: 1px; }
+
+    /* Modules grid */
+    .modules-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .module-card { background: var(--white); border-radius: var(--radius-md); padding: 24px; border: 1px solid rgba(56,105,130,0.08); box-shadow: var(--shadow-sm); transition: transform 0.25s ease, box-shadow 0.25s ease; }
+    .module-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .mod-area { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+    .mod-title { font-family: var(--font-head); font-size: 1.05rem; font-weight: 700; color: var(--space); margin-bottom: 8px; }
+    .mod-desc { font-size: 0.83rem; color: var(--slate); line-height: 1.6; }
+
+    /* Highlights */
+    .highlights-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .hl-card { display: flex; gap: 16px; align-items: flex-start; background: var(--white); border-radius: var(--radius-md); padding: 22px 20px; border: 1px solid rgba(56,105,130,0.08); box-shadow: var(--shadow-sm); }
+    .hl-icon { width: 44px; height: 44px; border-radius: 12px; background: var(--accent-soft); color: var(--accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .hl-icon svg { width: 22px; height: 22px; }
+    .hl-text strong { display: block; font-size: 0.9rem; font-weight: 600; color: var(--space); margin-bottom: 4px; }
+    .hl-text span { font-size: 0.82rem; color: var(--slate); line-height: 1.5; }
+
+    /* Brochure CTA */
+    .brochure-band { background: linear-gradient(135deg, #1c2a3a 0%, #2d1b69 60%, #4c2d8a 100%); border-radius: var(--radius-lg); padding: 48px 56px; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; position: relative; overflow: hidden; }
+    .brochure-band::before { content: ''; position: absolute; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(155,92,184,0.25) 0%, transparent 70%); top: -150px; right: -100px; }
+    .brochure-content { position: relative; z-index: 1; }
+    .brochure-content h3 { font-family: var(--font-head); font-size: 1.6rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .brochure-content p { font-size: 0.95rem; color: rgba(255,255,255,0.65); max-width: 480px; }
+    .brochure-actions { position: relative; z-index: 1; display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-download { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; border-radius: 50px; font-size: 0.9rem; font-weight: 600; background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(8px); transition: all 0.25s ease; cursor: not-allowed; opacity: 0.7; }
+    .btn-download svg { width: 16px; height: 16px; }
+    .btn-download .soon { font-size: 0.68rem; font-weight: 700; background: rgba(155,92,184,0.8); padding: 2px 6px; border-radius: 4px; margin-left: 4px; }
+
+    @media (max-width: 1024px) {
+      .challenge-grid { grid-template-columns: 1fr; gap: 40px; }
+      .pillars-grid { grid-template-columns: 1fr; }
+      .modules-grid { grid-template-columns: repeat(2, 1fr); }
+      .highlights-grid { grid-template-columns: 1fr; }
+      .brochure-band { padding: 36px 32px; }
+    }
+    @media (max-width: 768px) {
+      .prog-stats { gap: 20px; }
+      .modules-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Aquila home">Aq<span>ui</span>la</a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li class="nav-has-dropdown">
+          <a tabindex="0" class="active">Corporates <svg class="chev" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2,4 6,8 10,4"/></svg></a>
+          <ul class="nav-dropdown">
+            <li><a href="first-chair.html" class="active">First Chair</a></li>
+            <li><a href="technical-training.html">Technical Training</a></li>
+          </ul>
+        </li>
+        <li class="nav-has-dropdown">
+          <a tabindex="0">Institutions <svg class="chev" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2,4 6,8 10,4"/></svg></a>
+          <ul class="nav-dropdown">
+            <li><a href="colleges.html">Colleges — Ace Your Placements</a></li>
+            <li><a href="schools.html">Schools — Hackathons by IndiSight</a></li>
+          </ul>
+        </li>
+        <li><a href="social-impact.html">Social Impact</a></li>
+        <li><a href="case-studies.html">Case Studies</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="btn btn-primary nav-cta">Talk to Us</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a tabindex="0">Corporates</a></li>
+      <li class="mm-sub"><a href="first-chair.html">First Chair</a></li>
+      <li class="mm-sub"><a href="technical-training.html">Technical Training</a></li>
+      <li><a tabindex="0">Institutions</a></li>
+      <li class="mm-sub"><a href="colleges.html">Colleges — Ace Your Placements</a></li>
+      <li class="mm-sub"><a href="schools.html">Schools — Hackathons by IndiSight</a></li>
+      <li><a href="social-impact.html">Social Impact</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;">Talk to Us</a>
+  </div>
+
+  <!-- HEADER -->
+  <header class="page-header">
+    <div class="container">
+      <p class="crumb"><a href="index.html">Home</a><span>/</span>Corporates<span>/</span>First Chair</p>
+      <div class="ph-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <p class="ph-eyebrow">Behavioural Capability — First-Line Leaders</p>
+      <h1 class="ph-title">First Chair <em>Program</em></h1>
+      <p class="ph-sub">A 6-month leadership development journey for first-time managers — building the confidence, voice, and business acumen to lead teams and drive results from day one.</p>
+      <div class="ph-actions">
+        <a href="contact.html" class="btn btn-primary">Request a Conversation</a>
+        <a href="#program-pillars" class="btn btn-outline-white">Explore the Program</a>
+      </div>
+      <div class="prog-stats">
+        <div class="prog-stat">
+          <div class="prog-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          <div class="prog-stat-text"><strong>6-Month Journey</strong><span>Structured across phases</span></div>
+        </div>
+        <div class="prog-stat">
+          <div class="prog-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+          <div class="prog-stat-text"><strong>9 High-Impact Modules</strong><span>Industry-relevant curriculum</span></div>
+        </div>
+        <div class="prog-stat">
+          <div class="prog-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+          <div class="prog-stat-text"><strong>3 Core Focus Areas</strong><span>Self · Others · Business</span></div>
+        </div>
+        <div class="prog-stat">
+          <div class="prog-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+          <div class="prog-stat-text"><strong>In-Person Immersions</strong><span>3 leadership workshops</span></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- THE CHALLENGE -->
+  <section>
+    <div class="container">
+      <div class="challenge-grid fade-in">
+        <div>
+          <p class="section-label">The Challenge</p>
+          <h2 class="section-heading" style="margin-bottom:20px;">The Gap Nobody<br>Addresses Early Enough</h2>
+          <p class="section-subheading" style="margin-bottom:36px;">Most managers are promoted because they were great individual contributors — not because they were trained to lead. The First Chair Program closes this gap before it costs you talent, performance, and culture.</p>
+          <div class="challenge-stat">
+            <div class="cs-num">86%</div>
+            <div class="cs-text"><strong>of executives say talent gaps directly impact business goals</strong><span>— Deloitte Global Human Capital Report</span></div>
+          </div>
+          <div class="challenge-stat">
+            <div class="cs-num">70%</div>
+            <div class="cs-text"><strong>of transformation initiatives fail due to people capability issues</strong><span>— McKinsey Global Survey</span></div>
+          </div>
+          <div class="challenge-stat">
+            <div class="cs-num">60%</div>
+            <div class="cs-text"><strong>of employees say their skills will be obsolete by 2030</strong><span>— LinkedIn Workplace Learning Report</span></div>
+          </div>
+        </div>
+        <div>
+          <p class="section-label" style="margin-bottom:16px;">The First Chair Difference</p>
+          <div class="u-card" style="margin-bottom:16px;">
+            <div class="icon-badge" style="margin-bottom:12px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+            <h3>Not a workshop — a journey</h3>
+            <p>6 months of structured learning, practice, and reinforcement that creates lasting behavioural change — not just awareness.</p>
+          </div>
+          <div class="u-card" style="margin-bottom:16px;">
+            <div class="icon-badge" style="margin-bottom:12px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></div>
+            <h3>Built on corporate reality</h3>
+            <p>Practical, application-oriented learning rooted in real workplace challenges — not textbook theory.</p>
+          </div>
+          <div class="u-card">
+            <div class="icon-badge" style="margin-bottom:12px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <h3>Peer accountability pods</h3>
+            <p>Small learning circles that reinforce practice, reflection, and mutual accountability between participants.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THREE PILLARS -->
+  <section id="program-pillars" style="background: var(--ivory);">
+    <div class="container">
+      <div class="section-header center fade-in">
+        <p class="section-label">Program Architecture</p>
+        <h2 class="section-heading">Three Pillars.<br>One Leader.</h2>
+        <p class="section-subheading">First Chair develops leadership holistically — mastering self, inspiring others, and driving business performance.</p>
+      </div>
+      <div class="pillars-grid fade-in delay-1">
+        <div class="pillar-card self">
+          <div class="pillar-num">01</div>
+          <p class="pillar-label">Pillar One</p>
+          <h3 class="pillar-title">Lead Self</h3>
+          <p class="pillar-sub">Build confidence, self-awareness, and executive presence to lead with authenticity and purpose.</p>
+          <ul class="pillar-items">
+            <li>Identity, intent &amp; leadership style</li>
+            <li>Emotional intelligence &amp; resilience</li>
+            <li>Executive presence &amp; gravitas</li>
+            <li>Time, priority &amp; energy management</li>
+            <li>Leadership voice &amp; circle of influence</li>
+          </ul>
+        </div>
+        <div class="pillar-card others">
+          <div class="pillar-num">02</div>
+          <p class="pillar-label">Pillar Two</p>
+          <h3 class="pillar-title">Lead Others</h3>
+          <p class="pillar-sub">Strengthen communication, coaching, collaboration, and influence to build high-performing teams.</p>
+          <ul class="pillar-items">
+            <li>Communicate with clarity &amp; impact</li>
+            <li>Coaching &amp; feedback skills</li>
+            <li>Conflict resolution &amp; difficult conversations</li>
+            <li>Inclusive leadership &amp; psychological safety</li>
+            <li>Motivation, delegation &amp; team dynamics</li>
+          </ul>
+        </div>
+        <div class="pillar-card business">
+          <div class="pillar-num">03</div>
+          <p class="pillar-label">Pillar Three</p>
+          <h3 class="pillar-title">Lead Business</h3>
+          <p class="pillar-sub">Develop business acumen, strategic thinking, decision-making, and execution capability.</p>
+          <ul class="pillar-items">
+            <li>Business acumen &amp; financial literacy</li>
+            <li>Strategic thinking &amp; goal setting</li>
+            <li>Decision-making &amp; problem-solving</li>
+            <li>Accountability &amp; follow-through</li>
+            <li>Capstone leadership project</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULES -->
+  <section style="background: var(--white);">
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="section-label">The Curriculum</p>
+        <h2 class="section-heading">9 Modules. Real Skills.<br>Measurable Impact.</h2>
+        <p class="section-subheading">Each module is industry-led, application-focused, and tied to measurable behavioural outcomes.</p>
+      </div>
+      <div class="modules-grid">
+        <div class="module-card fade-in">
+          <p class="mod-area">Self</p>
+          <h3 class="mod-title">Identity &amp; Leadership Intent</h3>
+          <p class="mod-desc">Clarify your leadership purpose, values, and authentic style. Own your narrative from day one.</p>
+        </div>
+        <div class="module-card fade-in delay-1">
+          <p class="mod-area">Self</p>
+          <h3 class="mod-title">Emotional Intelligence &amp; Resilience</h3>
+          <p class="mod-desc">Understand yourself, manage relationships, and lead through pressure with composure and consistency.</p>
+        </div>
+        <div class="module-card fade-in delay-2">
+          <p class="mod-area">Self</p>
+          <h3 class="mod-title">Executive Presence &amp; Influence</h3>
+          <p class="mod-desc">Build gravitas, credibility, and confidence across stakeholder levels — from team to boardroom.</p>
+        </div>
+        <div class="module-card fade-in">
+          <p class="mod-area">Others</p>
+          <h3 class="mod-title">Communicate Like a Leader</h3>
+          <p class="mod-desc">Master clarity, structured messaging, and executive communication across formats and audiences.</p>
+        </div>
+        <div class="module-card fade-in delay-1">
+          <p class="mod-area">Others</p>
+          <h3 class="mod-title">Coaching, Feedback &amp; Motivation</h3>
+          <p class="mod-desc">Coach consistently, deliver feedback that drives growth, and inspire your team to perform at their best.</p>
+        </div>
+        <div class="module-card fade-in delay-2">
+          <p class="mod-area">Others</p>
+          <h3 class="mod-title">Conflict &amp; Difficult Conversations</h3>
+          <p class="mod-desc">Navigate conflict constructively, have courageous conversations, and build solutions under pressure.</p>
+        </div>
+        <div class="module-card fade-in">
+          <p class="mod-area">Business</p>
+          <h3 class="mod-title">Business Acumen &amp; Strategic Thinking</h3>
+          <p class="mod-desc">Understand financials, operations, and key business drivers. Think ahead, analyse scenarios, and create long-term impact.</p>
+        </div>
+        <div class="module-card fade-in delay-1">
+          <p class="mod-area">Business</p>
+          <h3 class="mod-title">Goal Setting, Delegation &amp; Accountability</h3>
+          <p class="mod-desc">Set clear goals aligned to business priorities, delegate effectively, and drive execution excellence.</p>
+        </div>
+        <div class="module-card fade-in delay-2">
+          <p class="mod-area">Business</p>
+          <h3 class="mod-title">Capstone Leadership Project</h3>
+          <p class="mod-desc">Apply all learnings to a real business challenge. Present solutions to senior leaders. Demonstrate measurable impact.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAM HIGHLIGHTS -->
+  <section style="background: var(--ivory);">
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="section-label">Why First Chair Works</p>
+        <h2 class="section-heading">Designed for Real<br>Behavioural Change</h2>
+      </div>
+      <div class="highlights-grid fade-in delay-1">
+        <div class="hl-card">
+          <div class="hl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div class="hl-text"><strong>Industry-Led Learning</strong><span>Delivered by experienced practitioners and business leaders — not generic trainers.</span></div>
+        </div>
+        <div class="hl-card">
+          <div class="hl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+          <div class="hl-text"><strong>Senior Mentors &amp; Masterclasses</strong><span>Exposure to real-world perspectives from accomplished leaders and mentors.</span></div>
+        </div>
+        <div class="hl-card">
+          <div class="hl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+          <div class="hl-text"><strong>Pre- and Post-Assessments</strong><span>Measure growth and validate development outcomes at every stage of the journey.</span></div>
+        </div>
+        <div class="hl-card">
+          <div class="hl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
+          <div class="hl-text"><strong>Three In-Person Immersions</strong><span>Case studies, simulations, and team-based competitions that make learning stick.</span></div>
+        </div>
+        <div class="hl-card">
+          <div class="hl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div class="hl-text"><strong>90-Day Reinforcement Path</strong><span>Post-program support to sustain behavioural change and drive measurable impact.</span></div>
+        </div>
+        <div class="hl-card">
+          <div class="hl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <div class="hl-text"><strong>Manager Enablement Toolkit</strong><span>Progress checklists and coaching guidance for participant managers and sponsors.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BROCHURE CTA -->
+  <section>
+    <div class="container">
+      <div class="brochure-band fade-in">
+        <div class="brochure-content">
+          <h3>Get the Full Program Brochure</h3>
+          <p>Detailed curriculum, delivery format, assessment framework, and commercial overview — everything your L&amp;D team needs to evaluate the First Chair Program.</p>
+        </div>
+        <div class="brochure-actions">
+          <span class="btn-download">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Brochure <span class="soon">Coming Soon</span>
+          </span>
+          <a href="contact.html" class="btn btn-outline-white">Request a Proposal</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band">
+    <div class="container">
+      <div class="cta-band-inner">
+        <p class="section-label">Start the Conversation</p>
+        <h2>Your First-Line Leaders Are the Backbone of Your Business</h2>
+        <p>Don't leave their development to chance. The First Chair Program gives them the skills, mindset, and confidence to lead teams and drive results from the moment they step up.</p>
+        <div class="cta-band-actions">
+          <a href="contact.html" class="btn btn-primary">Schedule a Discovery Call</a>
+          <a href="technical-training.html" class="btn btn-outline-white">Explore Technical Training</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand-logo">Aq<span>ui</span>la</div>
+          <p class="footer-tagline">Building future-ready capability across<br>corporates, institutions, and communities.</p>
+          <div class="footer-social">
+            <a href="#" class="social-icon" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+            <a href="#" class="social-icon" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <p class="footer-col-title">Corporates</p>
+          <ul class="footer-links">
+            <li><a href="first-chair.html">First Chair Program</a></li>
+            <li><a href="technical-training.html">Technical Training</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-col-title">Institutions</p>
+          <ul class="footer-links">
+            <li><a href="colleges.html">Ace Your Placements</a></li>
+            <li><a href="schools.html">Hackathons by IndiSight</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-col-title">Contact</p>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>jayati@aquilalearning.in</div>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.44 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17z"/></svg>+91 83746 93274</div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2026 Aquila — an ARJV initiative. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
