@@ -1,0 +1,2009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aquila — Powering India's Workforce for Tomorrow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:      #386982;
+      --purple:    #9B5CB8;
+      --violet:    #7B45E6;
+      --ivory:     #F8F5EC;
+      --space:     #243449;
+      --lavender:  #EFE7FF;
+      --slate:     #6B7280;
+      --white:     #FFFFFF;
+      --teal-light:#EBF3F7;
+      --gradient-hero: linear-gradient(135deg, #EBF3F7 0%, #F3EDFF 50%, #F8F5EC 100%);
+      --gradient-cta:  linear-gradient(135deg, #386982 0%, #9B5CB8 60%, #7B45E6 100%);
+      --gradient-card: linear-gradient(135deg, rgba(56,105,130,0.08) 0%, rgba(123,69,230,0.06) 100%);
+      --shadow-sm:  0 2px 8px rgba(36,52,73,0.08);
+      --shadow-md:  0 8px 32px rgba(36,52,73,0.12);
+      --shadow-lg:  0 20px 60px rgba(36,52,73,0.16);
+      --radius-sm:  12px;
+      --radius-md:  20px;
+      --radius-lg:  28px;
+      --font-head:  'Playfair Display', Georgia, serif;
+      --font-body:  'Public Sans', system-ui, sans-serif;
+      --nav-h:      72px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--ivory);
+      color: var(--space);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+    /* ── Utility ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--violet);
+    }
+    .section-heading {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--space);
+      line-height: 1.2;
+    }
+    .section-subheading {
+      font-size: 1.05rem;
+      color: var(--slate);
+      line-height: 1.7;
+      max-width: 600px;
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      border-radius: 50px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--violet);
+      color: var(--white);
+      box-shadow: 0 4px 20px rgba(123,69,230,0.35);
+    }
+    .btn-primary:hover {
+      background: #6a37d4;
+      box-shadow: 0 6px 28px rgba(123,69,230,0.5);
+      transform: translateY(-1px);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--space);
+      border: 2px solid rgba(36,52,73,0.25);
+    }
+    .btn-outline:hover {
+      border-color: var(--violet);
+      color: var(--violet);
+      transform: translateY(-1px);
+    }
+    .btn-outline-white {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.4);
+    }
+    .btn-outline-white:hover {
+      border-color: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-1px);
+    }
+    .btn-sm { padding: 9px 20px; font-size: 0.82rem; }
+
+    /* ── Fade-in animation ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in.delay-1 { transition-delay: 0.1s; }
+    .fade-in.delay-2 { transition-delay: 0.2s; }
+    .fade-in.delay-3 { transition-delay: 0.3s; }
+    .fade-in.delay-4 { transition-delay: 0.4s; }
+
+    /* ════════════════════════════
+       NAV
+    ════════════════════════════ */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: rgba(248,245,236,0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(56,105,130,0.1);
+      transition: box-shadow 0.3s ease;
+    }
+    .nav.scrolled { box-shadow: var(--shadow-sm); }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .nav-logo {
+      font-family: var(--font-head);
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--space);
+      letter-spacing: -0.01em;
+      flex-shrink: 0;
+    }
+    .nav-logo span { color: var(--teal); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--slate);
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+    .nav-links a:hover { color: var(--space); background: rgba(56,105,130,0.07); }
+    .nav-cta { flex-shrink: 0; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 8px;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .hamburger:hover { background: rgba(56,105,130,0.08); }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--space);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0;
+      right: 0;
+      background: var(--ivory);
+      border-bottom: 1px solid rgba(56,105,130,0.12);
+      padding: 16px 24px 24px;
+      z-index: 99;
+      box-shadow: var(--shadow-md);
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 4px; margin-bottom: 16px; }
+    .mobile-menu ul a { display: block; padding: 10px 12px; border-radius: 8px; font-weight: 500; color: var(--space); transition: background 0.2s; }
+    .mobile-menu ul a:hover { background: var(--teal-light); }
+
+    /* ════════════════════════════
+       HERO
+    ════════════════════════════ */
+    .hero {
+      min-height: calc(100dvh - var(--nav-h));
+      background: var(--gradient-hero);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding: 80px 0;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(123,69,230,0.1) 0%, transparent 70%);
+      top: -200px;
+      right: -100px;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(56,105,130,0.12) 0%, transparent 70%);
+      bottom: -100px;
+      left: -100px;
+      pointer-events: none;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(123,69,230,0.1);
+      border: 1px solid rgba(123,69,230,0.2);
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--violet);
+      letter-spacing: 0.06em;
+      margin-bottom: 24px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--violet);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
+    .hero-headline {
+      font-family: var(--font-head);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--space);
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+    .hero-headline em {
+      font-style: italic;
+      color: var(--teal);
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--slate);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 480px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+    .hero-visual {
+      position: relative;
+      min-height: 460px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-constellation {
+      position: relative;
+      width: 100%;
+      max-width: 540px;
+      aspect-ratio: 1;
+    }
+    .hero-constellation::after {
+      /* soft radial backdrop behind the network */
+      content: '';
+      position: absolute;
+      inset: 8%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(123,69,230,0.1) 0%, rgba(56,105,130,0.06) 45%, transparent 72%);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero-constellation canvas {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: crosshair;
+    }
+
+    /* ════════════════════════════
+       IMPACT METRICS
+    ════════════════════════════ */
+    .metrics {
+      background: var(--white);
+      padding: 56px 0;
+      border-top: 1px solid rgba(56,105,130,0.08);
+      border-bottom: 1px solid rgba(56,105,130,0.08);
+    }
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 2px;
+    }
+    .metric-card {
+      padding: 28px 20px;
+      text-align: center;
+      border-right: 1px solid rgba(56,105,130,0.1);
+      transition: background 0.2s ease;
+    }
+    .metric-card:last-child { border-right: none; }
+    .metric-card:hover { background: var(--teal-light); }
+    .metric-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, rgba(56,105,130,0.1), rgba(123,69,230,0.1));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+    }
+    .metric-icon svg { width: 20px; height: 20px; color: var(--teal); }
+    .metric-number {
+      font-family: var(--font-head);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--space);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .metric-label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--slate);
+      letter-spacing: 0.02em;
+    }
+
+    /* ════════════════════════════
+       SECTION SHARED
+    ════════════════════════════ */
+    section { padding: 96px 0; }
+    /* Offset anchored sections so the sticky nav doesn't cover headings */
+    section[id], [id].metrics { scroll-margin-top: calc(var(--nav-h) + 20px); }
+    .section-header { margin-bottom: 56px; }
+    .section-header .section-label { margin-bottom: 12px; }
+    .section-header .section-heading { margin-bottom: 16px; }
+
+    /* ════════════════════════════
+       THREE PILLARS
+    ════════════════════════════ */
+    .pillars { background: var(--ivory); }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .pillar-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .pillar-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+    .pillar-visual {
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pillar-card:nth-child(1) .pillar-visual {
+      background: linear-gradient(135deg, #243449 0%, #386982 100%);
+    }
+    .pillar-card:nth-child(2) .pillar-visual {
+      background: linear-gradient(135deg, #2d1b4e 0%, #9B5CB8 100%);
+    }
+    .pillar-card:nth-child(3) .pillar-visual {
+      background: linear-gradient(135deg, #1a3a4a 0%, #3ab38a 100%);
+    }
+    .pillar-visual-icon {
+      width: 72px;
+      height: 72px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(8px);
+    }
+    .pillar-visual-icon svg { width: 36px; height: 36px; color: rgba(255,255,255,0.9); }
+    .pillar-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50px;
+      padding: 4px 12px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: white;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .pillar-body { padding: 28px 28px 32px; display: flex; flex-direction: column; flex: 1; }
+    .pillar-title {
+      font-family: var(--font-head);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--space);
+      margin-bottom: 8px;
+    }
+    .pillar-subtitle {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--teal);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+    .pillar-desc { font-size: 0.88rem; color: var(--slate); line-height: 1.65; margin-bottom: 20px; }
+    .pillar-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+      margin-top: auto;
+    }
+    .tag {
+      background: var(--lavender);
+      color: var(--violet);
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .tag:hover { background: var(--violet); color: white; }
+
+    /* ════════════════════════════
+       CAPABILITY AREAS
+    ════════════════════════════ */
+    .capabilities { background: var(--white); }
+    .capabilities-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .cap-card {
+      background: var(--ivory);
+      border-radius: var(--radius-md);
+      padding: 32px 28px;
+      border: 1px solid transparent;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .cap-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-card);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: inherit;
+    }
+    .cap-card:hover { transform: translateY(-6px); border-color: rgba(123,69,230,0.15); box-shadow: var(--shadow-md); }
+    .cap-card:hover::before { opacity: 1; }
+    .cap-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .cap-icon svg { width: 26px; height: 26px; }
+    .cap-card:nth-child(1) .cap-icon { background: linear-gradient(135deg, #e0f0f7, #c8e4ef); color: var(--teal); }
+    .cap-card:nth-child(2) .cap-icon { background: linear-gradient(135deg, #f0e8f7, #e2cff0); color: var(--purple); }
+    .cap-card:nth-child(3) .cap-icon { background: linear-gradient(135deg, #ede4ff, #ddd0fb); color: var(--violet); }
+    .cap-card:nth-child(4) .cap-icon { background: linear-gradient(135deg, #fff3e0, #ffe5b4); color: #e07800; }
+    .cap-card:nth-child(5) .cap-icon { background: linear-gradient(135deg, #e8f7f0, #c8eedd); color: #2a9d72; }
+    .cap-card:nth-child(6) .cap-icon { background: linear-gradient(135deg, #fce8f0, #f8c8dd); color: #c2466e; }
+    .cap-title {
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--space);
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+    .cap-desc { font-size: 0.85rem; color: var(--slate); line-height: 1.6; position: relative; z-index: 1; }
+
+    /* ════════════════════════════
+       FEATURED PROGRAMS
+    ════════════════════════════ */
+    .programs { background: var(--ivory); }
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .program-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      transition: all 0.3s ease;
+    }
+    .program-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+    .program-card:last-child { grid-column: 1 / -1; max-width: 560px; }
+    .program-accent {
+      width: 6px;
+      flex-shrink: 0;
+    }
+    .program-card:nth-child(1) .program-accent { background: linear-gradient(180deg, #243449, #386982); }
+    .program-card:nth-child(2) .program-accent { background: linear-gradient(180deg, #9B5CB8, #7B45E6); }
+    .program-card:nth-child(3) .program-accent { background: linear-gradient(180deg, #386982, #7B45E6); }
+    .program-card:nth-child(4) .program-accent { background: linear-gradient(180deg, #7B45E6, #9B5CB8); }
+    .program-card:nth-child(5) .program-accent { background: linear-gradient(180deg, #2a9d72, #3ab38a); }
+    .program-content { padding: 28px 28px 28px 24px; flex: 1; }
+    .program-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--violet);
+      margin-bottom: 8px;
+    }
+    .program-title {
+      font-family: var(--font-head);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--space);
+      margin-bottom: 10px;
+    }
+    .program-desc { font-size: 0.87rem; color: var(--slate); line-height: 1.65; margin-bottom: 20px; }
+
+    /* ════════════════════════════
+       CASE STUDIES CAROUSEL
+    ════════════════════════════ */
+    .case-studies { background: var(--space); overflow: hidden; }
+    .case-studies .section-label { color: rgba(239,231,255,0.7); }
+    .case-studies .section-heading { color: var(--white); }
+    .case-studies .section-subheading { color: rgba(255,255,255,0.6); max-width: 500px; }
+    .carousel-wrapper { position: relative; }
+    .carousel-track { display: flex; gap: 28px; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
+    .case-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      min-width: calc((100% - 56px) / 3);
+      flex-shrink: 0;
+      transition: background 0.3s;
+      backdrop-filter: blur(8px);
+    }
+    .case-card:hover { background: rgba(255,255,255,0.1); }
+    .case-client-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(123,69,230,0.3);
+      border: 1px solid rgba(123,69,230,0.4);
+      padding: 5px 12px;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--lavender);
+      margin-bottom: 20px;
+      letter-spacing: 0.04em;
+    }
+    .case-problem-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 8px;
+    }
+    .case-problem {
+      font-family: var(--font-head);
+      font-size: 1rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.5;
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+    .case-impact {
+      background: rgba(123,69,230,0.15);
+      border-left: 3px solid var(--violet);
+      padding: 12px 16px;
+      border-radius: 0 10px 10px 0;
+      margin-bottom: 24px;
+    }
+    .case-impact-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--violet);
+      margin-bottom: 4px;
+    }
+    .case-impact-text { font-size: 0.85rem; color: rgba(255,255,255,0.75); line-height: 1.5; }
+    .case-cta {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--lavender);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s;
+    }
+    .case-cta:hover { gap: 10px; }
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 40px;
+    }
+    .carousel-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .carousel-btn:hover { background: rgba(123,69,230,0.4); border-color: var(--violet); }
+    .carousel-btn svg { width: 18px; height: 18px; }
+    .carousel-dots {
+      display: flex;
+      gap: 8px;
+    }
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .carousel-dot.active { background: var(--violet); width: 24px; border-radius: 4px; }
+
+    /* ════════════════════════════
+       PARTNERS
+    ════════════════════════════ */
+    .partners { background: var(--white); }
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+    }
+    .partner-card {
+      background: var(--ivory);
+      border: 1px solid rgba(56,105,130,0.1);
+      border-radius: var(--radius-md);
+      padding: 28px 16px;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .partner-card:hover {
+      border-color: var(--teal);
+      box-shadow: var(--shadow-sm);
+      transform: translateY(-4px);
+    }
+    .partner-placeholder {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(56,105,130,0.15), rgba(123,69,230,0.1));
+      margin: 0 auto 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--teal);
+      filter: grayscale(1);
+      transition: filter 0.3s;
+    }
+    .partner-card:hover .partner-placeholder { filter: grayscale(0); }
+    .partner-placeholder svg { width: 24px; height: 24px; }
+    .partner-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--slate);
+      transition: color 0.3s;
+    }
+    .partner-card:hover .partner-label { color: var(--teal); }
+
+    /* ════════════════════════════
+       FOUNDERS
+    ════════════════════════════ */
+    .founders { background: var(--ivory); }
+    .founders-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .founder-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+    .founder-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+    .founder-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #386982, #7B45E6);
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: rgba(255,255,255,0.8);
+      font-family: var(--font-head);
+    }
+    .founder-name {
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--space);
+      margin-bottom: 4px;
+    }
+    .founder-role {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--violet);
+      margin-bottom: 10px;
+      letter-spacing: 0.04em;
+    }
+    .founder-bio { font-size: 0.8rem; color: var(--slate); line-height: 1.6; margin-bottom: 14px; }
+    .founder-tag {
+      display: inline-block;
+      background: var(--lavender);
+      color: var(--violet);
+      padding: 3px 10px;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
+    /* ════════════════════════════
+       FINAL CTA
+    ════════════════════════════ */
+    .final-cta {
+      background: var(--space);
+      position: relative;
+      overflow: hidden;
+      padding: 120px 0;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(123,69,230,0.2) 0%, transparent 70%);
+      top: -200px;
+      right: -100px;
+    }
+    .final-cta::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(56,105,130,0.25) 0%, transparent 70%);
+      bottom: -100px;
+      left: -50px;
+    }
+    .final-cta-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .final-cta .section-label { color: rgba(239,231,255,0.6); margin-bottom: 16px; }
+    .final-cta-heading {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .final-cta-sub { font-size: 1rem; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 40px; }
+    .final-cta-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; }
+
+    /* ════════════════════════════
+       FOOTER
+    ════════════════════════════ */
+    .footer {
+      background: #1a2737;
+      padding: 64px 0 32px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand-logo {
+      font-family: var(--font-head);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .footer-brand-logo span { color: var(--teal); }
+    .footer-tagline {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+    .footer-social { display: flex; gap: 10px; }
+    .social-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.5);
+      transition: all 0.2s ease;
+    }
+    .social-icon:hover {
+      background: rgba(123,69,230,0.3);
+      border-color: rgba(123,69,230,0.4);
+      color: var(--lavender);
+      transform: translateY(-2px);
+    }
+    .social-icon svg { width: 16px; height: 16px; }
+    .footer-col-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 16px;
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-links a {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    .footer-contact-item svg { width: 14px; height: 14px; flex-shrink: 0; margin-top: 2px; color: var(--teal); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .footer-copyright { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 0.78rem; color: rgba(255,255,255,0.3); transition: color 0.2s; }
+    .footer-legal a:hover { color: rgba(255,255,255,0.6); }
+
+    /* ════════════════════════════
+       RESPONSIVE
+    ════════════════════════════ */
+    @media (max-width: 1024px) {
+      .pillars-grid { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
+      .capabilities-grid { grid-template-columns: repeat(2, 1fr); }
+      .founders-grid { grid-template-columns: repeat(2, 1fr); }
+      .metrics-grid { grid-template-columns: repeat(3, 1fr); }
+      .metric-card { border-right: none; border-bottom: 1px solid rgba(56,105,130,0.1); }
+      .metric-card:last-child { border-bottom: none; }
+      .partners-grid { grid-template-columns: repeat(3, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .case-card { min-width: calc((100% - 28px) / 2); }
+    }
+
+    @media (max-width: 768px) {
+      :root { --nav-h: 64px; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 48px; }
+      .hero-actions { justify-content: center; }
+      .hero-sub { margin: 0 auto 36px; }
+      .hero-visual { display: none; }
+      .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+      .capabilities-grid { grid-template-columns: 1fr; }
+      .programs-grid { grid-template-columns: 1fr; }
+      .program-card:last-child { grid-column: auto; max-width: 100%; }
+      .founders-grid { grid-template-columns: repeat(2, 1fr); }
+      .partners-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .case-card { min-width: 85vw; }
+      section { padding: 72px 0; }
+    }
+
+    @media (max-width: 480px) {
+      .metrics-grid { grid-template-columns: 1fr; }
+      .founders-grid { grid-template-columns: 1fr; }
+      .partners-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .fade-in { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════
+     NAVIGATION
+════════════════════════════════════ -->
+<nav class="nav" id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" aria-label="Aquila home">Aq<span>ui</span>la</a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="#">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#pillars">Corporates</a></li>
+      <li><a href="#pillars">Institutions</a></li>
+      <li><a href="#pillars">Social Impact</a></li>
+      <li><a href="#case-studies">Case Studies</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <a href="#pillars" class="btn btn-primary nav-cta" aria-label="Explore Aquila Programs">Explore Programs</a>
+
+    <button class="hamburger" id="hamburgerBtn" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#pillars">Corporates</a></li>
+    <li><a href="#pillars">Institutions</a></li>
+    <li><a href="#pillars">Social Impact</a></li>
+    <li><a href="#case-studies">Case Studies</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#pillars" class="btn btn-primary" style="width:100%;justify-content:center;">Explore Programs</a>
+</div>
+
+
+<!-- ═══════════════════════════════════
+     HERO
+════════════════════════════════════ -->
+<section class="hero" aria-label="Hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content fade-in">
+        <div class="hero-eyebrow">India's Capability Infrastructure Platform</div>
+        <h1 class="hero-headline">
+          Powering <em>India's</em> Workforce for Tomorrow
+        </h1>
+        <p class="hero-sub">
+          Aquila builds future-ready capability systems across corporates, institutions, and social sectors.
+        </p>
+        <div class="hero-actions">
+          <a href="#pillars" class="btn btn-primary">
+            Explore Programs
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#contact" class="btn btn-outline">Contact Us</a>
+        </div>
+      </div>
+
+      <div class="hero-visual fade-in delay-2" aria-hidden="true">
+        <div class="hero-constellation">
+          <canvas id="constellation" role="img"
+                  aria-label="Interactive network of Aquila capability areas: Corporate Capability, Employability, Women-Led Growth, Digital Literacy, and Future Skills, connected to a central Aquila node."></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     IMPACT METRICS
+════════════════════════════════════ -->
+<div class="metrics" aria-label="Impact metrics">
+  <div class="container">
+    <div class="metrics-grid">
+
+      <div class="metric-card fade-in">
+        <div class="metric-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="metric-number" data-target="100000" data-suffix="+">0</div>
+        <div class="metric-label">Learners</div>
+      </div>
+
+      <div class="metric-card fade-in delay-1">
+        <div class="metric-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <div class="metric-number" data-target="25000" data-suffix="+">0</div>
+        <div class="metric-label">Professionals</div>
+      </div>
+
+      <div class="metric-card fade-in delay-2">
+        <div class="metric-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="metric-number" data-target="75000" data-suffix="+">0</div>
+        <div class="metric-label">Livelihood Beneficiaries</div>
+      </div>
+
+      <div class="metric-card fade-in delay-3">
+        <div class="metric-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="metric-number" data-target="3000" data-suffix="+">0</div>
+        <div class="metric-label">Placements</div>
+      </div>
+
+      <div class="metric-card fade-in delay-4">
+        <div class="metric-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>
+        </div>
+        <div class="metric-number" data-target="60" data-suffix="+">0</div>
+        <div class="metric-label">Practitioners</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════
+     THREE PILLARS
+════════════════════════════════════ -->
+<section class="pillars" id="pillars" aria-labelledby="pillars-heading">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="section-label">The Aquila Model</p>
+      <h2 class="section-heading" id="pillars-heading">The Three Pillars Reshaping<br>India's Workforce</h2>
+      <p class="section-subheading" style="margin-top:12px;">
+        From enterprise capability to employability and economic participation, Aquila builds transformation where India needs it most.
+      </p>
+    </div>
+
+    <div class="pillars-grid">
+
+      <!-- Corporates -->
+      <div class="pillar-card fade-in">
+        <div class="pillar-visual">
+          <span class="pillar-badge">Corporates</span>
+          <div class="pillar-visual-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+            </svg>
+          </div>
+        </div>
+        <div class="pillar-body">
+          <h3 class="pillar-title">Corporates</h3>
+          <p class="pillar-subtitle">Technical Excellence + Leadership Capability</p>
+          <p class="pillar-desc">Equipping modern workforces with the technical depth and leadership strength today's business environments demand. From cybersecurity and GenAI to first-line leadership, Aquila builds people capability that strengthens execution, resilience, and business performance.</p>
+          <div class="pillar-tags">
+            <span class="tag">First Chair</span>
+            <span class="tag">Technical Training</span>
+            <span class="tag">Cybersecurity</span>
+            <span class="tag">GenAI</span>
+          </div>
+          <a href="#programs" class="btn btn-primary btn-sm">Explore Corporate Programs</a>
+        </div>
+      </div>
+
+      <!-- Institutions -->
+      <div class="pillar-card fade-in delay-1">
+        <div class="pillar-visual">
+          <span class="pillar-badge">Institutions</span>
+          <div class="pillar-visual-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
+            </svg>
+          </div>
+        </div>
+        <div class="pillar-body">
+          <h3 class="pillar-title">Institutions</h3>
+          <p class="pillar-subtitle">Industry-Ready Students + Future-Ready Schools</p>
+          <p class="pillar-desc">Turning campuses and schools into launchpads for future-ready talent. Aquila helps institutions create stronger placement success and students built for modern careers.</p>
+          <div class="pillar-tags">
+            <span class="tag">Ace Your Placements</span>
+            <span class="tag">Hackathons by Indisight</span>
+            <span class="tag">Future Skills</span>
+            <span class="tag">Career Readiness</span>
+          </div>
+          <a href="#programs" class="btn btn-primary btn-sm">Explore Institution Programs</a>
+        </div>
+      </div>
+
+      <!-- Social Impact -->
+      <div class="pillar-card fade-in delay-2">
+        <div class="pillar-visual">
+          <span class="pillar-badge">Social Impact</span>
+          <div class="pillar-visual-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+        </div>
+        <div class="pillar-body">
+          <h3 class="pillar-title">Social Impact</h3>
+          <p class="pillar-subtitle">Women-Led Growth + Sustainable Livelihoods</p>
+          <p class="pillar-desc">Creating pathways from local capability to economic independence. Aquila helps communities strengthen livelihood opportunities while enabling women-led participation, entrepreneurship, and long-term income generation.</p>
+          <div class="pillar-tags">
+            <span class="tag">Livelihood</span>
+            <span class="tag">Digital Literacy</span>
+            <span class="tag">Hire Train Deploy</span>
+            <span class="tag">Butterfly Project</span>
+          </div>
+          <a href="#programs" class="btn btn-primary btn-sm">Explore Social Impact Work</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     CAPABILITY AREAS
+════════════════════════════════════ -->
+<section class="capabilities" id="about" aria-labelledby="cap-heading">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="section-label">What We Build</p>
+      <h2 class="section-heading" id="cap-heading">Capability Areas Built for<br>India's Next Growth Cycle</h2>
+      <p class="section-subheading" style="margin-top:12px;">
+        Aquila designs practical, high-impact learning and transformation systems across technical, leadership, employability, and livelihood domains.
+      </p>
+    </div>
+
+    <div class="capabilities-grid">
+
+      <div class="cap-card fade-in">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h3 class="cap-title">Cybersecurity</h3>
+        <p class="cap-desc">Building security-first capability for an increasingly complex digital world.</p>
+      </div>
+
+      <div class="cap-card fade-in delay-1">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/>
+          </svg>
+        </div>
+        <h3 class="cap-title">Leadership</h3>
+        <p class="cap-desc">Building first-line leaders for high-stakes environments.</p>
+      </div>
+
+      <div class="cap-card fade-in delay-2">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+        </div>
+        <h3 class="cap-title">GenAI</h3>
+        <p class="cap-desc">Turning AI disruption into competitive advantage.</p>
+      </div>
+
+      <div class="cap-card fade-in delay-3">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          </svg>
+        </div>
+        <h3 class="cap-title">Ace Your Placements</h3>
+        <p class="cap-desc">Building placement-ready talent that gets hired first.</p>
+      </div>
+
+      <div class="cap-card fade-in">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+          </svg>
+        </div>
+        <h3 class="cap-title">Entrepreneurship</h3>
+        <p class="cap-desc">Creating entrepreneurs for evolving economies.</p>
+      </div>
+
+      <div class="cap-card fade-in delay-1">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <h3 class="cap-title">Livelihood Systems</h3>
+        <p class="cap-desc">Livelihood systems designed for real income generation.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     FEATURED PROGRAMS
+════════════════════════════════════ -->
+<section class="programs" id="programs" aria-labelledby="programs-heading">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="section-label">Flagship Interventions</p>
+      <h2 class="section-heading" id="programs-heading">Featured Programs</h2>
+      <p class="section-subheading" style="margin-top:12px;">
+        Flagship interventions designed to move people, institutions, and communities from potential to performance.
+      </p>
+    </div>
+
+    <div class="programs-grid">
+
+      <div class="program-card fade-in">
+        <div class="program-accent"></div>
+        <div class="program-content">
+          <p class="program-eyebrow">Corporate Leadership</p>
+          <h3 class="program-title">First Chair</h3>
+          <p class="program-desc">The making of high-performance first-line leaders who move organizations forward. A structured capability-building journey for managers stepping into leadership.</p>
+          <a href="#" class="btn btn-outline btn-sm">Download Brochure</a>
+        </div>
+      </div>
+
+      <div class="program-card fade-in delay-1">
+        <div class="program-accent"></div>
+        <div class="program-content">
+          <p class="program-eyebrow">Campus Employability</p>
+          <h3 class="program-title">Ace Your Placements</h3>
+          <p class="program-desc">A placement program that turns students into top-choice candidates. Structured for colleges that want better placement outcomes and industry-ready graduates.</p>
+          <a href="#" class="btn btn-outline btn-sm">View Program</a>
+        </div>
+      </div>
+
+      <div class="program-card fade-in delay-2">
+        <div class="program-accent"></div>
+        <div class="program-content">
+          <p class="program-eyebrow">Technical Capability</p>
+          <h3 class="program-title">Cybersecurity Bootcamps</h3>
+          <p class="program-desc">Immersive cybersecurity bootcamps designed to protect systems organizations depend on every day. Hands-on, practitioner-led, and outcome-focused.</p>
+          <a href="#" class="btn btn-outline btn-sm">Explore Bootcamps</a>
+        </div>
+      </div>
+
+      <div class="program-card fade-in delay-3">
+        <div class="program-accent"></div>
+        <div class="program-content">
+          <p class="program-eyebrow">Student Innovation</p>
+          <h3 class="program-title">Indisight Hackathons</h3>
+          <p class="program-desc">Hackathons designed to push students beyond theory into real-world innovation. Competitions for schools and colleges that develop problem-solving instinct.</p>
+          <a href="#" class="btn btn-outline btn-sm">Explore Hackathons</a>
+        </div>
+      </div>
+
+      <div class="program-card fade-in">
+        <div class="program-accent"></div>
+        <div class="program-content">
+          <p class="program-eyebrow">Social Impact</p>
+          <h3 class="program-title">Butterfly Project</h3>
+          <p class="program-desc">An initiative helping women-led ventures transform local capability into economic movement. From digital literacy to entrepreneurship readiness for communities.</p>
+          <a href="#" class="btn btn-outline btn-sm">Explore Impact</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     CASE STUDIES
+════════════════════════════════════ -->
+<section class="case-studies" id="case-studies" aria-labelledby="cs-heading">
+  <div class="container">
+    <div class="section-header fade-in" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;">
+      <div>
+        <p class="section-label">Client Impact</p>
+        <h2 class="section-heading" id="cs-heading">Transformation in Action</h2>
+        <p class="section-subheading" style="margin-top:12px;">
+          Stories of capability-building across enterprises, campuses, and communities.
+        </p>
+      </div>
+    </div>
+
+    <div class="carousel-wrapper">
+      <div class="carousel-track" id="carouselTrack" role="list">
+
+        <div class="case-card" role="listitem">
+          <div class="case-client-tag">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            Corporate Capability Partner
+          </div>
+          <p class="case-problem-label">The Challenge</p>
+          <p class="case-problem">"Needed stronger first-line leadership and technical readiness across distributed teams."</p>
+          <div class="case-impact">
+            <p class="case-impact-label">Impact</p>
+            <p class="case-impact-text">Improved execution capability across critical workforce layers — measurable improvement in team performance and decision-making confidence.</p>
+          </div>
+          <a href="#" class="case-cta">
+            Read Case Study
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <div class="case-card" role="listitem">
+          <div class="case-client-tag">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            University Employability Partner
+          </div>
+          <p class="case-problem-label">The Challenge</p>
+          <p class="case-problem">"Students needed stronger placement readiness and industry-facing confidence."</p>
+          <div class="case-impact">
+            <p class="case-impact-label">Impact</p>
+            <p class="case-impact-text">Higher placement preparedness and stronger candidate conversion — campus became a top recruiter destination within one academic year.</p>
+          </div>
+          <a href="#" class="case-cta">
+            Read Case Study
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <div class="case-card" role="listitem">
+          <div class="case-client-tag">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Livelihood Ecosystem Partner
+          </div>
+          <p class="case-problem-label">The Challenge</p>
+          <p class="case-problem">"Women-led community ventures needed capability, confidence, and income pathways."</p>
+          <div class="case-impact">
+            <p class="case-impact-label">Impact</p>
+            <p class="case-impact-text">Expanded livelihood participation and local enterprise readiness — participants transitioned from passive beneficiaries to active income earners.</p>
+          </div>
+          <a href="#" class="case-cta">
+            Read Case Study
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="prevBtn" aria-label="Previous case study">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </button>
+        <div class="carousel-dots" id="carouselDots" role="tablist" aria-label="Case study navigation">
+          <button class="carousel-dot active" data-index="0" role="tab" aria-selected="true" aria-label="Case study 1"></button>
+          <button class="carousel-dot" data-index="1" role="tab" aria-selected="false" aria-label="Case study 2"></button>
+          <button class="carousel-dot" data-index="2" role="tab" aria-selected="false" aria-label="Case study 3"></button>
+        </div>
+        <button class="carousel-btn" id="nextBtn" aria-label="Next case study">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     PARTNERS
+════════════════════════════════════ -->
+<section class="partners" aria-labelledby="partners-heading">
+  <div class="container">
+    <div class="section-header fade-in" style="text-align:center;">
+      <p class="section-label">Ecosystem</p>
+      <h2 class="section-heading" id="partners-heading">Built With an Ecosystem of Partners</h2>
+      <p class="section-subheading" style="margin-top:12px;margin-left:auto;margin-right:auto;text-align:center;">
+        Aquila collaborates across universities, NGOs, corporates, practitioners, and government-linked ecosystems to build scalable capability infrastructure.
+      </p>
+    </div>
+
+    <div class="partners-grid fade-in">
+
+      <div class="partner-card">
+        <div class="partner-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <p class="partner-label">Universities</p>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <p class="partner-label">NGOs</p>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <p class="partner-label">Corporates</p>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        </div>
+        <p class="partner-label">Government Ecosystem</p>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>
+        </div>
+        <p class="partner-label">Practitioners</p>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="partner-label">Founders &amp; Experts</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     FOUNDERS & EXPERTS
+════════════════════════════════════ -->
+<section class="founders" aria-labelledby="founders-heading">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="section-label">Our People</p>
+      <h2 class="section-heading" id="founders-heading">Led by Practitioners.<br>Built for Real-World Outcomes.</h2>
+      <p class="section-subheading" style="margin-top:12px;">
+        Aquila brings together founders, experts, trainers, and practitioners who understand what modern organizations, students, and communities need to succeed.
+      </p>
+    </div>
+
+    <div class="founders-grid">
+
+      <div class="founder-card fade-in">
+        <div class="founder-avatar" style="background:linear-gradient(135deg,#243449,#386982);" aria-hidden="true">F</div>
+        <h3 class="founder-name">Founder Name</h3>
+        <p class="founder-role">Co-Founder &amp; CEO</p>
+        <p class="founder-bio">Seasoned practitioner with deep experience in workforce transformation, capability architecture, and scaling learning ecosystems across India.</p>
+        <span class="founder-tag">Strategy &amp; Vision</span>
+      </div>
+
+      <div class="founder-card fade-in delay-1">
+        <div class="founder-avatar" style="background:linear-gradient(135deg,#2d1b4e,#9B5CB8);" aria-hidden="true">L</div>
+        <h3 class="founder-name">Leadership Expert</h3>
+        <p class="founder-role">Head of Corporate Learning</p>
+        <p class="founder-bio">Former corporate L&amp;D leader who has built leadership programs for Fortune 500 companies and high-growth Indian enterprises.</p>
+        <span class="founder-tag">Leadership Development</span>
+      </div>
+
+      <div class="founder-card fade-in delay-2">
+        <div class="founder-avatar" style="background:linear-gradient(135deg,#386982,#7B45E6);" aria-hidden="true">C</div>
+        <h3 class="founder-name">Cybersecurity Practitioner</h3>
+        <p class="founder-role">Head of Technical Programs</p>
+        <p class="founder-bio">Practitioner with 15+ years in cybersecurity and digital infrastructure who translates real-world threat environments into actionable training.</p>
+        <span class="founder-tag">Cybersecurity &amp; GenAI</span>
+      </div>
+
+      <div class="founder-card fade-in delay-3">
+        <div class="founder-avatar" style="background:linear-gradient(135deg,#1a3a4a,#2a9d72);" aria-hidden="true">I</div>
+        <h3 class="founder-name">Livelihood Program Lead</h3>
+        <p class="founder-role">Head of Social Impact</p>
+        <p class="founder-bio">Social entrepreneur driving community-led capability programs across rural and peri-urban India, with a focus on women-led economic participation.</p>
+        <span class="founder-tag">Livelihood &amp; Impact</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     FINAL CTA
+════════════════════════════════════ -->
+<section class="final-cta" id="contact" aria-labelledby="cta-heading">
+  <div class="container">
+    <div class="final-cta-inner fade-in">
+      <p class="section-label">Work With Aquila</p>
+      <h2 class="final-cta-heading" id="cta-heading">
+        Let's Build Future-Ready<br>Capability Together.
+      </h2>
+      <p class="final-cta-sub">
+        Whether you are an enterprise, institution, impact organization, or ecosystem partner, Aquila can help build the capability systems your people need for the future.
+      </p>
+      <div class="final-cta-actions">
+        <a href="mailto:hello@aquilaindia.com" class="btn btn-primary">
+          Contact Us
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+        <a href="#pillars" class="btn btn-outline-white">Explore Programs</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     FOOTER
+════════════════════════════════════ -->
+<footer class="footer" aria-label="Site footer">
+  <div class="container">
+    <div class="footer-top">
+
+      <div class="footer-brand">
+        <div class="footer-brand-logo">Aq<span>ui</span>la</div>
+        <p class="footer-tagline">Powering India's Workforce for Tomorrow</p>
+        <div class="footer-social" aria-label="Social media links">
+          <!-- LinkedIn -->
+          <a href="#" class="social-icon" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <!-- Twitter/X -->
+          <a href="#" class="social-icon" aria-label="Twitter">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <!-- Instagram -->
+          <a href="#" class="social-icon" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="footer-col-title">Programs</h3>
+        <ul class="footer-links">
+          <li><a href="#">First Chair</a></li>
+          <li><a href="#">Technical Training</a></li>
+          <li><a href="#">Ace Your Placements</a></li>
+          <li><a href="#">Hackathons by Indisight</a></li>
+          <li><a href="#">Livelihood Systems</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="footer-col-title">Ecosystems</h3>
+        <ul class="footer-links">
+          <li><a href="#pillars">Corporates</a></li>
+          <li><a href="#pillars">Institutions</a></li>
+          <li><a href="#pillars">Social Impact</a></li>
+          <li><a href="#case-studies">Case Studies</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="footer-col-title">Contact</h3>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          hello@aquilaindia.com
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+          +91 XXXXX XXXXX
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          India
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">&copy; 2026 Aquila. All rights reserved.</p>
+      <nav class="footer-legal" aria-label="Legal links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  // ── Nav scroll effect ──
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  // ── Mobile hamburger ──
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburgerBtn.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburgerBtn.classList.toggle('open', isOpen);
+    hamburgerBtn.setAttribute('aria-expanded', isOpen);
+    mobileMenu.setAttribute('aria-hidden', !isOpen);
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburgerBtn.classList.remove('open');
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+    });
+  });
+
+  // ── Fade-in on scroll ──
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  fadeEls.forEach(el => fadeObserver.observe(el));
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const inr = new Intl.NumberFormat('en-IN');
+
+  // ── Number counter ──
+  const counterEls = document.querySelectorAll('[data-target]');
+  let countersStarted = false;
+  const counterObserver = new IntersectionObserver((entries) => {
+    if (entries.some(e => e.isIntersecting) && !countersStarted) {
+      countersStarted = true;
+      counterEls.forEach(el => {
+        const target = parseInt(el.dataset.target, 10);
+        const suffix = el.dataset.suffix || '';
+        if (reduceMotion) { el.textContent = inr.format(target) + suffix; return; }
+        const dur = 1800;
+        const start = performance.now();
+        (function step(now) {
+          const p = Math.min((now - start) / dur, 1);
+          const ease = 1 - Math.pow(1 - p, 3);
+          el.textContent = inr.format(Math.round(ease * target)) + suffix;
+          if (p < 1) requestAnimationFrame(step);
+        })(performance.now());
+      });
+    }
+  }, { threshold: 0.5 });
+  if (counterEls.length) counterObserver.observe(counterEls[0].closest('.metrics'));
+
+  // ── Carousel (page-aware: never scrolls past the last card) ──
+  const track = document.getElementById('carouselTrack');
+  const dots  = Array.from(document.querySelectorAll('.carousel-dot'));
+  const total = track.children.length;
+  let current = 0;
+  let autoSlide = null;
+
+  function perView() {
+    if (window.innerWidth <= 768) return 1;
+    if (window.innerWidth <= 1024) return 2;
+    return 3;
+  }
+  function pageCount() { return Math.max(1, total - perView() + 1); }
+  function slideWidth() {
+    const card = track.children[0];
+    if (!card) return 0;
+    const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 28;
+    return card.offsetWidth + gap;
+  }
+
+  function render() {
+    const pages = pageCount();
+    if (current > pages - 1) current = pages - 1;
+    track.style.transform = `translateX(-${current * slideWidth()}px)`;
+    dots.forEach((d, i) => {
+      const used = i < pages;
+      d.style.display = used ? '' : 'none';
+      d.classList.toggle('active', i === current);
+      d.setAttribute('aria-selected', String(i === current));
+    });
+    // Hide controls entirely when everything fits on one page
+    document.querySelector('.carousel-controls').style.visibility = pages > 1 ? 'visible' : 'hidden';
+  }
+  function goTo(idx) {
+    const pages = pageCount();
+    current = (idx + pages) % pages;
+    render();
+  }
+
+  document.getElementById('nextBtn').addEventListener('click', () => { goTo(current + 1); restartAuto(); });
+  document.getElementById('prevBtn').addEventListener('click', () => { goTo(current - 1); restartAuto(); });
+  dots.forEach(d => d.addEventListener('click', () => { goTo(parseInt(d.dataset.index, 10)); restartAuto(); }));
+
+  function startAuto() {
+    if (reduceMotion || pageCount() <= 1) return;
+    autoSlide = setInterval(() => goTo(current + 1), 5000);
+  }
+  function stopAuto() { clearInterval(autoSlide); autoSlide = null; }
+  function restartAuto() { stopAuto(); startAuto(); }
+
+  track.addEventListener('mouseenter', stopAuto);
+  track.addEventListener('mouseleave', startAuto);
+
+  let resizeRaf;
+  window.addEventListener('resize', () => {
+    cancelAnimationFrame(resizeRaf);
+    resizeRaf = requestAnimationFrame(render);
+  }, { passive: true });
+
+  render();
+  startAuto();
+
+  // ── Mobile menu: close on Escape / outside click ──
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+      mobileMenu.classList.remove('open');
+      hamburgerBtn.classList.remove('open');
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+      hamburgerBtn.focus();
+    }
+  });
+  document.addEventListener('click', (e) => {
+    if (mobileMenu.classList.contains('open') &&
+        !mobileMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+      mobileMenu.classList.remove('open');
+      hamburgerBtn.classList.remove('open');
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+    }
+  });
+
+  // ── Hero constellation (interactive capability network) ──
+  (function () {
+    const canvas = document.getElementById('constellation');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const wrap = canvas.parentElement;
+    const C = { teal: '#386982', purple: '#9B5CB8', violet: '#7B45E6', space: '#243449', green: '#2A9D72' };
+
+    const themes = [
+      { label: 'Corporate Capability', color: C.teal },
+      { label: 'Employability',        color: C.violet },
+      { label: 'Women-Led Growth',     color: C.purple },
+      { label: 'Digital Literacy',     color: C.green },
+      { label: 'Future Skills',        color: C.teal },
+    ];
+
+    let W = 0, H = 0, dpr = 1, raf = null;
+    let nodes = [];
+    const mouse = { x: -9999, y: -9999, active: false };
+
+    function hexA(hex, a) {
+      const n = parseInt(hex.slice(1), 16);
+      return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${a})`;
+    }
+    function roundRect(c, x, y, w, h, r) {
+      c.beginPath();
+      c.moveTo(x + r, y);
+      c.arcTo(x + w, y, x + w, y + h, r);
+      c.arcTo(x + w, y + h, x, y + h, r);
+      c.arcTo(x, y + h, x, y, r);
+      c.arcTo(x, y, x + w, y, r);
+      c.closePath();
+    }
+
+    function build() {
+      nodes = [];
+      nodes.push({ core: true, x: 0.5, y: 0.5, vx: 0, vy: 0, r: 9, label: 'Aquila', color: C.violet });
+      const N = themes.length;
+      themes.forEach((t, i) => {
+        const a = (i / N) * Math.PI * 2 - Math.PI / 2;
+        nodes.push({
+          theme: true, label: t.label, color: t.color, r: 6,
+          x: 0.5 + Math.cos(a) * 0.34, y: 0.5 + Math.sin(a) * 0.34,
+          vx: (Math.random() - 0.5) * 0.0006, vy: (Math.random() - 0.5) * 0.0006,
+        });
+      });
+      for (let i = 0; i < 11; i++) {
+        nodes.push({
+          x: Math.random(), y: Math.random(), r: 1.8 + Math.random() * 2.2,
+          vx: (Math.random() - 0.5) * 0.0009, vy: (Math.random() - 0.5) * 0.0009,
+          color: i % 2 ? C.teal : C.purple,
+        });
+      }
+    }
+
+    function resize() {
+      const rect = wrap.getBoundingClientRect();
+      W = rect.width; H = rect.height;
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.max(1, W * dpr);
+      canvas.height = Math.max(1, H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    const P = n => ({ x: n.x * W, y: n.y * H });
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      if (W === 0) return;
+      const core = P(nodes[0]);
+
+      // structural lines: core -> theme nodes
+      nodes.forEach(n => {
+        if (!n.theme) return;
+        const p = P(n);
+        const g = ctx.createLinearGradient(core.x, core.y, p.x, p.y);
+        g.addColorStop(0, 'rgba(123,69,230,0.4)');
+        g.addColorStop(1, hexA(n.color, 0.22));
+        ctx.strokeStyle = g; ctx.lineWidth = 1.3;
+        ctx.beginPath(); ctx.moveTo(core.x, core.y); ctx.lineTo(p.x, p.y); ctx.stroke();
+      });
+
+      // proximity lines, brightened near cursor
+      const maxL = W * 0.30, maxM = W * 0.24;
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const a = P(nodes[i]), b = P(nodes[j]);
+          const dist = Math.hypot(a.x - b.x, a.y - b.y);
+          if (dist >= maxL) continue;
+          let alpha = (1 - dist / maxL) * 0.16;
+          if (mouse.active) {
+            const md = Math.hypot((a.x + b.x) / 2 - mouse.x, (a.y + b.y) / 2 - mouse.y);
+            if (md < maxM) alpha += (1 - md / maxM) * 0.45;
+          }
+          ctx.strokeStyle = `rgba(56,105,130,${alpha})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        }
+      }
+
+      // nodes + labels
+      ctx.textBaseline = 'middle';
+      nodes.forEach(n => {
+        const p = P(n);
+        let glow = 0;
+        if (mouse.active) {
+          const md = Math.hypot(p.x - mouse.x, p.y - mouse.y);
+          const gr = W * 0.18;
+          if (md < gr) glow = 1 - md / gr;
+        }
+        if (n.core) {
+          const rg = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, n.r * 3.4);
+          rg.addColorStop(0, 'rgba(123,69,230,0.85)');
+          rg.addColorStop(1, 'rgba(123,69,230,0)');
+          ctx.fillStyle = rg;
+          ctx.beginPath(); ctx.arc(p.x, p.y, n.r * 3.4, 0, Math.PI * 2); ctx.fill();
+        }
+        ctx.fillStyle = hexA(n.color, 0.16 + glow * 0.4);
+        ctx.beginPath(); ctx.arc(p.x, p.y, n.r + 5 + glow * 6, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = n.color;
+        ctx.beginPath(); ctx.arc(p.x, p.y, n.r, 0, Math.PI * 2); ctx.fill();
+
+        if (n.label) {
+          const fs = n.core ? 13 : 11;
+          ctx.font = `600 ${fs}px 'Public Sans', system-ui, sans-serif`;
+          const tw = ctx.measureText(n.label).width;
+          const padX = 9, lh = fs + 10;
+          let lx = p.x + n.r + 8;
+          if (lx + tw + padX * 2 > W) lx = p.x - n.r - 8 - (tw + padX * 2);
+          roundRect(ctx, lx, p.y - lh / 2, tw + padX * 2, lh, lh / 2);
+          ctx.fillStyle = n.core ? 'rgba(36,52,73,0.96)' : 'rgba(255,255,255,0.94)';
+          ctx.fill();
+          ctx.fillStyle = n.core ? '#fff' : C.space;
+          ctx.fillText(n.label, lx + padX, p.y + 0.5);
+        }
+      });
+    }
+
+    function step() {
+      nodes.forEach(n => {
+        if (n.core) return;
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < 0.06 || n.x > 0.94) n.vx *= -1;
+        if (n.y < 0.06 || n.y > 0.94) n.vy *= -1;
+        n.x = Math.max(0.04, Math.min(0.96, n.x));
+        n.y = Math.max(0.04, Math.min(0.96, n.y));
+        if (mouse.active) {
+          const p = P(n);
+          const dx = mouse.x - p.x, dy = mouse.y - p.y, d = Math.hypot(dx, dy);
+          if (d > 1 && d < W * 0.26) { n.x += (dx / d) * 0.0013; n.y += (dy / d) * 0.0013; }
+        }
+      });
+      draw();
+      raf = requestAnimationFrame(step);
+    }
+    function start() { if (!raf && W > 0) raf = requestAnimationFrame(step); }
+    function stop() { if (raf) { cancelAnimationFrame(raf); raf = null; } }
+
+    canvas.addEventListener('pointermove', (e) => {
+      const r = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; mouse.active = true;
+    });
+    canvas.addEventListener('pointerleave', () => { mouse.active = false; mouse.x = mouse.y = -9999; });
+
+    build();
+    resize();
+    draw();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { resize(); draw(); });
+
+    if (!reduceMotion) {
+      new IntersectionObserver((ents) => {
+        ents.forEach(en => en.isIntersecting ? start() : stop());
+      }, { threshold: 0.05 }).observe(canvas);
+    }
+
+    let rRaf;
+    window.addEventListener('resize', () => {
+      cancelAnimationFrame(rRaf);
+      rRaf = requestAnimationFrame(() => {
+        resize();
+        if (reduceMotion) draw(); else start();
+      });
+    }, { passive: true });
+  })();
+</script>
+
+</body>
+</html>
