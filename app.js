@@ -84,7 +84,7 @@
     } else { run(); }
   }
 
-  // ── Contact form (no backend — graceful inline confirmation) ──
+  // ── Contact form — posts to FormSubmit.co (AJAX endpoint) ──
   var form = document.getElementById('contactForm');
   if (form) {
     form.addEventListener('submit', function (e) {
@@ -92,15 +92,38 @@
       var status = document.getElementById('formStatus');
       var btn = form.querySelector('button[type="submit"]');
       if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
-      setTimeout(function () {
+      if (status) { status.hidden = true; status.classList.remove('error'); }
+
+      var payload = {};
+      new FormData(form).forEach(function (v, k) { payload[k] = v; });
+
+      fetch(form.action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, data: d }; }); })
+      .then(function (res) {
+        var success = res.ok && (res.data.success === 'true' || res.data.success === true);
+        if (!success) throw new Error((res.data && res.data.message) || 'Submission failed');
         form.reset();
-        if (btn) { btn.disabled = false; btn.textContent = 'Send Message'; }
         if (status) {
           status.hidden = false;
           status.textContent = 'Thanks — your message has been received. The Aquila team will be in touch shortly.';
-          status.focus && status.focus();
+          if (status.focus) status.focus();
         }
-      }, 700);
+      })
+      .catch(function () {
+        if (status) {
+          status.hidden = false;
+          status.classList.add('error');
+          status.textContent = 'Sorry, we could not send your message. Please email us directly at rewa@aquilalearning.in.';
+          if (status.focus) status.focus();
+        }
+      })
+      .then(function () {
+        if (btn) { btn.disabled = false; btn.textContent = 'Send Message'; }
+      });
     });
   }
 })();

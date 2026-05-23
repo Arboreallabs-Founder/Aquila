@@ -41,6 +41,7 @@
       background: var(--accent-soft); color: var(--space); font-size: 0.88rem; line-height: 1.5;
       border-left: 3px solid var(--accent);
     }
+    .form-status.error { background: #FDECEC; border-left-color: #C0392B; color: #57231E; }
     .info-card { background: var(--white); border-radius: var(--radius-md); padding: 22px; box-shadow: var(--shadow-sm); border: 1px solid rgba(56,105,130,0.08); display: flex; gap: 16px; align-items: flex-start; margin-bottom: 16px; }
     .info-card .icon-badge { width: 44px; height: 44px; border-radius: 12px; }
     .info-card .icon-badge svg { width: 22px; height: 22px; }
@@ -127,7 +128,11 @@
         <div class="form-card fade-in">
           <h2 class="section-heading" style="font-size:1.6rem;margin-bottom:8px;">Send us a message</h2>
           <p style="color:var(--slate);font-size:0.92rem;margin-bottom:24px;">We typically respond within two business days.</p>
-          <form id="contactForm" novalidate>
+          <form id="contactForm" action="https://formsubmit.co/ajax/rewa@aquilalearning.in" method="POST" novalidate>
+            <input type="hidden" name="_cc" value="jayati@aquilalearning.in">
+            <input type="hidden" name="_subject" value="New inquiry from the Aquila website">
+            <input type="hidden" name="_template" value="table">
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true">
             <div class="field-row">
               <div class="field">
                 <label for="name">Full name <span class="req">*</span></label>
