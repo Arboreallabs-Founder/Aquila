@@ -38,7 +38,8 @@
     .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
     .founder-mini { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
     .fcard { background: var(--white); border-radius: var(--radius-lg); padding: 24px; text-align: left; box-shadow: var(--shadow-sm); border: 1px solid rgba(56,105,130,0.06); }
-    .favatar { width: 72px; height: 72px; border-radius: 50%; margin: 0 0 14px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.85); font-family: var(--font-head); font-size: 1.5rem; }
+    .favatar { width: 72px; height: 72px; border-radius: 50%; margin: 0 0 14px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.85); font-family: var(--font-head); font-size: 1.5rem; overflow: hidden; }
+    .favatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .fcard .nm { font-family: var(--font-head); font-weight: 700; color: var(--space); }
     .fcard .rl { font-size: 0.76rem; font-weight: 600; color: var(--accent); margin-top: 4px; }
     .fcard .bio { color: var(--slate); font-size: 0.84rem; line-height: 1.65; margin-top: 12px; }
@@ -218,13 +219,13 @@
         <p class="section-subheading" style="margin-top:12px;">The same practitioner-led team behind Aquila's enterprise, institution, and social impact work.</p>
       </div>
       <div class="founder-mini">
-        <div class="fcard fade-in"><div class="favatar" style="background:linear-gradient(135deg,#243449,#7B45E6);">R</div><div class="nm">Rewa Singh Deo</div><div class="rl">Founder</div><p class="bio">25+ years shaping leadership pipelines and enterprise-wide talent transformation globally. Mentors women entrepreneurs.</p></div>
-        <div class="fcard fade-in delay-1"><div class="favatar" style="background:linear-gradient(135deg,#2d1b4e,#9B5CB8);">J</div><div class="nm">Jayati Pardhy</div><div class="rl">Founder</div><p class="bio">Global HR leader with deep expertise in strategic hiring, employer branding, and building high-impact teams.</p></div>
-        <div class="fcard fade-in delay-2"><div class="favatar" style="background:linear-gradient(135deg,#243449,#386982);">A</div><div class="nm">Dr. Abhay Bhave</div><div class="rl">IAS Retd. / Advisor</div><p class="bio">Strategy and change expert with 45+ years across government and industry, advising BHEL, GAIL, and IOC.</p></div>
-        <div class="fcard fade-in delay-3"><div class="favatar" style="background:linear-gradient(135deg,#2d1b4e,#9B5CB8);">A</div><div class="nm">Anurag Kumar</div><div class="rl">Advisor</div><p class="bio">Ex-PepsiCo leader with 30+ years of global FMCG leadership across Asia, the Middle East, and Africa.</p></div>
-        <div class="fcard fade-in delay-4"><div class="favatar" style="background:linear-gradient(135deg,#386982,#7B45E6);">S</div><div class="nm">Sonali Jha</div><div class="rl">Advisor</div><p class="bio">Expert in GenAI, AI agents, product design, go-to-market strategy, UX, analytics, and design thinking.</p></div>
-        <div class="fcard fade-in"><div class="favatar" style="background:linear-gradient(135deg,#386982,#2A9D72);">D</div><div class="nm">Dr. Dilip Kumar</div><div class="rl">Livestock Development Expert</div><p class="bio">36+ years in government livestock systems across dairy, poultry, goatery, piggery, and village-level livelihoods.</p></div>
-        <div class="fcard fade-in delay-1"><div class="favatar" style="background:linear-gradient(135deg,#243449,#2A9D72);">O</div><div class="nm">Dr. S. N. Ojha</div><div class="rl">Fisheries Systems Expert</div><p class="bio">Former ICAR-CIFE expert with 40+ years in fisheries systems, publications, and national policy contributions.</p></div>
+        <div class="fcard fade-in"><div class="favatar"><img src="assets/people/rewa-singh-deo.png" alt=""></div><div class="nm">Rewa Singh Deo</div><div class="rl">Founder</div><p class="bio">25+ years shaping leadership pipelines and enterprise-wide talent transformation globally. Mentors women entrepreneurs.</p></div>
+        <div class="fcard fade-in delay-1"><div class="favatar"><img src="assets/people/jayati-pardhy.jpg" alt=""></div><div class="nm">Jayati Pardhy</div><div class="rl">Founder</div><p class="bio">Global HR leader with deep expertise in strategic hiring, employer branding, and building high-impact teams.</p></div>
+        <div class="fcard fade-in delay-2"><div class="favatar"><img src="assets/people/dr-abhay-bhave.png" alt=""></div><div class="nm">Dr. Abhay Bhave</div><div class="rl">IAS Retd. / Advisor</div><p class="bio">Strategy and change expert with 45+ years across government and industry, advising BHEL, GAIL, and IOC.</p></div>
+        <div class="fcard fade-in delay-3"><div class="favatar"><img src="assets/people/anurag-kumar.png" alt=""></div><div class="nm">Anurag Kumar</div><div class="rl">Advisor</div><p class="bio">Ex-PepsiCo leader with 30+ years of global FMCG leadership across Asia, the Middle East, and Africa.</p></div>
+        <div class="fcard fade-in delay-4"><div class="favatar"><img src="assets/people/sonali-jha.jpg" alt=""></div><div class="nm">Sonali Jha</div><div class="rl">Advisor</div><p class="bio">Expert in GenAI, AI agents, product design, go-to-market strategy, UX, analytics, and design thinking.</p></div>
+        <div class="fcard fade-in"><div class="favatar"><img src="assets/people/dr-dilip-kumar.png" alt=""></div><div class="nm">Dr. Dilip Kumar</div><div class="rl">Livestock Development Expert</div><p class="bio">36+ years in government livestock systems across dairy, poultry, goatery, piggery, and village-level livelihoods.</p></div>
+        <div class="fcard fade-in delay-1"><div class="favatar"><img src="assets/people/dr-sn-ojha.png" alt=""></div><div class="nm">Dr. S. N. Ojha</div><div class="rl">Fisheries Systems Expert</div><p class="bio">Former ICAR-CIFE expert with 40+ years in fisheries systems, publications, and national policy contributions.</p></div>
       </div>
     </div>
   </section>
