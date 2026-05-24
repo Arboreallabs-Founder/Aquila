@@ -40,12 +40,16 @@
     .cs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .cs-card { display: flex; flex-direction: column; background: var(--white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid rgba(56,105,130,0.06); transition: transform 0.3s ease, box-shadow 0.3s ease; }
     .cs-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
-    .cs-top { height: 150px; display: flex; align-items: center; justify-content: center; color: #fff; overflow: hidden; }
-    .cs-top img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .cs-top { position: relative; height: 150px; display: flex; align-items: center; justify-content: center; color: #fff; overflow: hidden; }
+    .cs-top img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; z-index: 0; }
+    .cs-top::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; }
     .cs-card[data-cat="corporate"] .cs-top { background: linear-gradient(135deg, #243449, #386982); }
+    .cs-card[data-cat="corporate"] .cs-top::after { background: linear-gradient(135deg, rgba(36,52,73,0.6) 0%, rgba(56,105,130,0.4) 100%); }
     .cs-card[data-cat="institution"] .cs-top { background: linear-gradient(135deg, #2d1b4e, #9B5CB8); }
+    .cs-card[data-cat="institution"] .cs-top::after { background: linear-gradient(135deg, rgba(45,27,78,0.6) 0%, rgba(155,92,184,0.4) 100%); }
     .cs-card[data-cat="social"] .cs-top { background: linear-gradient(135deg, #1a3a4a, #2A9D72); }
-    .cs-top svg { width: 34px; height: 34px; opacity: 0.92; }
+    .cs-card[data-cat="social"] .cs-top::after { background: linear-gradient(135deg, rgba(26,58,74,0.6) 0%, rgba(42,157,114,0.4) 100%); }
+    .cs-top svg { position: relative; z-index: 2; width: 34px; height: 34px; opacity: 0.95; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.45)); }
     .cs-body { padding: 26px; display: flex; flex-direction: column; flex: 1; }
     .cs-cat { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
     .cs-client { font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; color: var(--space); margin-bottom: 12px; }
@@ -131,7 +135,7 @@
       <div class="cs-grid" id="csGrid">
 
         <article class="cs-card fade-in" data-cat="corporate">
-          <div class="cs-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+          <div class="cs-top"><img src="assets/case-studies/corporate-capability.jpg" alt=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
           <div class="cs-body">
             <div class="cs-cat">Corporate Capability</div>
             <div class="cs-client">Integrated Capability for Future-Ready Organizations</div>
@@ -142,7 +146,7 @@
         </article>
 
         <article class="cs-card fade-in delay-1" data-cat="institution">
-          <div class="cs-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+          <div class="cs-top"><img src="assets/case-studies/mahindra-placements.jpg" alt=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
           <div class="cs-body">
             <div class="cs-cat">Employability</div>
             <div class="cs-client">Mahindra University MBA Placement Sprint</div>
@@ -153,7 +157,7 @@
         </article>
 
         <article class="cs-card fade-in delay-2" data-cat="social">
-          <div class="cs-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <div class="cs-top"><img src="assets/case-studies/butterfly-project.jpg" alt=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"/></svg></div>
           <div class="cs-body">
             <div class="cs-cat">Livelihood</div>
             <div class="cs-client">The Butterfly Project</div>
@@ -164,7 +168,7 @@
         </article>
 
         <article class="cs-card fade-in" data-cat="corporate">
-          <div class="cs-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="cs-top"><img src="assets/case-studies/cyber-readiness.jpg" alt=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
           <div class="cs-body">
             <div class="cs-cat">Cybersecurity</div>
             <div class="cs-client">Enterprise Cyber Readiness Pathways</div>
@@ -175,7 +179,7 @@
         </article>
 
         <article class="cs-card fade-in delay-1" data-cat="institution">
-          <div class="cs-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"/></svg></div>
+          <div class="cs-top"><img src="assets/case-studies/school-transformation.jpg" alt=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"/></svg></div>
           <div class="cs-body">
             <div class="cs-cat">School Transformation</div>
             <div class="cs-client">Building Future-Ready Institutions</div>
@@ -186,7 +190,7 @@
         </article>
 
         <article class="cs-card fade-in delay-2" data-cat="social">
-          <div class="cs-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 21c3-6 6-9 9-9s6 3 9 9"/><path d="M5 12c2-5 4.5-8 7-8s5 3 7 8"/></svg></div>
+          <div class="cs-top"><img src="assets/case-studies/land-water-livelihood.jpg" alt=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 21c3-6 6-9 9-9s6 3 9 9"/><path d="M5 12c2-5 4.5-8 7-8s5 3 7 8"/></svg></div>
           <div class="cs-body">
             <div class="cs-cat">Rural Livelihood Systems</div>
             <div class="cs-client">Land &amp; Water Livelihood Projects</div>
