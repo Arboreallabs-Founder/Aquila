@@ -264,8 +264,8 @@
       letter-spacing: 0.04em;
       text-transform: uppercase;
     }
-    .hero-impact-chip.chip-1 { top: 4%; left: -16px; }
-    .hero-impact-chip.chip-2 { bottom: 10%; right: -10px; }
+    .hero-impact-chip.chip-1 { top: -12px; left: -48px; }
+    .hero-impact-chip.chip-2 { bottom: -8px; right: -36px; }
 
     /* ----------------------------
        IMPACT METRICS
@@ -1169,10 +1169,10 @@
     }
     .mentors-grid .person-avatar { width: 76px; height: 76px; font-size: 1.7rem; }
 
-    /* Execution partners: 5-col minimal */
+    /* Execution partners: flexible minimal grid (fits 5–7 cards cleanly) */
     .execution-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 18px;
     }
     .person-card.person-minimal { padding: 22px 14px; }
@@ -2139,10 +2139,17 @@
         </div>
 
         <div class="person-card fade-in delay-4">
-          <div class="person-avatar" style="background:linear-gradient(135deg,#a3305a,#9B5CB8);" aria-hidden="true">A</div>
+          <div class="person-avatar" aria-hidden="true"><img src="assets/people/anita-sharma.png" alt=""></div>
           <h4 class="person-name">Anita Sharma</h4>
           <p class="person-role">Advisor</p>
           <p class="person-bio">Ex-TOI, HT, and Telegraph. 38-year media leader, now driving rural women entrepreneurship in North India.</p>
+        </div>
+
+        <div class="person-card fade-in delay-5">
+          <div class="person-avatar" aria-hidden="true"><img src="assets/people/dr-poonam-ojha.png" alt=""></div>
+          <h4 class="person-name">Dr. Poonam Ojha</h4>
+          <p class="person-role">Advisor</p>
+          <p class="person-bio">Senior academician advising the Ace Your Placements program — guides curriculum design and faculty engagement across partner colleges.</p>
         </div>
 
       </div>
@@ -2168,7 +2175,7 @@
         </div>
 
         <div class="person-card person-minimal fade-in delay-1">
-          <div class="person-avatar" style="background:linear-gradient(135deg,#243449,#386982);" aria-hidden="true">T</div>
+          <div class="person-avatar" aria-hidden="true"><img src="assets/people/thendral-rajendran.png" alt=""></div>
           <h4 class="person-name">Thendral Rajendran</h4>
         </div>
 
@@ -2178,13 +2185,23 @@
         </div>
 
         <div class="person-card person-minimal fade-in delay-3">
-          <div class="person-avatar" style="background:linear-gradient(135deg,#1a3a4a,#2a9d72);" aria-hidden="true">M</div>
+          <div class="person-avatar" aria-hidden="true"><img src="assets/people/malavika-sharma.png" alt=""></div>
           <h4 class="person-name">Malavika Sharma</h4>
         </div>
 
         <div class="person-card person-minimal fade-in delay-4">
           <div class="person-avatar" aria-hidden="true"><img src="assets/people/srikanth-vavilla.png" alt=""></div>
           <h4 class="person-name">Srikanth Vavilla</h4>
+        </div>
+
+        <div class="person-card person-minimal fade-in delay-5">
+          <div class="person-avatar" aria-hidden="true"><img src="assets/people/shreny-mutha.png" alt=""></div>
+          <h4 class="person-name">Shreny Mutha</h4>
+        </div>
+
+        <div class="person-card person-minimal fade-in delay-6">
+          <div class="person-avatar" aria-hidden="true"><img src="assets/people/kritika-singh.png" alt=""></div>
+          <h4 class="person-name">Kritika Singh</h4>
         </div>
 
       </div>

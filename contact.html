@@ -13,52 +13,102 @@
   <style>
     :root { --accent: #386982; --accent-soft: #E4EFF4; }
 
-    /* Unique header — teal wash with soft diagonal */
+    /* Header — teal wash with soft glow */
     .page-header { background: linear-gradient(135deg, #EBF3F7 0%, #F3EDFF 60%, #F8F5EC 100%); padding-bottom: clamp(40px, 6vw, 64px); }
     .page-header::before {
-      content: ''; position: absolute; z-index: 0; top: -100px; right: -60px; width: 420px; height: 420px;
-      background: radial-gradient(circle, rgba(56,105,130,0.16) 0%, transparent 70%); border-radius: 50%;
+      content: ''; position: absolute; z-index: 0; top: -120px; right: -80px; width: 460px; height: 460px;
+      background: radial-gradient(circle, rgba(56,105,130,0.18) 0%, transparent 70%); border-radius: 50%;
+    }
+    .page-header::after {
+      content: ''; position: absolute; z-index: 0; bottom: -160px; left: -80px; width: 360px; height: 360px;
+      background: radial-gradient(circle, rgba(155,92,184,0.12) 0%, transparent 70%); border-radius: 50%;
     }
     .ph-icon { color: var(--accent); }
 
-    .contact-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: start; }
+    /* Layout */
+    .contact-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 40px; align-items: start; }
+    .contact-side { display: grid; gap: 18px; }
+
+    /* Form card */
     .form-card { background: var(--white); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow-md); border: 1px solid rgba(56,105,130,0.06); }
+    .form-card h2 { font-family: var(--font-head); font-size: 1.55rem; color: var(--space); margin: 0 0 6px; font-weight: 700; }
+    .form-card .form-sub { color: var(--slate); font-size: 0.92rem; margin: 0 0 26px; line-height: 1.5; }
     .field { margin-bottom: 18px; }
     .field label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--space); margin-bottom: 7px; }
     .field .req { color: #c2466e; }
     .field input, .field select, .field textarea {
       width: 100%; font-family: inherit; font-size: 0.92rem; color: var(--space);
       padding: 12px 14px; border: 1.5px solid rgba(56,105,130,0.2); border-radius: 12px;
-      background: #fbfaf6; transition: border-color 0.2s, box-shadow 0.2s; min-height: 46px;
+      background: #fbfaf6; transition: border-color 0.2s, box-shadow 0.2s, background 0.2s; min-height: 46px;
     }
-    .field textarea { min-height: 120px; resize: vertical; }
+    .field input:hover, .field select:hover, .field textarea:hover { border-color: rgba(56,105,130,0.4); }
+    .field textarea { min-height: 120px; resize: vertical; line-height: 1.5; }
     .field input:focus, .field select:focus, .field textarea:focus {
-      outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+      outline: none; border-color: var(--accent); background: #fff;
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
     }
     .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-actions { margin-top: 24px; }
+    .form-actions .btn { width: 100%; justify-content: center; }
+    .form-meta { display: flex; align-items: center; gap: 8px; margin-top: 16px; font-size: 0.78rem; color: var(--slate); }
+    .form-meta svg { width: 14px; height: 14px; color: var(--accent); flex-shrink: 0; }
     .form-status {
       margin-top: 18px; padding: 14px 16px; border-radius: 12px;
       background: var(--accent-soft); color: var(--space); font-size: 0.88rem; line-height: 1.5;
       border-left: 3px solid var(--accent);
     }
     .form-status.error { background: #FDECEC; border-left-color: #C0392B; color: #57231E; }
-    .info-card { background: var(--white); border-radius: var(--radius-md); padding: 22px; box-shadow: var(--shadow-sm); border: 1px solid rgba(56,105,130,0.08); display: flex; gap: 16px; align-items: flex-start; margin-bottom: 16px; }
-    .info-card .icon-badge { width: 44px; height: 44px; border-radius: 12px; }
-    .info-card .icon-badge svg { width: 22px; height: 22px; }
-    .info-card h4 { font-family: var(--font-head); font-size: 1rem; color: var(--space); margin-bottom: 3px; }
-    .info-card p { font-size: 0.88rem; color: var(--slate); line-height: 1.5; }
-    .next-panel { background: linear-gradient(135deg, #243449, #386982); color: #fff; border-radius: var(--radius-lg); padding: 28px; margin-top: 8px; }
-    .next-panel h4 { font-family: var(--font-head); font-size: 1.15rem; margin-bottom: 14px; }
-    .next-panel ol { list-style: none; counter-reset: n; display: grid; gap: 12px; }
-    .next-panel li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start; font-size: 0.88rem; color: rgba(255,255,255,0.82); line-height: 1.5; }
-    .next-panel li::before { content: counter(n); flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.78rem; color: #fff; }
-    .routing-panel { background: var(--ivory); border: 1px solid rgba(56,105,130,0.1); border-radius: var(--radius-lg); padding: 24px; margin-top: 18px; }
-    .routing-panel h4 { font-family: var(--font-head); font-size: 1.12rem; color: var(--space); margin-bottom: 14px; }
-    .routing-list { display: grid; gap: 12px; }
-    .routing-item { background: var(--white); border-radius: var(--radius-md); padding: 16px; border-left: 3px solid var(--accent); }
-    .routing-item strong { display: block; color: var(--space); margin-bottom: 4px; }
-    .routing-item span { display: block; color: var(--slate); font-size: 0.84rem; line-height: 1.5; }
-    @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; gap: 32px; } .field-row { grid-template-columns: 1fr; } }
+
+    /* Founder cards — combines person info + routing focus */
+    .founder-card {
+      display: grid; grid-template-columns: 84px 1fr; gap: 20px;
+      background: var(--white); border-radius: var(--radius-md);
+      padding: 24px; box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(56,105,130,0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .founder-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: rgba(56,105,130,0.18); }
+    .founder-avatar { width: 84px; height: 84px; border-radius: 50%; overflow: hidden; border: 3px solid var(--accent-soft); background: var(--accent-soft); flex-shrink: 0; }
+    .founder-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .founder-name { font-family: var(--font-head); font-size: 1.1rem; color: var(--space); margin: 0 0 2px; font-weight: 600; }
+    .founder-title { font-size: 0.74rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 10px; }
+    .founder-focus { font-size: 0.82rem; color: var(--slate); line-height: 1.5; margin: 0 0 14px; }
+    .founder-contacts { list-style: none; padding: 0; margin: 0; display: grid; gap: 7px; }
+    .founder-contacts li { display: flex; gap: 9px; align-items: center; font-size: 0.85rem; color: var(--space); }
+    .founder-contacts svg { width: 14px; height: 14px; color: var(--accent); flex-shrink: 0; }
+    .founder-contacts a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(56,105,130,0.18); transition: color 0.2s, border-color 0.2s; }
+    .founder-contacts a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+    /* What happens next panel */
+    .next-panel { background: linear-gradient(135deg, #243449, #386982); color: #fff; border-radius: var(--radius-md); padding: 26px 28px; position: relative; overflow: hidden; }
+    .next-panel::before {
+      content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(155,92,184,0.25) 0%, transparent 70%); border-radius: 50%;
+    }
+    .next-panel h4 { font-family: var(--font-head); font-size: 1.1rem; margin: 0 0 16px; position: relative; z-index: 1; }
+    .next-panel ol { list-style: none; counter-reset: n; display: grid; gap: 14px; padding: 0; margin: 0; position: relative; z-index: 1; }
+    .next-panel li { counter-increment: n; display: flex; gap: 14px; align-items: flex-start; font-size: 0.87rem; color: rgba(255,255,255,0.85); line-height: 1.5; }
+    .next-panel li::before { content: counter(n); flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.78rem; color: #fff; }
+
+    /* Location chip */
+    .location-chip {
+      display: flex; align-items: center; gap: 12px;
+      background: rgba(56,105,130,0.07); border: 1px solid rgba(56,105,130,0.12);
+      border-radius: var(--radius-md); padding: 14px 18px; font-size: 0.86rem; color: var(--space);
+    }
+    .location-chip svg { width: 18px; height: 18px; color: var(--accent); flex-shrink: 0; }
+    .location-chip strong { font-weight: 700; }
+
+    @media (max-width: 1024px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 28px; }
+      .form-card { padding: 32px 28px; }
+    }
+    @media (max-width: 768px) {
+      .field-row { grid-template-columns: 1fr; }
+      .founder-card { grid-template-columns: 1fr; text-align: center; gap: 14px; padding: 26px 22px; }
+      .founder-avatar { margin: 0 auto; }
+      .founder-contacts li { justify-content: center; }
+    }
   </style>
 </head>
 <body>
@@ -126,8 +176,8 @@
 
         <!-- FORM -->
         <div class="form-card fade-in">
-          <h2 class="section-heading" style="font-size:1.6rem;margin-bottom:8px;">Send us a message</h2>
-          <p style="color:var(--slate);font-size:0.92rem;margin-bottom:24px;">We typically respond within two business days.</p>
+          <h2>Send us a message</h2>
+          <p class="form-sub">Tell us a little about what you're trying to achieve. We typically respond within two business days.</p>
           <form id="contactForm" action="https://formsubmit.co/ajax/rewa@aquilalearning.in" method="POST" novalidate>
             <input type="hidden" name="_cc" value="jayati@aquilalearning.in">
             <input type="hidden" name="_subject" value="New inquiry from the Aquila website">
@@ -160,32 +210,51 @@
                 </select>
               </div>
             </div>
-            <div class="field">
+            <div class="field" style="margin-bottom:0;">
               <label for="message">Message <span class="req">*</span></label>
-              <textarea id="message" name="message" placeholder="A few lines about what you're looking to achieve…" required></textarea>
+              <textarea id="message" name="message" placeholder="A few lines about your team, your timeline, and what good looks like…" required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send Message</button>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">
+                Send Message
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+            </div>
+            <div class="form-meta">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <span>Your details stay private — used only to route your inquiry to the right team.</span>
+            </div>
             <div class="form-status" id="formStatus" role="status" aria-live="polite" tabindex="-1" hidden></div>
           </form>
         </div>
 
         <!-- DETAILS -->
-        <div class="fade-in delay-1">
-          <div class="info-card">
-            <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-            <div><h4>Jayati Pardhy</h4><p>jayati@aquilalearning.in</p></div>
+        <aside class="contact-side fade-in delay-1">
+
+          <div class="founder-card">
+            <div class="founder-avatar" aria-hidden="true"><img src="assets/people/jayati-pardhy.jpg" alt=""></div>
+            <div>
+              <h3 class="founder-name">Jayati Pardhy</h3>
+              <p class="founder-title">Co-Founder · Corporates &amp; Institutions</p>
+              <p class="founder-focus">State skilling programs, college and university integration, employability, and placement-linked programs for corporates.</p>
+              <ul class="founder-contacts">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:jayati@aquilalearning.in">jayati@aquilalearning.in</a></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.07 10.8a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 2 0h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L6.09 7.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 14.92z"/></svg><a href="tel:+918374693274">+91 83746 93274</a></li>
+              </ul>
+            </div>
           </div>
-          <div class="info-card">
-            <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 14.92z"/></svg></div>
-            <div><h4>Phone</h4><p>+91 83746 93274</p></div>
-          </div>
-          <div class="info-card">
-            <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-            <div><h4>Rewa Singh Deo</h4><p>rewa@aquilalearning.in<br>+91 96061 30142</p></div>
-          </div>
-          <div class="info-card">
-            <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-            <div><h4>Location</h4><p>India</p></div>
+
+          <div class="founder-card">
+            <div class="founder-avatar" aria-hidden="true"><img src="assets/people/rewa-singh-deo.png" alt=""></div>
+            <div>
+              <h3 class="founder-name">Rewa Singh Deo</h3>
+              <p class="founder-title">Co-Founder · Social Impact</p>
+              <p class="founder-focus">CSR partnerships, livelihood initiatives, women-led entrepreneurship, and rural impact programs.</p>
+              <ul class="founder-contacts">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:rewa@aquilalearning.in">rewa@aquilalearning.in</a></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.07 10.8a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 2 0h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L6.09 7.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 14.92z"/></svg><a href="tel:+919606130142">+91 96061 30142</a></li>
+              </ul>
+            </div>
           </div>
 
           <div class="next-panel">
@@ -196,14 +265,13 @@
               <li>We propose a tailored capability plan with clear outcomes.</li>
             </ol>
           </div>
-          <div class="routing-panel">
-            <h4>Partnership Routing</h4>
-            <div class="routing-list">
-              <div class="routing-item"><strong>Jayati Pardhy</strong><span>State skilling programs, college and university integration, employability, and placement-linked programs for corporates.</span></div>
-              <div class="routing-item"><strong>Rewa Singh Deo</strong><span>CSR partnerships, livelihood initiatives, women-led entrepreneurship, and rural impact programs.</span></div>
-            </div>
+
+          <div class="location-chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span><strong>Based in India</strong> — serving partner teams across the country</span>
           </div>
-        </div>
+
+        </aside>
 
       </div>
     </div>
