@@ -23,10 +23,7 @@
     .hero {
       min-height: calc(100dvh - var(--nav-h));
       background:
-        /* soft light pocket behind the orbit so the nodes sit on calm ground */
-        radial-gradient(circle at 70% 52%, rgba(250,250,253,0.82) 0%, rgba(249,249,253,0.42) 24%, transparent 48%),
-        /* left readability veil — neutral, fades out by mid so the photo stays crisp on the right */
-        linear-gradient(100deg, rgba(238,244,248,0.94) 0%, rgba(240,244,249,0.60) 33%, rgba(245,246,250,0.12) 60%, rgba(255,255,255,0) 80%),
+        linear-gradient(120deg, rgba(45,15,80,0.90) 0%, rgba(70,25,110,0.78) 38%, rgba(90,40,130,0.55) 65%, rgba(56,105,130,0.30) 100%),
         url('assets/headers/home.jpg') center/cover no-repeat;
       position: relative;
       overflow: hidden;
@@ -46,13 +43,14 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(123,69,230,0.1);
-      border: 1px solid rgba(123,69,230,0.2);
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.28);
+      backdrop-filter: blur(6px);
       padding: 6px 14px;
       border-radius: 50px;
       font-size: 0.8rem;
       font-weight: 600;
-      color: var(--violet);
+      color: #e4d0ff;
       letter-spacing: 0.06em;
       margin-bottom: 24px;
     }
@@ -61,7 +59,7 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: var(--violet);
+      background: #c9a8ff;
       animation: pulse 2s infinite;
     }
     @keyframes pulse {
@@ -73,13 +71,14 @@
       font-size: clamp(2.4rem, 5vw, 3.8rem);
       font-weight: 800;
       line-height: 1.1;
-      color: var(--space);
+      color: #fff;
       margin-bottom: 20px;
       letter-spacing: -0.02em;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
     }
     .hero-headline em {
       font-style: italic;
-      background: linear-gradient(120deg, var(--teal) 0%, var(--purple) 40%, var(--violet) 70%, var(--teal) 100%);
+      background: linear-gradient(120deg, #b8d9f0 0%, #d4a8ff 40%, #c9b6ff 70%, #b8d9f0 100%);
       background-size: 220% 100%;
       -webkit-background-clip: text;
       background-clip: text;
@@ -122,7 +121,7 @@
     .hero > .container { position: relative; z-index: 2; }
     .hero-sub {
       font-size: 1.1rem;
-      color: var(--slate);
+      color: rgba(255,255,255,0.80);
       line-height: 1.7;
       margin-bottom: 36px;
       max-width: 480px;
@@ -1396,7 +1395,7 @@
             Explore Programs
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
-          <a href="#contact" class="btn btn-outline">Contact Us</a>
+          <a href="#contact" class="btn btn-outline-white">Contact Us</a>
         </div>
       </div>
 
