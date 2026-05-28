@@ -32,19 +32,20 @@ Aquila/
 ├── contact.html
 ├── first-chair.html        # Corporates dropdown
 ├── technical-training.html # Corporates dropdown
-├── colleges.html           # Institutions dropdown
-├── schools.html            # Institutions dropdown
+├── colleges.html           # Institutions dropdown (only live institutions page)
+├── schools.html            # ⚠️ DISABLED — no nav/footer/in-content links point here; file kept as legacy
 ├── styles.css              # Shared design system — used by ALL pages
 ├── app.js                  # Shared interactions for subpages (nav, fade-in, counters, contact form)
 ├── assets/
 │   ├── back/               # Home page background images (home-corporate, home-institutions, home-social)
 │   ├── case-studies/       # 6 card thumbnails (corporate-capability, mahindra-placements, butterfly-project, cyber-readiness, school-transformation, land-water-livelihood)
 │   ├── headers/            # 6 interior page header backgrounds (first-chair, technical-training, colleges, schools, social-impact, case-studies)
-│   └── people/             # 11 team portraits (lowercase kebab-case)
+│   ├── people/             # team portraits (lowercase kebab-case)
+│   └── partners/           # partner-company logos (grow-wings, career-graph) for the Team Partner Companies group
 ├── Logo's/                 # ⚠️ Apostrophe in folder name — see path note below
 │   ├── Clients/            # 14 logos
 │   ├── Hiring Partners/    # 5 logos
-│   └── Ecosystem Partners/ # 3 logos
+│   └── Ecosystem Partners/ # 3 logos (no longer shown in the logos section)
 ├── Back Images/            # Source folder — NOT committed (raw originals)
 ├── People Images/          # Source folder — NOT committed (raw originals)
 ├── Deck/                   # NOT committed — owner excluded intentionally
@@ -53,7 +54,18 @@ Aquila/
 
 **Navigation dropdown labels** (as of latest):
 - Corporates → First Chair, Technical Training
-- Institutions → Colleges, Schools *(short labels — full program names stay in footer columns and on-page content)*
+- Institutions → **Colleges only** *(Schools temporarily disabled — see below)*
+
+### Schools page — temporarily disabled (site-wide)
+
+The Schools / "Hackathons by IndiSight" page is hidden while the team works on it internally. `schools.html` still exists but **nothing links to it**:
+- Removed the `Schools` `<li>` from every Institutions **nav dropdown** and **mobile menu** (8 pages), so Institutions now shows only Colleges.
+- Removed the `Hackathons by IndiSight` link from every **footer** Programs column (8 pages).
+- `index.html`: removed the "Indisight Hackathons" Featured-Programs card (and its carousel dot, renumbered Butterfly to `data-index="3"`); dropped the `Hackathons by Indisight` pillar tag and changed the Institutions pillar subtitle to "…Future-Ready Campuses".
+- `colleges.html`: the CTA-band "View School Programs" button now points to `case-studies.html` ("See Case Studies").
+- `case-studies.html`: the **School Transformation** case card is wrapped in an HTML comment (legacy).
+
+To re-enable: re-add the dropdown/mobile/footer `<li>`s, uncomment the case card, restore the program card + its dot, and the pillar tag.
 
 ---
 
@@ -116,88 +128,90 @@ Aquila/
 ## `index.html` — Section Order
 
 1. **Nav** — sticky, scrolled shadow, hamburger mobile, dropdowns on hover
-2. **Hero** — featured India presence map with city markers (see *Hero* section below)
-3. **Impact Metrics Strip** — animated number counters (JS), 5 stats, scale-in on entry
-4. **Three Pillars** — Corporates / Institutions / Social Impact cards
-5. **Capability Areas** — 6-card grid
-6. **Featured Programs** — 5 horizontal accent-bar cards
-7. **Case Studies** — drag-free carousel with auto-slide, prev/next, dots
-8. **Logos Marquee** — 3 infinite-scroll ticker rows (real logos, CSS animation)
-9. **Team** — 4 grouped categories with real photos for most members
-10. **Final CTA** — dark, email link
-11. **Footer** — 4-col grid, social icons
+2. **Hero** — two-column: headline/buttons left, the 3-sector **orbit** visual right (nodes circle the Aquila-logo core), over a **subtle** full-bleed photo backdrop. See *Hero* section below.
+3. ~~**Impact Metrics Strip**~~ — **removed** (commented out as legacy in `index.html`, just above the *How Aquila Works* section). Restore by uncommenting the `<div class="metrics">` block. The metric-counter JS safely no-ops when the markup is absent.
+4. **The Aquila Model — Three Pillars** — Corporates / Institutions / Social Impact cards *(moved ABOVE How Aquila Works)*
+5. **How Aquila Works** (`.income-model`) — Assess → Train → Practice → Place/Earn *(moved BELOW the pillars; the two were swapped)*
+6. **Capability Areas** — 6-card grid
+7. **Featured Programs** — horizontal accent-bar cards (**4 now** — Indisight Hackathons card removed while Schools is disabled)
+8. **Case Studies** — drag-free carousel with auto-slide, prev/next, dots
+9. **Logos** — **static grid**, 2 rows (Clients, Hiring Partners). Ecosystem Partners row removed.
+10. **Team** — grouped categories with real photos. Execution Partners hidden (legacy comment); Partner Companies group added.
+11. **Final CTA** — dark, email link
+12. **Footer** — 4-col grid, social icons
+
+*Section order note:* the Three Pillars ("The Aquila Model") and the income-model ("How Aquila Works") were **swapped** so the model is presented before the how-it-works flow.
 
 ---
 
-## Hero — India Presence Map (`index.html`)
+## Hero — 3-Sector Convergence Visual over a subtle photo (`index.html`)
 
-Replaced the original photo card + India watermark with a **featured India outline as the right-side visual**, populated with 12 city markers driven by lat/lng at runtime.
+The old India presence map was fully removed earlier. The hero is a **two-column** layout: headline + buttons on the left, a **CSS/SVG orbit visual** on the right, sitting over a **subtle full-bleed photo backdrop**.
+
+### Background photo (subtle)
+
+`.hero` uses a **three-layer** background (top layer first) so the photo stays crisp while the headline (left) and orbit (right) both stay readable:
+```css
+background:
+  /* 1. soft light pocket behind the orbit — calms the busy photo so nodes read cleanly */
+  radial-gradient(circle at 70% 52%, rgba(250,250,253,0.82) 0%, rgba(249,249,253,0.42) 24%, transparent 48%),
+  /* 2. left readability veil — neutral (no purple tint = no haze), fades out by ~60% so the right of the photo is crisp */
+  linear-gradient(100deg, rgba(238,244,248,0.94) 0%, rgba(240,244,249,0.60) 33%, rgba(245,246,250,0.12) 60%, rgba(255,255,255,0) 80%),
+  url('assets/headers/home.jpg') center/cover no-repeat;
+```
+`assets/headers/home.jpg` is the **"Hero Image v2"** triptych (corporate / students / women-artisans) from `Back Images/Home Page/`, compressed to ~190 KB. Light theme = dark headline text.
+- The veil was deliberately made **neutral** (was a lavender wash that looked hazy) — keep it neutral to avoid the washed look.
+- The **radial pocket** is centred on the orbit (~70% 52%); if the orbit moves, move the pocket's `circle at` to match.
+- Keep the veil's **left** stop (0%) ≥0.90 or the headline loses contrast.
+
+### Orbit concept
+
+A central **Aquila-logo core** (white circle holding `assets/aquila-logo.png` — the circular "rj" brand mark, copied from `Logo's/Aquila .png`) with **three sector nodes** — **Corporates** (teal), **Universities** (violet), **Social Impact** (green) — that **orbit the core** along a faint dashed ring. The nodes live in one rotating layer (`.converge-system`); each node's content (`.cn-inner`) counter-rotates so icons and labels stay upright. No connector spoke lines.
 
 ### Markup structure
 
 ```
-<section class="hero">
-  <div class="hero-orb hero-orb-1"></div>        # soft violet glow (top-left, drifts)
-  <div class="hero-orb hero-orb-2"></div>        # soft teal glow (bottom-right, drifts reverse)
-  <div class="container">
-    <div class="hero-inner">
-      <div class="hero-content">…headline + buttons</div>
-      <div class="hero-visual">
-        <div class="hero-india-visual">
-          <svg class="india-map-svg" viewBox="0 0 1024 1024">
-            <g class="india-outline" transform="translate(0,1024) scale(0.1,-0.1)">
-              <path d="..."/>                    # India outline (line-draw animates on load)
-            </g>
-            <g class="india-markers"></g>        # populated by JS at runtime
-          </svg>
-          <div class="hero-impact-chip chip-1">75,000+ Livelihood beneficiaries</div>
-          <div class="hero-impact-chip chip-2">3,000+ Placements enabled</div>
-        </div>
-      </div>
+<div class="hero-visual">
+  <div class="hero-converge" role="img" aria-label="...">
+    <span class="converge-ring"></span>                 # static dashed orbit path (74% dia)
+    <div class="converge-system">                       # ROTATES — @keyframes cv-orbit 36s
+      <div class="converge-node n1"><div class="cn-inner">icon + label</div></div>  # Corporates   (top)
+      <div class="converge-node n2"><div class="cn-inner">…</div></div>             # Universities (BL)
+      <div class="converge-node n3"><div class="cn-inner">…</div></div>             # Social Impact (BR)
     </div>
+    <div class="converge-core"><img class="cc-logo" src="assets/aquila-logo.png"></div>   # static, centred, z-index 3
   </div>
-  <div class="hero-waves">…3 layered animated SVG waves at the bottom…</div>
-</section>
+</div>
 ```
 
-### City markers — driven by JS (not hard-coded)
+### Geometry — node positions
 
-In the script block at the bottom of `index.html`, the IIFE `Hero India map: place city markers from lat/lng` does:
+Nodes are pinned to fixed triangle points **inside** `.converge-system`; the whole system rotates, carrying the nodes around the centred core. Node CSS `top`/`left` % (orbit radius R≈162 of the old 440 grid, i.e. ring dia ≈74%):
+- `.n1` (Corporates): top 13.2%, left 50%
+- `.n2` (Universities): top 68.4%, left 18.2%
+- `.n3` (Social Impact): top 68.4%, left 81.8%
+- core: dead centre (50%,50%)
 
-1. Reads `outline.getBBox()` (path-local coords, before the parent transform)
-2. Applies the parent `translate(0,1024) scale(0.1,-0.1)` manually to get viewBox-space bounds
-3. Linearly maps each city's lat/lng to viewBox coords using `LAT_MAX=35.0`, `LAT_MIN=8.0`, `LNG_MIN=68.0`, `LNG_MAX=97.0` (mainland India)
-4. Creates `<g class="marker [hq] delay-N">` with `<circle class="halo">`, `<circle class="dot">`, `<text class="label">` for each
+The core (`z-index:3`) is a sibling of `.converge-system` and stays put while the nodes revolve around it.
 
-**To adjust any marker:** edit its entry in the `CITIES` array in `index.html`. Per-city fields:
-- `lat`, `lng` — required, drives the position
-- `side: 'left'` — flips label to the left of the dot (text-anchor=end)
-- `hq: true` — Bengaluru only; larger dot, teal colour, " · HQ" suffix on label
+### Orbit mechanics (important)
 
-Cities currently listed (in order — index drives `delay-N` cycling): Chandigarh, Gurugram, Assam, Ranchi, Kolkata, Bhubaneswar, Mumbai (left), Nagpur, Pune, Hyderabad, Bengaluru (HQ + left), Chennai.
+- `.converge-system` spins with `@keyframes cv-orbit` (36s linear, 0→360°).
+- `.cn-inner` runs the **same** animation `reverse` (also 36s linear) so each node's icon+label cancels the parent rotation and stays upright. **Both must keep identical duration/timing or labels will wobble.**
+- Labels (`.cn-text`) are absolutely positioned below the icon inside `.cn-inner`, so they follow each icon around the orbit.
 
-### Animations on the hero
+### Animations
 
-| Effect | CSS class / mechanism | Tunable via |
+| Effect | Mechanism | Tunable via |
 |---|---|---|
-| Floating violet/teal glow orbs | `.hero-orb-1/2`, `@keyframes hero-orb-float` (22s/28s) | `opacity`, animation duration |
-| India outline line-draw on load | `stroke-dashoffset` transition (4.8s), JS sets dasharray on first paint | the 4.8s transition value |
-| Marker pulse halos | `@keyframes india-marker-pulse` (2.4s), staggered via `.delay-1` through `.delay-6` | duration, scale range |
-| Italic "India's" colour cycle in headline | `@keyframes hero-em-shift` on `.hero-headline em` (7s) | colour stops |
-| Wave divider at hero bottom | `.hw-back/.hw-mid/.hw-front` + `@keyframes hero-wave-drift` (26/18/14s, opposite directions) | duration, fill opacities |
+| Glow orbs (kept) | `.hero-orb-1/2`, `@keyframes hero-orb-float` | opacity, duration |
+| **Node orbit** | `.converge-system` `@keyframes cv-orbit` (36s) + `.cn-inner` reverse counter-rotation | orbit speed (change **both** durations together) |
+| Static dashed orbit ring | `.converge-ring` (74% dia, no animation) | dash style / opacity |
+| Core halo pulse | `.converge-core::before` + `@keyframes cv-pulse` (2.8s) | scale range |
+| Headline italic colour cycle | `@keyframes hero-em-shift` on `.hero-headline em` | colour stops |
+| Wave divider at hero bottom | `.hw-back/.hw-mid/.hw-front` + `hero-wave-drift` | duration, opacities |
 
-All effects are neutralised by the global `prefers-reduced-motion` override.
-
-### Floating impact chips around the India map
-
-Two glass cards anchored to the SVG corners — `chip-1` ("75,000+ Livelihood beneficiaries") and `chip-2` ("3,000+ Placements enabled"). Positions are tuned so they sit **outside** the India outline rather than overlapping city markers:
-
-- `chip-1`: `top: -12px; left: -48px;` — tucks into the upper-left, above the Chandigarh marker (which sits at lat ~30.7 / ~16% from top of viewBox).
-- `chip-2`: `bottom: -8px; right: -36px;` — sits in the lower-right empty space (India tapers to a point at Chennai/Kanyakumari, leaving the SE corner free).
-
-If a new city marker is added near these corners and starts overlapping the chip, either nudge the chip further out or move the marker — don't shrink the chip beyond ~140px min-width or it loses presence.
-
-The `.hero` parent has `overflow: hidden`, so chips with negative offsets still render — they just can't escape the hero section's bounds.
+All neutralised by the global `prefers-reduced-motion` override; with motion off the system rests at 0° → nodes sit top / bottom-left / bottom-right (the static composition reads fine).
 
 ---
 
@@ -259,34 +273,31 @@ CSS layering: `.cs-top` is `position: relative` with `overflow: hidden`. `.cs-to
 
 ---
 
-## Logos Marquee Section
+## Logos Section — Static Grid
 
 **Class:** `.logos-section`
 **Location in index.html:** between Case Studies and Team sections
 
-Three ticker rows:
+**No longer a marquee.** The 3 infinite-scroll ticker rows were replaced by a **static centred grid** (`.logo-grid` = `flex-wrap`). The Set A + Set B clones, `.marquee-window`/`.marquee-track`, scroll keyframes, and edge-fade masks are all gone. Two rows remain:
 
-| Row | Category | Logos | Direction | Duration | Repetitions in HTML |
-|-----|----------|-------|-----------|----------|-------------------|
-| 1 | Clients | 14 | ← left | 35s | 2 sets of 14 |
-| 2 | Hiring Partners | 5 | → right | 22s | 2 sets of 15 (3 reps × 5) |
-| 3 | Ecosystem Partners | 3 | ← left slow | 30s | 2 sets of 12 (4 reps × 3) |
+| Row | Category | Logos |
+|-----|----------|-------|
+| 1 | Clients | 14 |
+| 2 | Hiring Partners | 5 |
 
-**Animation technique:** each track contains Set A + Set B (identical). CSS animates `translateX(0)` → `translateX(-50%)` (left) or reverse (right). The `-50%` trick is seamless because Set B = Set A. Short logo sets are repeated within Set A so Set A width > viewport width, preventing a visible gap before the loop.
+The **Ecosystem Partners** row was removed entirely (those companies now live in the Team → *Partner Companies* group instead — see Team section).
 
-**Edge fade masking:** `.marquee-window::before/::after` apply white-to-transparent gradients over the edges so logos dissolve in/out rather than hard-cut at the container edge.
+**Hover behaviour:** each `.logo-item` is a white rounded card; logos sit grayscale at 55% opacity and, on hover, **colorize to full and scale up 1.08** with a shadow lift. Selecting/hovering enlarges + colorizes (no scrolling to pause anymore).
 
-**Logo path encoding:** The folder is committed as `Logo's` (apostrophe). In `src` attributes, use `Logo%27s/` and encode spaces as `%20`:
+**Logo path encoding:** the marquee logos still use the apostrophe folder — `Logo%27s/` with spaces as `%20`:
 ```html
 <img src="Logo%27s/Clients/Bank%20Of%20Baroda.png">
 ```
 
-**Hover behaviour:** grayscale 50% opacity → full colour on hover per logo. Whole row pauses on `.marquee-window:hover`.
-
 **Logos on disk:**
 - `Logo's/Clients/` — Bank Of Baroda, EY Logo, Final-Karle-Infra, GPL_Logo, Jai Hind Logo, Libratherm Logo, logo-ibs, Monster-Jobs-Logo-Vector, NTPC Logo, Perfetti_Van_Melle_logo, RIIM Pune, Trti logo, Tyson_Foods_logo, Voya_Financial_logo
 - `Logo's/Hiring Partners/` — blue-dart-logo, comett-logo, Delhivery_Logo, Nippon Express Logo, Swiggy_logo (webp)
-- `Logo's/Ecosystem Partners/` — Career Graph, Grow Wings, Megathil
+- `Logo's/Ecosystem Partners/` — Career Graph, Grow Wings, Megathil *(no longer shown in the logos section; Career Graph + Grow Wings copied to `assets/partners/` for the Team Partner Companies group)*
 
 ⚠️ **Deployment caveat:** Some HTTP servers reject `%27` in paths. If logos break on Vercel, rename `Logo's/` → `logos/` and update all `src` attributes accordingly. (The folder name is `OneDrive-locked` on Windows — renaming locally may require pausing OneDrive sync first.)
 
@@ -312,18 +323,16 @@ Three ticker rows:
 | Anita Sharma | `anita-sharma.png` |
 | Dr. Poonam Ojha | `dr-poonam-ojha.png` *(advisor for Ace Your Placements)* |
 
-### Group 3 — On-Ground Execution Partners (auto-fit minimal grid, name only — all photos ✓)
-| Name | Image | Notes |
+### Group 3 — Partner Companies (3-up logo cards) — **replaced Execution Partners**
+| Name | Asset | Notes |
 |------|-------|-------|
-| Subhashini Tripathi | `subhashini-tripathi.png` | |
-| Thendral Rajendran | `thendral-rajendran.png` | |
-| Sharanya Ojha | `sharanya-ojha.png` | Ace Your Placements |
-| Malavika Sharma | `malavika-sharma.png` | *(file: `malavika-sharma.png`, sourced from `Malvika Sharma.png` — kept the name spelling Malavika Sharma per owner)* |
-| Srikanth Vavilla | `srikanth-vavilla.png` | |
-| Shreny Mutha | `shreny-mutha.png` | Ace Your Placements |
-| Kritika Singh | `kritika-singh.png` | Ace Your Placements |
+| GrowWings | `assets/partners/grow-wings.png` | logo (copied from `Logo's/Ecosystem Partners/Grow Wings.png`) |
+| Career Graph | `assets/partners/career-graph.png` | logo (copied from `Logo's/Ecosystem Partners/Career Graph.png`) |
+| Cunominal | `assets/partners/cunominal.png` | logo (copied from `Logo's/Ecosystem Partners/Cunomial-Logo-e1650640594588.png`; file spelled "Cunomial", display name kept "Cunominal" per owner) |
 
-`.execution-grid` switched from fixed `repeat(5, 1fr)` to `repeat(auto-fit, minmax(150px, 1fr))` so the row wraps cleanly with 7 cards instead of leaving an orphaned card in a half-filled second row.
+Markup uses `.partners-co-grid` (3-col → 1-col at 768px) with `.partner-co-card` items (white card, hover lift; `.partner-co-logo` wraps the logo image). CSS lives in the index team CSS block right after `.person-card.person-minimal`.
+
+**Execution Partners group is kept as a legacy HTML comment** (`<!-- -- ON-GROUND EXECUTION PARTNERS (legacy — hidden for now) -- … -- end legacy Execution Partners -->`) directly below the Partner Companies group — Subhashini Tripathi, Thendral Rajendran, Sharanya Ojha, Malavika Sharma, Srikanth Vavilla, Shreny Mutha, Kritika Singh. Uncomment to restore. The `.execution-grid` CSS (`repeat(auto-fit, minmax(150px,1fr))`) is left in place for when it returns.
 
 ### Ace Your Placements team on `colleges.html`
 

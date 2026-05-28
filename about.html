@@ -13,14 +13,28 @@
   <style>
     :root { --accent: #7B45E6; --accent-soft: #EFE7FF; }
 
-    /* Unique header — editorial, gradient wash + diagonal accent */
-    .page-header { background: linear-gradient(135deg, #F3EDFF 0%, #EBF3F7 55%, #F8F5EC 100%); }
-    .page-header::before {
-      content: ''; position: absolute; inset: 0; z-index: 0; opacity: 0.5;
+    /* Cinematic header — dark violet-to-teal gradient over photo */
+    .page-header {
       background:
-        radial-gradient(circle at 85% 20%, rgba(123,69,230,0.14), transparent 45%),
-        radial-gradient(circle at 10% 90%, rgba(56,105,130,0.12), transparent 45%);
+        linear-gradient(135deg, rgba(30,15,55,0.92) 0%, rgba(50,25,90,0.78) 45%, rgba(56,105,130,0.50) 100%),
+        url('assets/headers/about.jpg') center/cover no-repeat;
     }
+    .page-header::before {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background-image:
+        linear-gradient(rgba(123,69,230,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(123,69,230,0.10) 1px, transparent 1px);
+      background-size: 40px 40px;
+      -webkit-mask: radial-gradient(circle at 75% 30%, #000 0%, transparent 60%);
+              mask: radial-gradient(circle at 75% 30%, #000 0%, transparent 60%);
+    }
+    .page-header .ph-eyebrow { color: #d4baff; }
+    .page-header .ph-title { color: #fff; }
+    .page-header .ph-title em { color: #c9b6ff; }
+    .page-header .ph-sub { color: rgba(255,255,255,0.72); }
+    .page-header .ph-icon { background: rgba(255,255,255,0.12); color: #c9b6ff; backdrop-filter: blur(8px); border: 1px solid rgba(123,69,230,0.3); }
+    .crumb, .crumb a { color: rgba(255,255,255,0.55); }
+    .crumb span { color: rgba(255,255,255,0.3); }
     .ph-title { max-width: 18ch; }
 
     .mission { font-family: var(--font-head); font-size: clamp(1.6rem, 3.2vw, 2.5rem); line-height: 1.35; color: var(--space); font-weight: 600; max-width: 22ch; }
@@ -65,7 +79,6 @@
           <a tabindex="0">Institutions <svg class="chev" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2,4 6,8 10,4"/></svg></a>
           <ul class="nav-dropdown">
             <li><a href="colleges.html">Colleges</a></li>
-            <li><a href="schools.html">Schools</a></li>
           </ul>
         </li>
         <li><a href="social-impact.html">Social Impact</a></li>
@@ -85,7 +98,6 @@
       <li class="mm-sub"><a href="technical-training.html">Technical Training</a></li>
       <li><a tabindex="0">Institutions</a></li>
       <li class="mm-sub"><a href="colleges.html">Colleges</a></li>
-      <li class="mm-sub"><a href="schools.html">Schools</a></li>
       <li><a href="social-impact.html">Social Impact</a></li>
       <li><a href="case-studies.html">Case Studies</a></li>
       <li><a href="contact.html">Contact</a></li>
@@ -263,7 +275,6 @@
             <li><a href="first-chair.html">First Chair</a></li>
             <li><a href="technical-training.html">Technical Training</a></li>
             <li><a href="colleges.html">Ace Your Placements</a></li>
-            <li><a href="schools.html">Hackathons by IndiSight</a></li>
             <li><a href="social-impact.html">Livelihood Systems</a></li>
           </ul>
         </div>
