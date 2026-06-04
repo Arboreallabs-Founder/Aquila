@@ -22,17 +22,32 @@
     ---------------------------- */
     .hero {
       min-height: calc(100dvh - var(--nav-h));
-      background:
-        /* edge light — bright violet rim on the left bleeding into centre */
-        radial-gradient(ellipse 38% 90% at -1% 52%, rgba(220,185,255,0.82) 0%, rgba(165,100,255,0.48) 28%, rgba(100,45,190,0.14) 58%, transparent 76%),
-        /* main dark violet wash */
-        linear-gradient(120deg, rgba(45,15,80,0.90) 0%, rgba(70,25,110,0.78) 38%, rgba(90,40,130,0.55) 65%, rgba(56,105,130,0.30) 100%),
-        url('assets/headers/home.jpg') center/cover no-repeat;
       position: relative;
+      isolation: isolate;
       overflow: hidden;
       display: flex;
       align-items: center;
       padding: 80px 0;
+    }
+    /* Mirrored background photo */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('assets/headers/home.jpg') center/cover no-repeat;
+      transform: scaleX(-1);
+      z-index: 0;
+    }
+    /* Dark navy overlay — less purple, more depth */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 38% 90% at -1% 52%, rgba(160,200,235,0.50) 0%, rgba(90,130,195,0.28) 28%, rgba(50,80,130,0.08) 58%, transparent 76%),
+        linear-gradient(120deg, rgba(12,22,52,0.93) 0%, rgba(18,36,78,0.84) 38%, rgba(30,52,95,0.60) 65%, rgba(56,105,130,0.28) 100%);
+      z-index: 1;
+      pointer-events: none;
     }
     .hero-inner {
       display: grid;
@@ -40,7 +55,7 @@
       gap: 64px;
       align-items: center;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
     .hero-eyebrow {
       display: inline-flex;
@@ -99,7 +114,7 @@
       position: absolute;
       left: 0; right: 0; bottom: -1px;
       height: 120px;
-      z-index: 1;
+      z-index: 2;
       pointer-events: none;
       overflow: hidden;
       line-height: 0;
@@ -167,9 +182,7 @@
       inset: 0;
       z-index: 2;
       transform-origin: 50% 50%;
-      animation: cv-orbit 36s linear infinite;
     }
-    @keyframes cv-orbit { to { transform: rotate(360deg); } }
     /* center hub — Aquila logo badge */
     .converge-core {
       position: absolute;
@@ -208,7 +221,6 @@
       position: relative;
       width: 100%; height: 100%;
       transform-origin: 50% 50%;
-      animation: cv-orbit 36s linear infinite reverse;
     }
     .cn-icon {
       width: 72px; height: 72px; border-radius: 50%;
@@ -1335,14 +1347,16 @@
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li class="nav-has-dropdown">
-        <a tabindex="0">Corporates <svg class="chev" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2,4 6,8 10,4"/></svg></a>
+        <a tabindex="0">Corporate <svg class="chev" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2,4 6,8 10,4"/></svg></a>
         <ul class="nav-dropdown">
           <li><a href="first-chair.html">First Chair</a></li>
           <li><a href="technical-training.html">Technical Training</a></li>
+          <li><a href="posh.html">POSH Training</a></li>
+          <li><a href="cyberbullying.html">Cyberbullying Awareness</a></li>
         </ul>
       </li>
       <li class="nav-has-dropdown">
-        <a tabindex="0">Institutions <svg class="chev" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2,4 6,8 10,4"/></svg></a>
+        <a tabindex="0">Education <svg class="chev" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2,4 6,8 10,4"/></svg></a>
         <ul class="nav-dropdown">
           <li><a href="colleges.html">Colleges</a></li>
         </ul>
@@ -1366,10 +1380,12 @@
   <ul>
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a tabindex="0">Corporates</a></li>
+    <li><a tabindex="0">Corporate</a></li>
     <li class="mm-sub"><a href="first-chair.html">First Chair</a></li>
     <li class="mm-sub"><a href="technical-training.html">Technical Training</a></li>
-    <li><a tabindex="0">Institutions</a></li>
+      <li class="mm-sub"><a href="posh.html">POSH Training</a></li>
+      <li class="mm-sub"><a href="cyberbullying.html">Cyberbullying Awareness</a></li>
+    <li><a tabindex="0">Education</a></li>
     <li class="mm-sub"><a href="colleges.html">Colleges</a></li>
     <li><a href="social-impact.html">Social Impact</a></li>
     <li><a href="case-studies.html">Case Studies</a></li>
@@ -1414,7 +1430,7 @@
                 <span class="cn-icon">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg>
                 </span>
-                <span class="cn-text">Corporates</span>
+                <span class="cn-text">Corporate</span>
               </div>
             </div>
 
@@ -1514,10 +1530,10 @@
 
     <div class="pillars-grid">
 
-      <!-- Corporates -->
+      <!-- Corporate -->
       <div class="pillar-card fade-in">
         <div class="pillar-visual">
-          <span class="pillar-badge">Corporates</span>
+          <span class="pillar-badge">Corporate</span>
           <div class="pillar-visual-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
@@ -1525,7 +1541,7 @@
           </div>
         </div>
         <div class="pillar-body">
-          <h3 class="pillar-title">Corporates</h3>
+          <h3 class="pillar-title">Corporate</h3>
           <p class="pillar-subtitle">Technical Excellence + Leadership Capability</p>
           <p class="pillar-desc">Equipping modern workforces with the technical depth and leadership strength today's business environments demand. From cybersecurity and GenAI to first-line leadership, Aquila builds people capability that strengthens execution, resilience, and business performance.</p>
           <div class="pillar-tags">
@@ -1538,10 +1554,10 @@
         </div>
       </div>
 
-      <!-- Institutions -->
+      <!-- Education -->
       <div class="pillar-card fade-in delay-1">
         <div class="pillar-visual">
-          <span class="pillar-badge">Institutions</span>
+          <span class="pillar-badge">Education</span>
           <div class="pillar-visual-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
@@ -1549,7 +1565,7 @@
           </div>
         </div>
         <div class="pillar-body">
-          <h3 class="pillar-title">Institutions</h3>
+          <h3 class="pillar-title">Education</h3>
           <p class="pillar-subtitle">Industry-Ready Students + Future-Ready Campuses</p>
           <p class="pillar-desc">Turning campuses into launchpads for future-ready talent. Aquila helps institutions create stronger placement success and students built for modern careers.</p>
           <div class="pillar-tags">
@@ -1557,7 +1573,7 @@
             <span class="tag">Future Skills</span>
             <span class="tag">Career Readiness</span>
           </div>
-          <a href="#programs" class="btn btn-primary btn-sm">Explore Institution Programs</a>
+          <a href="#programs" class="btn btn-primary btn-sm">Explore Education Programs</a>
         </div>
       </div>
 
@@ -2245,6 +2261,8 @@
         <ul class="footer-links">
           <li><a href="first-chair.html">First Chair</a></li>
           <li><a href="technical-training.html">Technical Training</a></li>
+          <li><a href="posh.html">POSH Training</a></li>
+          <li><a href="cyberbullying.html">Cyberbullying Awareness</a></li>
           <li><a href="colleges.html">Ace Your Placements</a></li>
           <li><a href="social-impact.html">Livelihood Systems</a></li>
         </ul>
