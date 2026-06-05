@@ -322,6 +322,8 @@ section[id], [id].metrics { scroll-margin-top: calc(var(--nav-h) + 20px); }
 .grid-2 { grid-template-columns: repeat(2, 1fr); }
 .grid-3 { grid-template-columns: repeat(3, 1fr); }
 .grid-4 { grid-template-columns: repeat(4, 1fr); }
+/* Two-column split that collapses on mobile (replaces fragile inline grids) */
+.split-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
 
 /* ════════════════════════════ PAGE HEADER (each page restyles bg) ════════════════════════════ */
 .page-header {
@@ -428,13 +430,38 @@ section[id], [id].metrics { scroll-margin-top: calc(var(--nav-h) + 20px); }
   .nav-links, .nav-cta { display: none; }
   .hamburger { display: flex; }
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .split-2 { grid-template-columns: 1fr; gap: 32px; }
   .metrics-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-top { grid-template-columns: 1fr; gap: 32px; }
   .footer-bottom { flex-direction: column; text-align: center; }
   section { padding: 72px 0; }
+
+  /* Comfortable tap targets on touch screens */
+  .footer-links a { display: inline-block; padding: 5px 0; }
+  .footer-links { gap: 4px; }
+  .footer-legal { gap: 28px; justify-content: center; }
+  .footer-legal a { padding: 4px 0; }
+  .crumb a { display: inline-block; padding: 2px 0; }
+
+  /* Full-width CTAs read better than nowrap pills that can clip */
+  .ph-actions .btn,
+  .cta-band-actions .btn { flex: 1 1 auto; justify-content: center; }
 }
 @media (max-width: 480px) {
   .metrics-grid { grid-template-columns: 1fr; }
+  .container { padding: 0 18px; }
+  section { padding: 60px 0; }
+  .page-header { padding: clamp(40px, 12vw, 64px) 0 clamp(36px, 9vw, 56px); }
+  .ph-icon { width: 60px; height: 60px; border-radius: 18px; margin-bottom: 18px; }
+  .ph-icon svg { width: 30px; height: 30px; }
+  .ph-sub { font-size: 1rem; }
+  .u-card { padding: 26px 22px; }
+  .ph-actions, .cta-band-actions { width: 100%; }
+}
+/* Prevent iOS auto-zoom on focus: inputs must be >=16px on touch devices */
+@media (max-width: 768px) {
+  input, select, textarea,
+  .field input, .field select, .field textarea { font-size: 16px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

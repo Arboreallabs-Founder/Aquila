@@ -101,6 +101,10 @@
       .process-track { grid-template-columns: 1fr; }
       .impact-grid { grid-template-columns: repeat(2, 1fr); }
     }
+    @media (max-width: 520px) {
+      .impact-grid { grid-template-columns: 1fr; }
+      .impact-item { border-bottom: 1px solid rgba(255,255,255,0.08); }
+    }
   </style>
 </head>
 <body>
@@ -183,7 +187,7 @@
 
   <section>
     <div class="container">
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;" class="fade-in">
+      <div class="split-2 fade-in">
         <div>
           <p class="section-label">The Challenge</p>
           <h2 class="section-heading" style="margin-bottom:20px;">We Believe Technical Training Should Reduce Risk Not Just Transfer Knowledge</h2>
