@@ -45,11 +45,50 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
 }
 
 img { display: block; max-width: 100%; }
 a { text-decoration: none; color: inherit; }
 button { cursor: pointer; border: none; background: none; font-family: inherit; }
+a, button { touch-action: manipulation; }
+
+/* Brand text selection */
+::selection { background: var(--violet); color: var(--white); }
+
+/* Balanced headline wraps (progressive enhancement) */
+.section-heading, .ph-title, .hero-headline, .cta-band h2, .final-cta-heading { text-wrap: balance; }
+.section-subheading, .ph-sub, .hero-sub { text-wrap: pretty; }
+
+/* Subtle branded scrollbar (desktop pointers only) */
+@media (pointer: fine) {
+  ::-webkit-scrollbar { width: 12px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(36,52,73,0.22);
+    border-radius: 8px;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(36,52,73,0.4); border: 3px solid transparent; background-clip: padding-box; }
+}
+
+/* Skip link — hidden until keyboard focus */
+.skip-link {
+  position: fixed;
+  top: -64px;
+  left: 16px;
+  z-index: 300;
+  background: var(--space);
+  color: var(--white);
+  padding: 12px 20px;
+  border-radius: 0 0 12px 12px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-md);
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: 0; }
 
 /* Keyboard focus ring — only shows for keyboard users, not mouse clicks */
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
@@ -128,6 +167,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .btn-outline-white:hover { border-color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.1); transform: translateY(-1px); }
 .btn-sm { padding: 9px 20px; font-size: 0.82rem; }
+/* Tactile press feedback — quick in, settles on release */
+.btn:active { transform: translateY(0) scale(0.97); transition-duration: 0.08s; }
 
 /* ── Fade-in on scroll ── */
 .fade-in {
@@ -261,7 +302,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   z-index: 99;
   box-shadow: var(--shadow-md);
 }
-.mobile-menu.open { display: block; }
+.mobile-menu.open { display: block; animation: mm-slide-in 0.25s ease-out; }
+@keyframes mm-slide-in {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 4px; margin-bottom: 16px; }
 .mobile-menu ul a { display: block; padding: 10px 12px; border-radius: 8px; font-weight: 500; color: var(--space); transition: background 0.2s; }
 .mobile-menu ul a:hover { background: var(--teal-light); }
@@ -416,6 +461,32 @@ section[id], [id].metrics { scroll-margin-top: calc(var(--nav-h) + 20px); }
 .footer-legal { display: flex; gap: 20px; }
 .footer-legal a { font-size: 0.78rem; color: rgba(255,255,255,0.3); transition: color 0.2s; }
 .footer-legal a:hover { color: rgba(255,255,255,0.6); }
+
+/* ════════════════════════════ BACK TO TOP ════════════════════════════ */
+.back-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--space);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(255,255,255,0.15);
+  z-index: 90;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s, background 0.2s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.back-to-top:hover { background: var(--accent); }
+.back-to-top:active { transform: scale(0.94); }
+.back-to-top svg { width: 18px; height: 18px; }
 
 /* ════════════════════════════ RESPONSIVE ════════════════════════════ */
 @media (max-width: 1024px) {
