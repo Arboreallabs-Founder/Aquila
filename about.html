@@ -57,8 +57,11 @@
     .fcard .nm { font-family: var(--font-head); font-weight: 700; color: var(--space); }
     .fcard .rl { font-size: 0.76rem; font-weight: 600; color: var(--accent); margin-top: 4px; }
     .fcard .bio { color: var(--slate); font-size: 0.84rem; line-height: 1.65; margin-top: 12px; }
+    /* 3-number stats strip */
+    .metrics-grid { grid-template-columns: repeat(3, 1fr); }
     @media (max-width: 900px) { .mission-grid { grid-template-columns: 1fr; gap: 32px; } .pillar-mini { grid-template-columns: 1fr; } .values-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 520px) { .values-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) { .metrics-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 520px) { .values-grid { grid-template-columns: 1fr; } .metrics-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -102,7 +105,6 @@
       <li class="mm-sub"><a href="posh.html">POSH Training</a></li>
       <li><a tabindex="0">Education</a></li>
       <li class="mm-sub"><a href="colleges.html">Colleges</a></li>
-    <li class="mm-sub"><a href="cyberbullying.html">Cyberbullying Awareness</a></li>
       <li class="mm-sub"><a href="cyberbullying.html">Cyberbullying Awareness</a></li>
       <li><a href="social-impact.html">Social Impact</a></li>
       <li><a href="case-studies.html">Case Studies</a></li>
@@ -171,11 +173,9 @@
   <div class="metrics" aria-label="Aquila impact metrics">
     <div class="container">
       <div class="metrics-grid">
-        <div class="metric-card fade-in"><div class="metric-number" data-target="100000" data-suffix="+">0</div><div class="metric-label">Learners</div></div>
+        <div class="metric-card fade-in"><div class="metric-number" data-target="10000" data-suffix="+">0</div><div class="metric-label">Learners</div></div>
         <div class="metric-card fade-in delay-1"><div class="metric-number" data-target="15" data-suffix="+">0</div><div class="metric-label">Skill Areas</div></div>
-        <div class="metric-card fade-in delay-2"><div class="metric-number" data-target="75000" data-suffix="+">0</div><div class="metric-label">Livelihood Beneficiaries</div></div>
-        <div class="metric-card fade-in delay-3"><div class="metric-number" data-target="3000" data-suffix="+">0</div><div class="metric-label">Placements</div></div>
-        <div class="metric-card fade-in delay-4"><div class="metric-number" data-target="60" data-suffix="+">0</div><div class="metric-label">Practitioners</div></div>
+        <div class="metric-card fade-in delay-2"><div class="metric-number" data-target="60" data-suffix="+">0</div><div class="metric-label">Practitioners</div></div>
       </div>
     </div>
   </div>
@@ -244,6 +244,11 @@
         <div class="fcard fade-in delay-4"><div class="favatar"><img src="assets/people/sonali-jha.jpg" alt=""></div><div class="nm">Sonali Jha</div><div class="rl">Advisor</div><p class="bio">Expert in GenAI, AI agents, product design, go-to-market strategy, UX, analytics, and design thinking.</p></div>
         <div class="fcard fade-in"><div class="favatar"><img src="assets/people/dr-dilip-kumar.png" alt=""></div><div class="nm">Dr. Dilip Kumar</div><div class="rl">Livestock Development Expert</div><p class="bio">36+ years in government livestock systems across dairy, poultry, goatery, piggery, and village-level livelihoods.</p></div>
         <div class="fcard fade-in delay-1"><div class="favatar"><img src="assets/people/dr-sn-ojha.png" alt=""></div><div class="nm">Dr. S. N. Ojha</div><div class="rl">Fisheries Systems Expert</div><p class="bio">Former ICAR-CIFE expert with 40+ years in fisheries systems, publications, and national policy contributions.</p></div>
+
+        <!-- TODO: confirm role title and bio copy for the three programme team members below -->
+        <div class="fcard fade-in delay-2"><div class="favatar"><img src="assets/people/sharanya-ojha.png" alt=""></div><div class="nm">Sharanya Ojha</div><div class="rl">Programme Lead <!-- TODO: confirm title --></div><p class="bio"><!-- TODO: add bio --></p></div>
+        <div class="fcard fade-in delay-3"><div class="favatar"><img src="assets/people/shreny-mutha.png" alt=""></div><div class="nm">Shreny Mutha</div><div class="rl">Programme Lead <!-- TODO: confirm title --></div><p class="bio"><!-- TODO: add bio --></p></div>
+        <div class="fcard fade-in delay-4"><div class="favatar"><img src="assets/people/kritika-singh.png" alt=""></div><div class="nm">Kritika Singh</div><div class="rl">Programme Lead <!-- TODO: confirm title --></div><p class="bio"><!-- TODO: add bio --></p></div>
       </div>
     </div>
   </section>

@@ -27,39 +27,28 @@
     .crumb, .crumb a { color: rgba(255,255,255,0.55); }
     .crumb span { color: rgba(255,255,255,0.3); }
 
-    /* Coming-soon placeholder */
-    .coming-soon {
-      padding: 96px 0;
-      background: var(--white);
-      text-align: center;
-    }
-    .coming-soon-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      padding: 6px 16px;
-      border-radius: 50px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 28px;
-    }
-    .coming-soon h2 {
-      font-family: var(--font-head);
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
-      font-weight: 700;
-      color: var(--space);
-      margin-bottom: 16px;
-    }
-    .coming-soon p {
-      font-size: 1.05rem;
-      color: var(--slate);
-      max-width: 520px;
-      margin: 0 auto 36px;
-      line-height: 1.7;
+    /* Intro prose */
+    .posh-intro { max-width: 760px; }
+    .posh-intro p { font-size: 1.1rem; color: var(--slate); line-height: 1.8; }
+    .posh-intro p + p { margin-top: 18px; }
+
+    /* Trusted-track highlight stats */
+    .posh-stat { display: flex; gap: 22px; align-items: flex-start; background: var(--ivory); border-radius: var(--radius-lg); padding: 28px 30px; border: 1px solid rgba(56,105,130,0.08); box-shadow: var(--shadow-sm); }
+    .posh-stat-num { font-family: var(--font-head); font-size: 2.6rem; font-weight: 700; color: var(--accent); line-height: 1; flex-shrink: 0; min-width: 64px; }
+    .posh-stat-text h3 { font-family: var(--font-head); font-size: 1.2rem; font-weight: 700; color: var(--space); margin-bottom: 8px; }
+    .posh-stat-text p { font-size: 0.92rem; color: var(--slate); line-height: 1.65; }
+    .posh-closing { margin-top: 28px; max-width: 760px; font-size: 1rem; color: var(--slate); line-height: 1.75; font-style: italic; }
+
+    /* Expert feature card */
+    .expert-card { display: flex; gap: 28px; align-items: flex-start; background: var(--white); border-radius: var(--radius-lg); padding: 36px 40px; box-shadow: var(--shadow-md); border: 1px solid rgba(56,105,130,0.08); max-width: 880px; }
+    .expert-avatar { width: 84px; height: 84px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-head); font-size: 1.6rem; font-weight: 700; color: #fff; background: linear-gradient(135deg, var(--teal) 0%, var(--accent) 100%); }
+    .expert-body h3 { font-family: var(--font-head); font-size: 1.45rem; font-weight: 700; color: var(--space); margin-bottom: 6px; }
+    .expert-role { font-size: 0.82rem; font-weight: 600; color: var(--accent); letter-spacing: 0.01em; margin-bottom: 14px; }
+    .expert-body p:last-child { font-size: 0.96rem; color: var(--slate); line-height: 1.75; }
+
+    @media (max-width: 600px) {
+      .posh-stat { flex-direction: column; gap: 12px; }
+      .expert-card { flex-direction: column; gap: 20px; padding: 28px 24px; }
     }
   </style>
 </head>
@@ -104,7 +93,6 @@
       <li class="mm-sub"><a href="posh.html">POSH Training</a></li>
       <li><a tabindex="0">Education</a></li>
       <li class="mm-sub"><a href="colleges.html">Colleges</a></li>
-    <li class="mm-sub"><a href="cyberbullying.html">Cyberbullying Awareness</a></li>
       <li class="mm-sub"><a href="cyberbullying.html">Cyberbullying Awareness</a></li>
       <li><a href="social-impact.html">Social Impact</a></li>
       <li><a href="case-studies.html">Case Studies</a></li>
@@ -121,24 +109,125 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       </div>
       <p class="ph-eyebrow">Workplace Safety &amp; Compliance</p>
-      <h1 class="ph-title">Building <em>Safe, Respectful</em> Workplaces</h1>
-      <p class="ph-sub">Prevention of Sexual Harassment (POSH) training that goes beyond compliance building a culture of respect, safety, and accountability across every level of your organisation.</p>
+      <h1 class="ph-title">POSH &amp; <em>Respectful Workplace</em> Programs</h1>
+      <p class="ph-sub">Workplace safety is more than a policy requirement. It is a culture commitment.</p>
       <div class="ph-actions">
         <a href="contact.html" class="btn btn-primary">Request a Conversation</a>
       </div>
     </div>
   </header>
 
-  <!-- CONTENT PLACEHOLDER -->
-  <section class="coming-soon">
+  <!-- INTRO -->
+  <section>
     <div class="container">
-      <span class="coming-soon-badge">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        Content Coming Soon
-      </span>
-      <h2>Full Program Details Being Prepared</h2>
-      <p>Our POSH training content is being finalised. In the meantime, reach out to us directly to learn about our approach to creating safe, compliant workplaces.</p>
-      <a href="contact.html" class="btn btn-primary">Get in Touch</a>
+      <div class="posh-intro fade-in">
+        <p>Aquila's POSH programs help organisations create workplaces where employees understand their rights, responsibilities, and role in building a respectful culture. Our programs combine legal compliance, behavioural awareness, leadership accountability, and practical workplace application.</p>
+        <p>Designed for employees, managers, Internal Committees, and leadership teams, our workshops go beyond awareness sessions to drive meaningful behavioural change.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR APPROACH -->
+  <section style="background: var(--white);">
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="section-label">Our Approach</p>
+        <h2 class="section-heading">Four Outcomes That Define Effective POSH Training</h2>
+        <p class="section-subheading" style="margin-top:12px;">We believe effective POSH training must achieve four outcomes:</p>
+      </div>
+      <div class="grid grid-4 fade-in delay-1">
+        <article class="u-card">
+          <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></div>
+          <h3>Awareness</h3>
+          <p>Help employees understand what constitutes sexual harassment, workplace boundaries, and acceptable conduct.</p>
+        </article>
+        <article class="u-card">
+          <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+          <h3>Confidence</h3>
+          <p>Equip employees and managers to speak up, seek support, and respond appropriately when concerns arise.</p>
+        </article>
+        <article class="u-card">
+          <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+          <h3>Compliance</h3>
+          <p>Ensure organisations meet statutory obligations under the POSH Act while strengthening internal processes.</p>
+        </article>
+        <article class="u-card">
+          <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h3>Culture</h3>
+          <p>Build workplaces rooted in dignity, inclusion, accountability, and mutual respect.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS WE OFFER -->
+  <section>
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="section-label">Programs We Offer</p>
+        <h2 class="section-heading">Tailored to Every Level of the Organisation</h2>
+      </div>
+      <div class="grid grid-3 fade-in delay-1">
+        <div class="u-card" style="border-left: 4px solid var(--accent);">
+          <h3>Employee POSH Awareness</h3>
+          <p>Interactive sessions that simplify legal concepts and translate them into everyday workplace situations.</p>
+        </div>
+        <div class="u-card" style="border-left: 4px solid #9B5CB8;">
+          <h3>Manager Enablement</h3>
+          <p>Practical guidance for managers on recognising concerns, responding appropriately, and creating psychologically safe teams.</p>
+        </div>
+        <div class="u-card" style="border-left: 4px solid #2A9D72;">
+          <h3>Internal Committee Training</h3>
+          <p>Comprehensive capability-building programs covering investigations, documentation, inquiry procedures, and legal responsibilities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUSTED BEYOND THE BOARDROOM -->
+  <section style="background: var(--white);">
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="section-label">Trusted Beyond the Boardroom</p>
+        <h2 class="section-heading">Experience Across Public &amp; Community Settings</h2>
+        <p class="section-subheading" style="margin-top:12px;">Aquila's POSH programs are informed by experience across corporate, public-sector, and community environments.</p>
+      </div>
+      <div class="grid grid-2 fade-in delay-1">
+        <div class="posh-stat">
+          <div class="posh-stat-num">150</div>
+          <div class="posh-stat-text">
+            <h3>Mumbai Police</h3>
+            <p>Trained 150 police personnel to deliver POSH awareness programs across housing societies, schools, and colleges.</p>
+          </div>
+        </div>
+        <div class="posh-stat">
+          <div class="posh-stat-num">75</div>
+          <div class="posh-stat-text">
+            <h3>Thane Police</h3>
+            <p>Trained 75 personnel in counselling and sensitivity skills for specialised support services.</p>
+          </div>
+        </div>
+      </div>
+      <p class="posh-closing fade-in delay-2">This breadth of exposure allows our facilitators to bring real-world perspectives on prevention, awareness, reporting, and workplace culture.</p>
+    </div>
+  </section>
+
+  <!-- OUR EXPERT NETWORK -->
+  <section>
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="section-label">Our Expert Network</p>
+        <h2 class="section-heading">Led by Seasoned Practitioners</h2>
+        <p class="section-subheading" style="margin-top:12px;">Aquila works with experienced practitioners from the fields of law, human resources, organisational development, coaching, and workplace culture.</p>
+      </div>
+      <div class="expert-card fade-in delay-1">
+        <div class="expert-avatar" aria-hidden="true">VS</div>
+        <div class="expert-body">
+          <h3>Dr. Vinaya Shetty</h3>
+          <p class="expert-role">HR Strategist · Legal Professional · Executive Coach · Workplace Culture Specialist</p>
+          <p>Our POSH programs are led by experts such as Dr. Vinaya Shetty, an HR strategist, legal professional, executive coach, and workplace culture specialist with over three decades of experience across corporate and public-sector environments.</p>
+        </div>
+      </div>
     </div>
   </section>
 
