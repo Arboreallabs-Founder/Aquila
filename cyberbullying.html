@@ -27,15 +27,104 @@
     .crumb, .crumb a { color: rgba(255,255,255,0.55); }
     .crumb span { color: rgba(255,255,255,0.3); }
 
-    .dc-intro {
-      max-width: 900px;
-      margin: 0 auto;
-      font-size: 1.12rem;
+    .dc-opening {
+      background:
+        radial-gradient(circle at 82% 16%, rgba(123,69,230,0.12) 0%, transparent 30%),
+        linear-gradient(135deg, #F8F5EC 0%, #F4F0FA 48%, #EBF3F7 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .dc-opening-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+      gap: 56px;
+      align-items: center;
+    }
+    .dc-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .dc-kicker::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 7px rgba(123,69,230,0.11);
+    }
+    .dc-lead {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      line-height: 1.12;
+      color: var(--space);
+      max-width: 760px;
+      margin-bottom: 22px;
+    }
+    .dc-copy {
+      font-size: 1.06rem;
       line-height: 1.85;
       color: var(--slate);
+      max-width: 720px;
     }
-    .dc-intro p + p { margin-top: 18px; }
-    .dc-intro strong { color: var(--space); }
+    .dc-copy p + p { margin-top: 18px; }
+    .dc-copy strong { color: var(--space); }
+    .dc-signal-panel {
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(123,69,230,0.14);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      padding: 28px;
+      backdrop-filter: blur(12px);
+    }
+    .dc-signal-title {
+      font-family: var(--font-head);
+      font-size: 1.35rem;
+      color: var(--space);
+      margin-bottom: 18px;
+    }
+    .dc-signal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .dc-signal {
+      min-height: 112px;
+      border-radius: 18px;
+      padding: 18px;
+      background: var(--white);
+      border: 1px solid rgba(56,105,130,0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .dc-signal svg {
+      width: 25px;
+      height: 25px;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .dc-signal span {
+      font-size: 0.86rem;
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--space);
+    }
+    .dc-signal-note {
+      margin-top: 18px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(36,52,73,0.92);
+      color: rgba(255,255,255,0.78);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
 
     .challenge-grid {
       display: grid;
@@ -151,15 +240,18 @@
     .cta-band-actions .btn { min-width: 220px; }
 
     @media (max-width: 1024px) {
+      .dc-opening-grid { grid-template-columns: 1fr; gap: 36px; }
       .solve-grid,
       .duration-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       .challenge-grid { grid-template-columns: 1fr; }
+      .dc-signal-grid { grid-template-columns: 1fr; }
       .challenge-card,
       .solve-card,
       .duration-card,
-      .solve-note { padding: 28px 22px; }
+      .solve-note,
+      .dc-signal-panel { padding: 28px 22px; }
     }
   </style>
 </head>
@@ -231,12 +323,39 @@
   </header>
 
   <!-- INTRO -->
-  <section>
+  <section class="dc-opening">
     <div class="container">
-      <div class="dc-intro fade-in">
-        <p><strong>The school day no longer ends at the school gate.</strong></p>
-        <p>Friendships, conflicts, peer pressure, and social interactions now continue through WhatsApp groups, gaming platforms, social media, and online communities. While technology creates incredible opportunities for learning and connection, it also introduces new risks that schools must navigate.</p>
-        <p>Aquila's Cyberbullying &amp; Digital Citizenship Program helps schools build awareness, accountability, and safer online behaviour across the entire school ecosystem.</p>
+      <div class="dc-opening-grid">
+        <div class="fade-in">
+          <p class="dc-kicker">The New School Boundary</p>
+          <h2 class="dc-lead">The school day no longer ends at the school gate.</h2>
+          <div class="dc-copy">
+            <p>Friendships, conflicts, peer pressure, and social interactions now continue through WhatsApp groups, gaming platforms, social media, and online communities. While technology creates incredible opportunities for learning and connection, it also introduces new risks that schools must navigate.</p>
+            <p><strong>Aquila's Cyberbullying &amp; Digital Citizenship Program</strong> helps schools build awareness, accountability, and safer online behaviour across the entire school ecosystem.</p>
+          </div>
+        </div>
+        <aside class="dc-signal-panel fade-in delay-1" aria-label="Digital spaces students navigate">
+          <h3 class="dc-signal-title">Where school culture now continues</h3>
+          <div class="dc-signal-grid">
+            <div class="dc-signal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg>
+              <span>Class groups &amp; chats</span>
+            </div>
+            <div class="dc-signal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4M15 13h.01M18 11h.01"/></svg>
+              <span>Gaming platforms</span>
+            </div>
+            <div class="dc-signal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h8M8 14h5"/></svg>
+              <span>Social media feeds</span>
+            </div>
+            <div class="dc-signal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-5"/></svg>
+              <span>Online communities</span>
+            </div>
+          </div>
+          <p class="dc-signal-note">Digital citizenship gives students and educators a shared language for safety, respect, reporting, and repair.</p>
+        </aside>
       </div>
     </div>
   </section>
