@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cyberbullying Awareness Aquila</title>
-  <meta name="description" content="Aquila's Cyberbullying Awareness programme equips organisations, colleges, and communities with the knowledge and tools to recognise, prevent, and respond to digital harassment." />
+  <title>Cyberbullying &amp; Digital Citizenship Aquila</title>
+  <meta name="description" content="Aquila's Cyberbullying & Digital Citizenship Program helps schools build awareness, accountability, and safer online behaviour across the entire school ecosystem." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -27,39 +27,139 @@
     .crumb, .crumb a { color: rgba(255,255,255,0.55); }
     .crumb span { color: rgba(255,255,255,0.3); }
 
-    /* Coming-soon placeholder */
-    .coming-soon {
-      padding: 96px 0;
+    .dc-intro {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: 1.12rem;
+      line-height: 1.85;
+      color: var(--slate);
+    }
+    .dc-intro p + p { margin-top: 18px; }
+    .dc-intro strong { color: var(--space); }
+
+    .challenge-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+    .challenge-card {
       background: var(--white);
-      text-align: center;
+      border-radius: var(--radius-lg);
+      padding: 34px 30px;
+      border: 1px solid rgba(123,69,230,0.12);
+      box-shadow: var(--shadow-sm);
     }
-    .coming-soon-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      padding: 6px 16px;
-      border-radius: 50px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 28px;
-    }
-    .coming-soon h2 {
+    .challenge-card h3,
+    .solve-card h3,
+    .duration-card h3 {
       font-family: var(--font-head);
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-size: 1.35rem;
       font-weight: 700;
       color: var(--space);
       margin-bottom: 16px;
     }
-    .coming-soon p {
-      font-size: 1.05rem;
+    .challenge-list,
+    .program-list,
+    .outcomes-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .challenge-list li,
+    .program-list li,
+    .outcomes-list li {
+      display: flex;
+      gap: 10px;
       color: var(--slate);
-      max-width: 520px;
-      margin: 0 auto 36px;
+      font-size: 0.95rem;
       line-height: 1.7;
+    }
+    .challenge-list li::before,
+    .program-list li::before,
+    .outcomes-list li::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex: 0 0 7px;
+      margin-top: 10px;
+    }
+    .culture-line {
+      margin-top: 36px;
+      text-align: center;
+      font-family: var(--font-head);
+      font-size: clamp(1.35rem, 2.4vw, 2rem);
+      font-weight: 700;
+      color: var(--space);
+    }
+
+    .solve-grid,
+    .duration-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .solve-card,
+    .duration-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      border: 1px solid rgba(56,105,130,0.1);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .solve-card:hover,
+    .duration-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .solve-card p,
+    .duration-card p { color: var(--slate); line-height: 1.7; font-size: 0.95rem; }
+    .solve-note {
+      margin-top: 40px;
+      background: var(--accent-soft);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      border: 1px solid rgba(123,69,230,0.14);
+    }
+    .solve-note h3 {
+      font-family: var(--font-head);
+      font-size: 1.35rem;
+      color: var(--space);
+      margin-bottom: 18px;
+    }
+    .duration-kicker {
+      display: inline-flex;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .outcomes-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: clamp(32px, 5vw, 48px);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(56,105,130,0.1);
+    }
+    .cta-band-actions .btn { min-width: 220px; }
+
+    @media (max-width: 1024px) {
+      .solve-grid,
+      .duration-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .challenge-grid { grid-template-columns: 1fr; }
+      .challenge-card,
+      .solve-card,
+      .duration-card,
+      .solve-note { padding: 28px 22px; }
     }
   </style>
 </head>
@@ -121,28 +221,142 @@
       <div class="ph-icon" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
       </div>
-      <p class="ph-eyebrow">Digital Safety &amp; Awareness</p>
-      <h1 class="ph-title">Recognise, Prevent &amp; <em>Respond</em> to Cyberbullying</h1>
-      <p class="ph-sub">A practical awareness programme for organisations, colleges, and communities building the knowledge and confidence to address digital harassment before it causes lasting harm.</p>
+      <p class="ph-eyebrow">Cyberbullying &amp; Digital Citizenship</p>
+      <h1 class="ph-title">Helping Schools Build <em>Safer Digital Communities</em></h1>
+      <p class="ph-sub">A practical school program that builds awareness, accountability, and safer online behaviour across students, teachers, and school leaders.</p>
       <div class="ph-actions">
-        <a href="contact.html" class="btn btn-primary">Request a Conversation</a>
+        <a href="contact.html" class="btn btn-primary">Enquire About Workshops</a>
       </div>
     </div>
   </header>
 
-  <!-- CONTENT PLACEHOLDER -->
-  <!-- TODO: Cyberbullying page content is PENDING from the client (Sharanya Ojha, sharanya.o@growwings.in).
-       Leave this placeholder section in place until copy is provided, then build out the page
-       following the POSH page pattern (intro, approach, programs, expert sections). -->
-  <section class="coming-soon">
+  <!-- INTRO -->
+  <section>
     <div class="container">
-      <span class="coming-soon-badge">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        Content Coming Soon
-      </span>
-      <h2>Full Program Details Being Prepared</h2>
-      <p>Our Cyberbullying Awareness content is being finalised. Reach out to us to learn how we help organisations and educational institutions build safer digital environments.</p>
-      <a href="contact.html" class="btn btn-primary">Get in Touch</a>
+      <div class="dc-intro fade-in">
+        <p><strong>The school day no longer ends at the school gate.</strong></p>
+        <p>Friendships, conflicts, peer pressure, and social interactions now continue through WhatsApp groups, gaming platforms, social media, and online communities. While technology creates incredible opportunities for learning and connection, it also introduces new risks that schools must navigate.</p>
+        <p>Aquila's Cyberbullying &amp; Digital Citizenship Program helps schools build awareness, accountability, and safer online behaviour across the entire school ecosystem.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHALLENGES -->
+  <section style="background: var(--white);">
+    <div class="container">
+      <div class="section-header center fade-in">
+        <p class="section-label">Common Challenges</p>
+        <h2 class="section-heading">What Schools Are Navigating</h2>
+      </div>
+      <div class="challenge-grid fade-in delay-1">
+        <article class="challenge-card">
+          <h3>For Students</h3>
+          <ul class="challenge-list">
+            <li>Online teasing that escalates into harassment</li>
+            <li>Fake profiles, rumours, and anonymous trolling</li>
+            <li>Exclusion from digital groups and communities</li>
+            <li>Pressure to share photos, videos, or personal information</li>
+            <li>Difficulty reporting incidents or seeking help</li>
+            <li>Emotional distress, anxiety, and loss of confidence</li>
+          </ul>
+        </article>
+        <article class="challenge-card">
+          <h3>For Teachers &amp; School Leaders</h3>
+          <ul class="challenge-list">
+            <li>Limited visibility into online student interactions</li>
+            <li>Uncertainty about when and how to intervene</li>
+            <li>Managing incidents that originate outside school hours</li>
+            <li>Supporting affected students appropriately</li>
+            <li>Balancing discipline with education and wellbeing</li>
+            <li>Keeping pace with rapidly changing digital platforms</li>
+          </ul>
+        </article>
+      </div>
+      <p class="culture-line fade-in delay-2">Cyberbullying is no longer simply a student issue. It is a school culture challenge.</p>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section>
+    <div class="container">
+      <div class="section-header center fade-in">
+        <p class="section-label">How We Solve The Problem</p>
+        <h2 class="section-heading">One Ecosystem, Shared Responsibility</h2>
+        <p class="section-subheading" style="margin-top:12px;">Our approach addresses both sides of the ecosystem.</p>
+      </div>
+      <div class="solve-grid fade-in delay-1">
+        <article class="solve-card">
+          <h3>Student Workshops</h3>
+          <p>Students learn to recognise harmful online behaviour, understand its consequences, protect themselves online, support peers, and become responsible digital citizens.</p>
+        </article>
+        <article class="solve-card">
+          <h3>Teacher Workshops</h3>
+          <p>Educators learn to identify warning signs, respond confidently to incidents, support students effectively, and create a culture where concerns can be raised safely.</p>
+        </article>
+        <article class="solve-card">
+          <h3>Shared School Framework</h3>
+          <p>Both groups work from a common language and understanding of respectful online behaviour, helping schools create consistency in expectations, reporting, and response.</p>
+        </article>
+      </div>
+      <div class="solve-note fade-in delay-2">
+        <h3>Our programs use</h3>
+        <ul class="program-list">
+          <li>Real-world case studies</li>
+          <li>Interactive discussions</li>
+          <li>Scenario-based learning</li>
+          <li>Reflection activities</li>
+          <li>Practical response frameworks</li>
+          <li>Age-appropriate digital citizenship principles</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- DURATION -->
+  <section style="background: var(--white);">
+    <div class="container">
+      <div class="section-header center fade-in">
+        <p class="section-label">Program Duration</p>
+        <h2 class="section-heading">One-Day School Intervention</h2>
+        <p class="section-subheading" style="margin-top:12px;">The program can be delivered as:</p>
+      </div>
+      <div class="duration-grid fade-in delay-1">
+        <article class="duration-card">
+          <span class="duration-kicker">Student Track</span>
+          <h3>Student Workshops</h3>
+          <p>Dedicated workshops for students.</p>
+        </article>
+        <article class="duration-card">
+          <span class="duration-kicker">Teacher Track</span>
+          <h3>Educator Workshops</h3>
+          <p>Dedicated workshops for educators and school staff.</p>
+        </article>
+        <article class="duration-card">
+          <span class="duration-kicker">School-Wide Deployment</span>
+          <h3>Same-Day Sessions</h3>
+          <p>Student and teacher sessions delivered on the same day for maximum impact.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTCOMES -->
+  <section>
+    <div class="container">
+      <div class="outcomes-wrap fade-in">
+        <div class="section-header center">
+          <p class="section-label">Outcomes</p>
+          <h2 class="section-heading">Schools Can Expect</h2>
+        </div>
+        <ul class="outcomes-list">
+          <li>Increased awareness of cyberbullying risks</li>
+          <li>Better reporting and intervention practices</li>
+          <li>Greater student confidence in seeking support</li>
+          <li>Improved digital citizenship and online conduct</li>
+          <li>Stronger alignment between students, teachers, and school leadership</li>
+          <li>A safer and more respectful digital culture</li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -150,12 +364,13 @@
   <section class="cta-band">
     <div class="container">
       <div class="cta-band-inner">
-        <p class="section-label">Start the Conversation</p>
-        <h2>Digital Safety Is Everyone's Responsibility</h2>
-        <p>Cyberbullying doesn't stop at school gates or office doors. Our programme equips people at every level with the awareness to act. Let's build safer digital spaces together.</p>
+        <p class="section-label">Ready to Build a Safer Digital Community?</p>
+        <h2>Cyberbullying &amp; Digital Citizenship</h2>
+        <p>Whether you're looking for a student awareness session, teacher capacity-building workshop, or a school-wide intervention, Aquila can help.</p>
         <div class="cta-band-actions">
-          <a href="contact.html" class="btn btn-primary">Schedule a Discovery Call</a>
-          <a href="posh.html" class="btn btn-outline-white">Explore POSH Training</a>
+          <a href="contact.html" class="btn btn-primary">Download Program Brochure</a>
+          <a href="contact.html" class="btn btn-outline-white">Enquire About Student Workshops</a>
+          <a href="contact.html" class="btn btn-outline-white">Enquire About Teacher Workshops</a>
         </div>
       </div>
     </div>
@@ -196,6 +411,7 @@
       </div>
       <div class="footer-bottom">
         <p class="footer-copyright">&copy; 2026 Aquila - an ARJV initiative. All rights reserved.</p>
+        <p class="footer-credit">Powered by <a href="https://www.arboreallabs.com/" target="_blank" rel="noopener">Arboreal Labs</a></p>
         <div class="footer-legal">
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Use</a>

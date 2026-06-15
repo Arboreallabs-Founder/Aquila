@@ -458,6 +458,9 @@ section[id], [id].metrics { scroll-margin-top: calc(var(--nav-h) + 20px); }
 .footer-contact-item svg { width: 14px; height: 14px; flex-shrink: 0; margin-top: 2px; color: var(--teal); }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
 .footer-copyright { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+.footer-credit { font-size: 0.78rem; color: rgba(255,255,255,0.34); }
+.footer-credit a { color: rgba(255,255,255,0.58); transition: color 0.2s; }
+.footer-credit a:hover { color: var(--white); }
 .footer-legal { display: flex; gap: 20px; }
 .footer-legal a { font-size: 0.78rem; color: rgba(255,255,255,0.3); transition: color 0.2s; }
 .footer-legal a:hover { color: rgba(255,255,255,0.6); }
