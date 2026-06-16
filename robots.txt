@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://aquilalearning.in/sitemap.xml
+Sitemap: https://www.aquilalearning.in/sitemap.xml

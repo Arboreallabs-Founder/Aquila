@@ -2,7 +2,7 @@
 
 > Aquila is an India-based workforce capability-building platform for corporates, educational institutions, and social impact ecosystems.
 
-Canonical site: https://aquilalearning.in/
+Canonical site: https://www.aquilalearning.in/
 Contact: jayati@aquilalearning.in
 Phone: +91 83746 93274
 Primary geography: India
@@ -19,19 +19,19 @@ Aquila builds future-ready capability pathways through practitioner-led training
 
 ## Main Programs
 
-- First Chair Program: https://aquilalearning.in/first-chair.html
-- Technical Training: https://aquilalearning.in/technical-training.html
-- POSH Training: https://aquilalearning.in/posh.html
-- Ace Your Placements: https://aquilalearning.in/colleges.html
-- Cyberbullying and Digital Citizenship: https://aquilalearning.in/cyberbullying.html
-- School Programs: https://aquilalearning.in/schools.html
-- Social Impact Programs: https://aquilalearning.in/social-impact.html
+- First Chair Program: https://www.aquilalearning.in/first-chair.html
+- Technical Training: https://www.aquilalearning.in/technical-training.html
+- POSH Training: https://www.aquilalearning.in/posh.html
+- Ace Your Placements: https://www.aquilalearning.in/colleges.html
+- Cyberbullying and Digital Citizenship: https://www.aquilalearning.in/cyberbullying.html
+- School Programs: https://www.aquilalearning.in/schools.html
+- Social Impact Programs: https://www.aquilalearning.in/social-impact.html
 
 ## Useful Pages
 
-- About Aquila: https://aquilalearning.in/about.html
-- Case Studies: https://aquilalearning.in/case-studies.html
-- Contact: https://aquilalearning.in/contact.html
+- About Aquila: https://www.aquilalearning.in/about.html
+- Case Studies: https://www.aquilalearning.in/case-studies.html
+- Contact: https://www.aquilalearning.in/contact.html
 
 ## Positioning
 
