@@ -1242,6 +1242,7 @@
       .experts-grid { grid-template-columns: 1fr; }
       .person-card.person-expert { flex-direction: column; text-align: center; align-items: center; }
       .person-card.person-expert .person-avatar { margin: 0 auto 16px; }
+      .person-card.person-expert .person-highlights { text-align: left; }
     }
     @media (max-width: 480px) {
       .mentors-grid { grid-template-columns: 1fr; }
@@ -1317,7 +1318,9 @@
       .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 48px; }
       .hero-actions { justify-content: center; }
       .hero-sub { margin: 0 auto 36px; }
-      .hero-visual { min-height: auto; max-width: 440px; margin: 0 auto; }
+      /* width:100% — auto margins stop the grid item stretching, which collapsed the orbit to 0×0 */
+      .hero-visual { min-height: auto; width: 100%; max-width: 440px; margin: 0 auto; }
+      .income-step { min-height: auto; }
       .income-model-grid { grid-template-columns: 1fr; }
       .income-map { min-height: auto; padding: 10px 0 0; }
       .income-steps::before, .income-steps::after { display: none; }
@@ -1336,6 +1339,11 @@
     }
 
     @media (max-width: 480px) {
+      /* shrink the orbit so node labels clear the core on narrow screens */
+      .converge-core { width: 108px; height: 108px; }
+      .converge-node, .cn-icon { width: 56px; height: 56px; }
+      .cn-icon svg { width: 26px; height: 26px; }
+      .cn-text { font-size: 0.78rem; padding: 3px 10px; }
       .metrics-grid { grid-template-columns: 1fr; }
       .founders-grid { grid-template-columns: 1fr; }
       .partners-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1709,7 +1717,7 @@
   <div class="container">
     <div class="section-header fade-in">
       <p class="section-label">The Aquila Model</p>
-      <h2 class="section-heading" id="pillars-heading">The Three Pillars Reshaping<br>India's Workforce</h2>
+      <h2 class="section-heading" id="pillars-heading">The Three Pillars Reshaping <br>India's Workforce</h2>
       <p class="section-subheading" style="margin-top:12px;">
         From enterprise capability to employability and economic participation, Aquila builds transformation where India needs it most.
       </p>
@@ -1801,7 +1809,7 @@
     <div class="income-model-grid">
       <div class="fade-in">
         <p class="section-label">How Aquila Works</p>
-        <h2 class="section-heading" id="income-model-heading">From Potential to<br>Income Pathways</h2>
+        <h2 class="section-heading" id="income-model-heading">From Potential to <br>Income Pathways</h2>
         <p class="section-subheading" style="margin-top:12px;">The deck's core promise is simple: capability only matters when it converts into jobs, ventures, stronger teams, or durable income.</p>
       </div>
       <div class="income-map fade-in delay-1">
@@ -1836,7 +1844,7 @@
   <div class="container">
     <div class="section-header fade-in">
       <p class="section-label">What We Build</p>
-      <h2 class="section-heading" id="cap-heading">Capability Areas Built for<br>India's Next Growth Cycle</h2>
+      <h2 class="section-heading" id="cap-heading">Capability Areas Built for <br>India's Next Growth Cycle</h2>
       <p class="section-subheading" style="margin-top:12px;">
         Aquila designs practical, high-impact learning and transformation systems across technical, leadership, employability, and livelihood domains.
       </p>
@@ -2161,7 +2169,7 @@
 
     <div class="section-header fade-in">
       <p class="section-label">Our People</p>
-      <h2 class="section-heading" id="team-heading">Led by Practitioners.<br>Built for Real-World Outcomes.</h2>
+      <h2 class="section-heading" id="team-heading">Led by Practitioners. <br>Built for Real-World Outcomes.</h2>
       <p class="section-subheading" style="margin-top:12px;">
         Aquila brings together founders with deep enterprise experience, domain experts, on-ground partners, and advisors who have done the hard work across India's most complex sectors.
       </p>

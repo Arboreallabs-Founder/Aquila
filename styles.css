@@ -532,6 +532,10 @@ section[id], [id].metrics { scroll-margin-top: calc(var(--nav-h) + 20px); }
   .u-card { padding: 26px 22px; }
   .ph-actions, .cta-band-actions { width: 100%; }
 }
+/* Desktop line breaks in headings leave orphaned words on phones — let them wrap naturally */
+@media (max-width: 600px) {
+  .section-heading br, .prog-heading br, .fp-title br { display: none; }
+}
 /* Prevent iOS auto-zoom on focus: inputs must be >=16px on touch devices */
 @media (max-width: 768px) {
   input, select, textarea,
